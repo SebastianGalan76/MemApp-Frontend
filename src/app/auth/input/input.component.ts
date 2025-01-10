@@ -32,18 +32,24 @@ export class AuthInputComponent implements OnInit {
   }
 
   onChange() {
-    this.validateInput();
+    this.model.error = this.validateInput();
   }
 
   onInput() {
     if (this.model.error!.length > 0) {
-      this.validateInput();
+      this.model.error = this.validateInput();
     }
   }
 
-  public validateInput() {
+  public validateInput(): string {
     if (this.model.validateFunction) {
-      this.model.error = this.model.validateFunction(this.model.value!);
+      return this.model.validateFunction(this.model.value!);
     }
+    return "";
+  }
+
+  public isValid(): boolean {
+    this.model.error = this.validateInput();
+    return this.model.error.length > 0 ? false : true
   }
 }

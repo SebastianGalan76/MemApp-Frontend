@@ -14,7 +14,7 @@
         <auth-input [model]="passwordConfirmInput"></auth-input>
 
         <div class="checkbox-area" style="margin-left: 5px;">
-            <input type="checkbox">
+            <input type="checkbox" [(ngModel)]="isRuleAndPPAccepted">
             <label>Akceptuje <a class="link" routerLink="/regulamin">Regulamin</a> i <a routerLink="/privacy-policy"
                     class="link">Politykę Prywatności</a></label>
         </div>
@@ -22,11 +22,10 @@
 
 
     <footer>
-        <div id="error-response">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's
+        <div id="error-message">
+            {{errorMessage}}
         </div>
-        <div id="submin-button">
+        <div id="submin-button" (click)="onSubmit()">
             Załóż konto
         </div>
     </footer>

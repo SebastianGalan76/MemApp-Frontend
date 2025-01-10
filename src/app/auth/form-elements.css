@@ -25,7 +25,14 @@
 }
 .input-wrapper .input-area input:focus {
   border: 1px solid #5db6ff;
-  background-color: rgba(0, 0, 0, 0.0862745098);
+  background-color: rgba(0, 123, 255, 0.1333333333);
+  color: #5db6ff;
+}
+.input-wrapper .input-area input:focus::-moz-placeholder {
+  color: #5db6ff;
+}
+.input-wrapper .input-area input:focus::placeholder {
+  color: #5db6ff;
 }
 .input-wrapper .input-area input.incorrect {
   background-color: blue;

@@ -39,7 +39,12 @@ $color-focus: #5db6ff;
 
             &:focus {
                 border: 1px solid $color-focus;
-                background-color: #00000016;
+                background-color: #007bff22;
+                color: $color-focus;
+
+                &::placeholder {
+                    color: $color-focus;
+                }
             }
 
             &.incorrect {

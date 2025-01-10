@@ -15,7 +15,8 @@
 #wrapper footer {
   margin-top: 20px;
 }
-#wrapper footer #error-response {
+#wrapper footer #error-message {
   font-size: 0.9rem;
   color: #ff6666;
+  text-align: center;
 }/*# sourceMappingURL=sign-up.component.css.map */

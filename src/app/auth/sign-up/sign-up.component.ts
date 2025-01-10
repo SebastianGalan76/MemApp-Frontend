@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthInputComponent, InputModel } from "../input/input.component";
+import { ApiService } from '../../../service/api.service';
+import { Response } from '../../../model/response/Response';
 
 @Component({
   selector: 'app-sign-up',
@@ -84,4 +86,63 @@ export class SignUpComponent {
       return "";
     }
   };
+
+  isRuleAndPPAccepted: boolean = false;
+  errorMessage: string = "";
+
+  constructor(
+    private apiService: ApiService
+  ) { }
+
+  onSubmit(): void {
+    if (!this.loginInput.component?.isValid()) {
+      return;
+    }
+    if (!this.emailInput.component?.isValid()) {
+      return;
+    }
+    if (!this.passwordInput.component?.isValid()) {
+      return;
+    }
+    if (!this.passwordConfirmInput.component?.isValid()) {
+      return;
+    }
+
+    if (!this.isRuleAndPPAccepted) {
+      this.errorMessage = "Musisz zaakceptować nasz regulamin oraz politykę prywatności."
+      return;
+    }
+
+    this.errorMessage = "";
+
+    this.apiService.post<Response>("/auth/signUp", {
+      login: this.loginInput.value,
+      email: this.emailInput.value,
+      password: this.passwordInput.value
+    }, {}).subscribe({
+      next: () => {
+
+      },
+      error: (response) => {
+        var responseError = response.error;
+
+        if (responseError) {
+          switch (responseError.errorCode) {
+            case 1:
+            case 2:
+              this.loginInput.error = responseError.message
+              return;
+            case 3:
+              this.passwordInput.error = responseError.message
+              return;
+            case 4:
+              this.emailInput.error = responseError.message
+              return;
+          }
+
+          this.errorMessage = responseError.message;
+        }
+      }
+    })
+  }
 }
