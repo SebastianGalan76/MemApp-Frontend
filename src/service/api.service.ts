@@ -1,6 +1,7 @@
 import { HttpClient, HttpContext, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AppService } from './app.service';
 
 export interface HttpOptions {
   headers?: HttpHeaders | {
@@ -23,29 +24,28 @@ export interface HttpOptions {
   providedIn: 'root'
 })
 export class ApiService {
-  backendDomain: string = "http://localhost:8080";
 
   constructor(
     private httpClient: HttpClient
   ) { }
 
   get<T>(endpoint: string, options: Partial<HttpOptions>): Observable<T> {
-    const url = this.backendDomain + endpoint;
+    const url = AppService.getBackendDomain() + endpoint;
     return this.httpClient.get<T>(url, this.createHttpOptions(options)) as Observable<T>;
   }
 
   post<T>(endpoint: string, body: any | null, options: Partial<HttpOptions>): Observable<T> {
-    const url = this.backendDomain + endpoint;
+    const url = AppService.getBackendDomain() + endpoint;
     return this.httpClient.post<T>(url, body, this.createHttpOptions(options)) as Observable<T>;
   }
 
   put<T>(endpoint: string, body: any | null, options: Partial<HttpOptions>): Observable<T> {
-    const url = this.backendDomain + endpoint;
+    const url = AppService.getBackendDomain() + endpoint;
     return this.httpClient.put<T>(url, body, this.createHttpOptions(options)) as Observable<T>;
   }
 
   delete<T>(endpoint: string, options: Partial<HttpOptions>): Observable<T> {
-    const url = this.backendDomain + endpoint;
+    const url = AppService.getBackendDomain() + endpoint;
     return this.httpClient.delete<T>(url, this.createHttpOptions(options)) as Observable<T>;
   }
 
