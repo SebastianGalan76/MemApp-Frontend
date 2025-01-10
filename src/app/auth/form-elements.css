@@ -41,6 +41,11 @@
   font-weight: 200;
   opacity: 0.5;
 }
+.input-wrapper .input-area input:focus + .icon {
+  color: #5db6ff;
+  border-right: 2px solid #5db6ff;
+  opacity: 0.5;
+}
 .input-wrapper .input-area .icon {
   color: #7a8395;
   width: 40px;
@@ -52,6 +57,33 @@
   transform: translate(0, -50%);
   border-right: 2px solid #7a8395;
   opacity: 0.5;
+}
+.input-wrapper #error {
+  display: none;
+  color: #ff6666;
+  font-size: 0.9rem;
+}
+
+.input-wrapper.incorrect label {
+  color: #ff6666;
+}
+.input-wrapper.incorrect .input-area input {
+  color: #ff6666;
+  background-color: #ffdada;
+  border: 1px solid #ff6666;
+}
+.input-wrapper.incorrect .input-area input::-moz-placeholder {
+  color: #ff6666;
+}
+.input-wrapper.incorrect .input-area input::placeholder {
+  color: #ff6666;
+}
+.input-wrapper.incorrect .input-area .icon {
+  color: #ff6666;
+  border-right: 2px solid #ff6666;
+}
+.input-wrapper.incorrect #error {
+  display: block;
 }
 
 .checkbox-area {

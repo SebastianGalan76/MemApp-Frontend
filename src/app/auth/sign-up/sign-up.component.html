@@ -5,46 +5,13 @@
     </header>
 
     <div id="form-container">
-        <div class="input-wrapper">
-            <label for="login">Login</label>
-            <div class="input-area">
-                <input id="login" type="text" placeholder="Login" maxlength="20" [(ngModel)]="login">
-                <div class="icon">
-                    <i class="fa-solid fa-user"></i>
-                </div>
-            </div>
-        </div>
+        <auth-input [model]="loginInput"></auth-input>
 
-        <div class="input-wrapper">
-            <label for="email">E-mail</label>
-            <div class="input-area">
-                <input id="email" type="email" placeholder="E-mail" maxlength="60" [(ngModel)]="email">
-                <div class="icon">
-                    <i class="fa-solid fa-envelope"></i>
-                </div>
-            </div>
-        </div>
+        <auth-input [model]="emailInput"></auth-input>
 
-        <div class="input-wrapper">
-            <label for="password">Hasło</label>
-            <div class="input-area">
-                <input id="password" type="password" placeholder="Hasło" maxlength="255" [(ngModel)]="password">
-                <div class="icon">
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-            </div>
-        </div>
+        <auth-input [model]="passwordInput"></auth-input>
 
-        <div class="input-wrapper">
-            <label for="passwordConfirm">Powtórz hasło</label>
-            <div class="input-area">
-                <input id="passwordConfirm" type="password" placeholder="Powtórz hasło" maxlength="255"
-                    [(ngModel)]="passwordConfirm">
-                <div class="icon">
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-            </div>
-        </div>
+        <auth-input [model]="passwordConfirmInput"></auth-input>
 
         <div class="checkbox-area" style="margin-left: 5px;">
             <input type="checkbox">

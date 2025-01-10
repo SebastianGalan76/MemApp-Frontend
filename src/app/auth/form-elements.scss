@@ -54,6 +54,12 @@ $color-focus: #5db6ff;
             }
         }
 
+        input:focus + .icon {
+            color: $color-focus;
+            border-right: 2px solid $color-focus;
+            opacity: 0.5;
+        }
+
         .icon {
             color: $text-color;
             width: 40px;
@@ -70,6 +76,40 @@ $color-focus: #5db6ff;
 
             opacity: 0.5;
         }
+    }
+
+    #error {
+        display: none;
+
+        color: $text-color-red;
+        font-size: 0.9rem;
+    }
+}
+
+.input-wrapper.incorrect {
+    label {
+        color: $text-color-red;
+    }
+    .input-area {
+        input {
+            color: $text-color-red;
+
+            background-color: #ffdada;
+            border: 1px solid $text-color-red;
+
+            &::placeholder {
+                color: $text-color-red;
+            }
+        }
+
+        .icon {
+            color: $text-color-red;
+            border-right: 2px solid $text-color-red;
+        }
+    }
+
+    #error {
+        display: block;
     }
 }
 

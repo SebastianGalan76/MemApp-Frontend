@@ -1,0 +1,11 @@
+<div class="input-wrapper" [ngClass]="{'incorrect': model.error}">
+    <label [for]="model.label">{{model.label}}</label>
+    <div class="input-area">
+        <input [id]="model.label" [type]="model.type" [placeholder]="model.label" [maxlength]="model.maxLength!"
+            [(ngModel)]="model.value" (input)="onInput()" (change)="onChange()">
+        <div class="icon">
+            <i [className]="model.icon"></i>
+        </div>
+    </div>
+    <span id="error">{{model.error}}</span>
+</div>
