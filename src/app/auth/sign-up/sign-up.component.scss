@@ -1,0 +1,31 @@
+@import "../../../style/base";
+
+#wrapper {
+    header {
+        h1 {
+            font-size: 1.5rem;
+        }
+        h3 {
+            font-size: 1rem;
+            font-weight: 400;
+
+            opacity: 0.8;
+        }
+    }
+
+    #form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 25px;
+    }
+
+    footer {
+        margin-top: 20px;
+
+        #error-response {
+            font-size: 0.9rem;
+            color: $text-color-red;
+        }
+    }
+}

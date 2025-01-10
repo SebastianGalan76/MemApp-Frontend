@@ -1,0 +1,119 @@
+@import "../../style/base";
+
+$color-background: #00000008;
+$color-border: rgba(0, 0, 0, 0.052);
+
+$text-color: #7a8395;
+$text-incorrect-color: blue;
+$color-white: white;
+$color-focus: #5db6ff;
+
+.input-wrapper {
+    position: relative;
+
+    width: 100%;
+    height: fit-content;
+    border-radius: 5px;
+    color: $text-color;
+
+    label {
+        margin-left: 10px;
+        font-weight: 500;
+    }
+
+    .input-area {
+        position: relative;
+
+        input {
+            width: 100%;
+            padding: 15px 50px 15px 50px;
+
+            color: $text-color;
+            font-weight: 600;
+
+            background-color: $color-background;
+            border: 1px solid $color-border;
+            border-radius: 8px;
+
+            outline: none;
+
+            &:focus {
+                border: 1px solid $color-focus;
+                background-color: #00000016;
+            }
+
+            &.incorrect {
+                background-color: $text-incorrect-color;
+                color: $color-white;
+            }
+
+            &::placeholder {
+                color: $text-color;
+                font-weight: 200;
+                opacity: 0.5;
+            }
+        }
+
+        .icon {
+            color: $text-color;
+            width: 40px;
+
+            display: block;
+            text-align: center;
+
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translate(0, -50%);
+
+            border-right: 2px solid $text-color;
+
+            opacity: 0.5;
+        }
+    }
+}
+
+.checkbox-area {
+    position: relative;
+
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    input {
+        width: 20px;
+        height: 20px;
+
+        border: none;
+        outline: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    label {
+        color: $text-color;
+        font-size: 0.9rem;
+    }
+}
+
+.link {
+    color: $link-color-blue;
+
+    &:hover {
+        color: $link-color-blue-dark;
+    }
+}
+
+#submin-button {
+    text-align: center;
+    background-color: $link-color-blue;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $link-color-blue-dark;
+    }
+}

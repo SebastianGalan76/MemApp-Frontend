@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: rgb(255, 253, 240);
+  font-family: "Poppins", serif;
+  min-width: 360px;
+  background-color: #151b29;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}/*# sourceMappingURL=styles.css.map */
