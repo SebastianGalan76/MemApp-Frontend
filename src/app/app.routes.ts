@@ -4,6 +4,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
+import { ActiveAccountComponent } from './auth/active-account/active-account.component';
 
 export const routes: Routes = [{
     path: "auth",
@@ -22,7 +23,10 @@ export const routes: Routes = [{
         path: 'resetPassword',
         component: ResetPasswordComponent
     }, {
-        path: 'activeAccount/:uuid',
+        path: 'activeAccount',
+        component: ActiveAccountComponent
+    }, {
+        path: 'active/:uuid',
         component: SignInComponent
     }, {
         path: 'changePassword/:uuid',

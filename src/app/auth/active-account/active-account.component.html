@@ -1,0 +1,21 @@
+<div id="wrapper">
+    <header>
+        <h1>Aktywowanie konta</h1>
+        <h3>Wyślemy ponownie e-mail aktywacyjny.</h3>
+    </header>
+
+    <div id="form-container">
+        <auth-input [model]="emailInput"></auth-input>
+    </div>
+
+
+    <footer>
+        <div id="error-message">
+            {{errorMessage}}
+        </div>
+        <div id="submin-button" (click)="onSubmit()">
+            Aktywuj konto
+        </div>
+        <span class="info">Nie masz konta? <a routerLink="/auth/signUp" class="link">Zarejestruj się</a></span>
+    </footer>
+</div>
