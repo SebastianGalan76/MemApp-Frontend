@@ -18,5 +18,8 @@ export const routes: Routes = [{
         {
             path: "signIn",
             component: SignInComponent
+        }, {
+            path: 'active/:uuid',
+            component: SignInComponent
         }]
 }];

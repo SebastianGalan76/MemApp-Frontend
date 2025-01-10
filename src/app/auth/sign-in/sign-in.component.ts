@@ -4,7 +4,7 @@ import { AuthInputComponent, InputModel } from '../input/input.component';
 import { ApiService } from '../../../service/api.service';
 import { TokenResponse } from '../../../model/response/TokenResponse';
 import { CookieService } from '../../../service/cookie.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -49,8 +49,14 @@ export class SignInComponent {
   errorMessage: string = "";
 
   constructor(
-    private apiService: ApiService
-  ) { }
+    private apiService: ApiService,
+    private route: ActivatedRoute
+  ) {
+    const uuid = this.route.snapshot.paramMap.get('uuid');
+    if (uuid) {
+      this.apiService.post<Response>("/auth/active/" + uuid, null, {});
+    }
+  }
 
   onSubmit(): void {
     if (!this.emailInput.component?.isValid()) {
