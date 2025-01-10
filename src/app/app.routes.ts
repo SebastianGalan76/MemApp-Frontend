@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 
 export const routes: Routes = [{
     path: "auth",
@@ -21,5 +22,8 @@ export const routes: Routes = [{
         }, {
             path: 'active/:uuid',
             component: SignInComponent
+        }, {
+            path: 'resetPassword',
+            component: ResetPasswordComponent
         }]
 }];
