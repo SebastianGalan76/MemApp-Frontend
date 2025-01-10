@@ -5,9 +5,15 @@
     </header>
 
     <div id="form-container">
-        <auth-input [model]="emailInput"></auth-input>
+        <div class="input-container">
+            <a class="action link" routerLink="/">Email aktywacyjny nie dotarł?</a>
+            <auth-input [model]="emailInput"></auth-input>
+        </div>
 
-        <auth-input [model]="passwordInput"></auth-input>
+        <div class="input-container">
+            <a class="action link" routerLink="/">Zapomniałeś hasła?</a>
+            <auth-input [model]="passwordInput"></auth-input>
+        </div>
     </div>
 
 
@@ -18,5 +24,6 @@
         <div id="submin-button" (click)="onSubmit()">
             Zaloguj
         </div>
+        <span class="info">Nie masz konta? <a routerLink="/auth/signUp" class="link">Zarejestruj się</a></span>
     </footer>
 </div>

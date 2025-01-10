@@ -1,10 +1,13 @@
-<div class="input-wrapper" [ngClass]="{'incorrect': model.error}">
+<div class="input-wrapper" [ngClass]="{'incorrect': model.error, 'password-input': isPasswordInput}">
     <label [for]="model.label">{{model.label}}</label>
     <div class="input-area">
         <input [id]="model.label" [type]="model.type" [placeholder]="model.label" [maxlength]="model.maxLength!"
             [(ngModel)]="model.value" (input)="onInput()" (change)="onChange()">
         <div class="icon">
             <i [className]="model.icon"></i>
+        </div>
+        <div class="icon-right" (click)="switchPasswordVisibility()">
+            <i [ngClass]="model.type != 'password' ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
         </div>
     </div>
     <span id="error">{{model.error}}</span>

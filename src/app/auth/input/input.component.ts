@@ -24,11 +24,13 @@ export class InputModel {
 })
 export class AuthInputComponent implements OnInit {
   @Input({ required: true }) model!: Partial<InputModel>;
+  isPasswordInput: boolean = false;
 
   ngOnInit(): void {
     this.model.value = "";
     this.model.error = "";
     this.model.component = this;
+    this.isPasswordInput = this.model.type == "password";
   }
 
   onChange() {
@@ -38,6 +40,15 @@ export class AuthInputComponent implements OnInit {
   onInput() {
     if (this.model.error!.length > 0) {
       this.model.error = this.validateInput();
+    }
+  }
+
+  switchPasswordVisibility() {
+    if (this.model.type == "password") {
+      this.model.type = "text";
+    }
+    else {
+      this.model.type = "password";
     }
   }
 

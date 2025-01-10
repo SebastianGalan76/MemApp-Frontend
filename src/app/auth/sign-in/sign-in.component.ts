@@ -4,13 +4,14 @@ import { AuthInputComponent, InputModel } from '../input/input.component';
 import { ApiService } from '../../../service/api.service';
 import { TokenResponse } from '../../../model/response/TokenResponse';
 import { CookieService } from '../../../service/cookie.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [CommonModule, AuthInputComponent],
+  imports: [CommonModule, AuthInputComponent, RouterLink],
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss', '../form-elements.scss']
+  styleUrls: ['../form-section.scss', '../form-elements.scss']
 })
 export class SignInComponent {
   emailInput: Partial<InputModel> = {

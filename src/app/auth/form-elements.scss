@@ -26,7 +26,7 @@ $color-focus: #5db6ff;
 
         input {
             width: 100%;
-            padding: 15px 50px 15px 50px;
+            padding: 15px 15px 15px 50px;
 
             color: $text-color;
             font-weight: 600;
@@ -65,6 +65,10 @@ $color-focus: #5db6ff;
             opacity: 0.5;
         }
 
+        input:focus + .icon + .icon-right {
+            color: $color-focus;
+        }
+
         .icon {
             color: $text-color;
             width: 40px;
@@ -81,6 +85,21 @@ $color-focus: #5db6ff;
 
             opacity: 0.5;
         }
+
+        .icon-right {
+            color: $text-color;
+            width: 40px;
+
+            display: none;
+            text-align: center;
+
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(0, -50%);
+
+            opacity: 0.5;
+        }
     }
 
     #error {
@@ -89,32 +108,45 @@ $color-focus: #5db6ff;
         color: $text-color-red;
         font-size: 0.9rem;
     }
-}
 
-.input-wrapper.incorrect {
-    label {
-        color: $text-color-red;
-    }
-    .input-area {
-        input {
+    &.incorrect {
+        label {
             color: $text-color-red;
-
-            background-color: #ffdada;
-            border: 1px solid $text-color-red;
-
-            &::placeholder {
+        }
+        .input-area {
+            input {
                 color: $text-color-red;
+
+                background-color: #ffdada;
+                border: 1px solid $text-color-red;
+
+                &::placeholder {
+                    color: $text-color-red;
+                }
+            }
+
+            .icon {
+                color: $text-color-red;
+                border-right: 2px solid $text-color-red;
             }
         }
 
-        .icon {
-            color: $text-color-red;
-            border-right: 2px solid $text-color-red;
+        #error {
+            display: block;
         }
     }
 
-    #error {
-        display: block;
+    &.password-input {
+        .input-area {
+            input {
+                padding: 15px 50px 15px 50px;
+            }
+
+            .icon-right {
+                display: block;
+                cursor: pointer;
+            }
+        }
     }
 }
 

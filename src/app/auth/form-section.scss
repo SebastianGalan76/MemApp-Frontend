@@ -1,4 +1,4 @@
-@import "../../../style/base";
+@import "../../style/base";
 
 #wrapper {
     header {
@@ -18,15 +18,35 @@
         flex-direction: column;
         gap: 20px;
         margin-top: 25px;
+
+        .input-container {
+            position: relative;
+
+            .action {
+                position: absolute;
+                top: 3px;
+                right: 0;
+                font-size: 0.8rem;
+                z-index: 10;
+            }
+        }
     }
 
     footer {
-        margin-top: 20px;
+        margin-top: 50px;
 
         #error-message {
             font-size: 0.9rem;
             color: $text-color-red;
             text-align: center;
+        }
+
+        .info {
+            color: #7a8395;
+
+            .link {
+                font-weight: 600;
+            }
         }
     }
 }

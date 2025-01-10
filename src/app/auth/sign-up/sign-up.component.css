@@ -19,4 +19,10 @@
   font-size: 0.9rem;
   color: #ff6666;
   text-align: center;
+}
+#wrapper footer .info {
+  color: #7a8395;
+}
+#wrapper footer .info .link {
+  font-weight: 600;
 }/*# sourceMappingURL=sign-up.component.css.map */

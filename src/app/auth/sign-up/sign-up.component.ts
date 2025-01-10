@@ -10,7 +10,7 @@ import { Response } from '../../../model/response/Response';
   standalone: true,
   imports: [FormsModule, RouterLink, AuthInputComponent],
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss', '../form-elements.scss']
+  styleUrls: ['../form-section.scss', '../form-elements.scss']
 })
 export class SignUpComponent {
   loginInput: Partial<InputModel> = {
