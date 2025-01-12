@@ -5,7 +5,7 @@ import { AuthInputComponent, InputModel } from "../input/input.component";
 import { ApiService } from '../../../service/api.service';
 import { Response } from '../../../model/response/Response';
 import { PopupService } from '../../../service/popup.service';
-import { AccountCreatedComponent } from '../popup/account-created/account-created.component';
+import { AccountCreatedPopupComponent } from '../popup/account-created/account-created.component';
 import { AuthSubmitButtonComponent, ButtonStatus } from "../submit-button/submit-button.component";
 
 @Component({
@@ -128,7 +128,7 @@ export class SignUpComponent {
       password: this.passwordInput.value
     }, {}).subscribe({
       next: () => {
-        this.popupService.showPopup(AccountCreatedComponent, [], [{ name: 'backgroundClickClosePopup', value: false }]);
+        this.popupService.showPopup(AccountCreatedPopupComponent, [], [{ name: 'backgroundClickClosePopup', value: false }]);
         this.clearForm();
       },
       error: (response) => {

@@ -4,8 +4,10 @@ import { AuthInputComponent, InputModel } from '../input/input.component';
 import { ApiService } from '../../../service/api.service';
 import { TokenResponse } from '../../../model/response/TokenResponse';
 import { CookieService } from '../../../service/cookie.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthSubmitButtonComponent, ButtonStatus } from "../submit-button/submit-button.component";
+import { PopupService } from '../../../service/popup.service';
+import { AccountActivatedPopupComponent } from '../popup/account-activated/account-activated.component';
 
 @Component({
   selector: 'app-sign-in',
@@ -52,11 +54,17 @@ export class SignInComponent {
 
   constructor(
     private apiService: ApiService,
-    private route: ActivatedRoute
+    private popupService: PopupService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     const uuid = this.route.snapshot.paramMap.get('uuid');
     if (uuid) {
-      this.apiService.post<Response>("/auth/active/" + uuid, null, {});
+      this.apiService.post<Response>("/auth/active/" + uuid, null, {}).subscribe({
+        next: () => {
+          this.popupService.showPopup(AccountActivatedPopupComponent, [], [{ name: 'backgroundClickClosePopup', value: false }]);
+        }
+      });
     }
   }
 
@@ -69,6 +77,7 @@ export class SignInComponent {
     }
 
     this.errorMessage = "";
+    this.submitButtonStatus = ButtonStatus.LOADING;
 
     this.apiService.post<TokenResponse>("/auth/signIn", {
       identifier: this.emailInput.value,
@@ -76,7 +85,7 @@ export class SignInComponent {
     }, {}).subscribe({
       next: (response) => {
         CookieService.setCookie('jwt_token', response.token, 30);
-
+        this.router.navigate(['/']);
       },
       error: (response) => {
         var responseError = response.error;
@@ -84,6 +93,8 @@ export class SignInComponent {
         if (responseError) {
           this.errorMessage = responseError.message;
         }
+
+        this.submitButtonStatus = ButtonStatus.ACTIVE;
       }
     })
   }

@@ -1,0 +1,60 @@
+#wrapper {
+  padding: 20px;
+  background-color: whitesmoke;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90dvw;
+}
+#wrapper ng-lottie {
+  width: 200px;
+}
+#wrapper #content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s ease-in-out;
+  color: #7a8395;
+}
+#wrapper #content h1 {
+  font-size: 1.5rem;
+}
+#wrapper #content h2 {
+  font-size: 1.1rem;
+  margin-top: 20px;
+  font-weight: 400;
+  opacity: 0.5;
+}
+#wrapper #content #button {
+  background-color: #71f03b;
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 30px;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+}
+#wrapper #content #button:hover {
+  background-color: #51c71e;
+  cursor: pointer;
+}
+#wrapper #content.show {
+  max-height: 1000px;
+}
+@media (max-width: 500px) {
+  #wrapper ng-lottie {
+    width: 150px;
+  }
+  #wrapper #content h1 {
+    font-size: 1.2rem;
+  }
+  #wrapper #content h2 {
+    font-size: 0.9rem;
+  }
+  #wrapper #content #button {
+    padding: 10px;
+    border-radius: 10px;
+  }
+}/*# sourceMappingURL=account-activated.component.css.map */

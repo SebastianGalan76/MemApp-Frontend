@@ -3,6 +3,8 @@ import { RouterLink } from '@angular/router';
 import { AuthInputComponent, InputModel } from '../input/input.component';
 import { ApiService } from '../../../service/api.service';
 import { AuthSubmitButtonComponent, ButtonStatus } from '../submit-button/submit-button.component';
+import { VerificationEmailSendedPopupComponent } from '../popup/verification-email-sended/verification-email-sended.component';
+import { PopupService } from '../../../service/popup.service';
 
 @Component({
   selector: 'app-active-account',
@@ -32,6 +34,7 @@ export class ActiveAccountComponent {
 
   constructor(
     private apiService: ApiService,
+    private popupService: PopupService
   ) { }
 
   onSubmit(): void {
@@ -40,10 +43,12 @@ export class ActiveAccountComponent {
     }
 
     this.errorMessage = "";
+    this.submitButtonStatus = ButtonStatus.LOADING;
 
     this.apiService.post<Response>("/auth/activeAccount?email=" + this.emailInput.value, null, {}).subscribe({
-      next: (response) => {
-
+      next: () => {
+        this.popupService.showPopup(VerificationEmailSendedPopupComponent, [], [{ name: 'backgroundClickClosePopup', value: false }]);
+        this.submitButtonStatus = ButtonStatus.ACTIVE;
       },
       error: (response) => {
         var responseError = response.error;
@@ -51,6 +56,7 @@ export class ActiveAccountComponent {
         if (responseError) {
           this.errorMessage = responseError.message;
         }
+        this.submitButtonStatus = ButtonStatus.ACTIVE;
       }
     })
   }

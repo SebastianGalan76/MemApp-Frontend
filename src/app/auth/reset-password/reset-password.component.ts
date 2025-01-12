@@ -3,6 +3,8 @@ import { AuthInputComponent, InputModel } from '../input/input.component';
 import { ApiService } from '../../../service/api.service';
 import { RouterLink } from '@angular/router';
 import { AuthSubmitButtonComponent, ButtonStatus } from '../submit-button/submit-button.component';
+import { PopupService } from '../../../service/popup.service';
+import { PasswordResetPopupComponent } from '../popup/password-reset/password-reset.component';
 
 @Component({
   selector: 'app-reset-password',
@@ -32,6 +34,7 @@ export class ResetPasswordComponent {
 
   constructor(
     private apiService: ApiService,
+    private popupService: PopupService
   ) { }
 
   onSubmit(): void {
@@ -40,10 +43,12 @@ export class ResetPasswordComponent {
     }
 
     this.errorMessage = "";
+    this.submitButtonStatus = ButtonStatus.LOADING;
 
     this.apiService.post<Response>("/auth/resetPassword?email=" + this.emailInput.value, null, {}).subscribe({
-      next: (response) => {
-
+      next: () => {
+        this.popupService.showPopup(PasswordResetPopupComponent, [], [{ name: 'backgroundClickClosePopup', value: false }]);
+        this.clearForm();
       },
       error: (response) => {
         var responseError = response.error;
@@ -51,7 +56,14 @@ export class ResetPasswordComponent {
         if (responseError) {
           this.errorMessage = responseError.message;
         }
+        this.submitButtonStatus = ButtonStatus.ACTIVE;
       }
     })
+  }
+
+  clearForm() {
+    this.emailInput.value = "";
+
+    this.submitButtonStatus = ButtonStatus.ACTIVE;
   }
 }

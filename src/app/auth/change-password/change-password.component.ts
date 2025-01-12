@@ -3,6 +3,8 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AuthInputComponent, InputModel } from '../input/input.component';
 import { ApiService } from '../../../service/api.service';
 import { AuthSubmitButtonComponent, ButtonStatus } from '../submit-button/submit-button.component';
+import { PopupService } from '../../../service/popup.service';
+import { PasswordChangedPopupComponent } from '../popup/password-changed/password-changed.component';
 
 @Component({
   selector: 'app-change-password',
@@ -57,7 +59,8 @@ export class ChangePasswordComponent {
 
   constructor(
     private apiService: ApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private popupService: PopupService
   ) {
     this.route.queryParamMap.subscribe(params => {
       this.token = params.get("token");
@@ -73,13 +76,15 @@ export class ChangePasswordComponent {
     }
 
     this.errorMessage = "";
+    this.submitButtonStatus = ButtonStatus.LOADING;
 
     this.apiService.post<Response>("/auth/changePassword", {
       newPassword: this.passwordInput.value,
       token: this.token
     }, {}).subscribe({
       next: () => {
-
+        this.popupService.showPopup(PasswordChangedPopupComponent, [], [{ name: 'backgroundClickClosePopup', value: false }]);
+        this.clearForm();
       },
       error: (response) => {
         var responseError = response.error;
@@ -87,7 +92,15 @@ export class ChangePasswordComponent {
         if (responseError) {
           this.errorMessage = responseError.message;
         }
+        this.submitButtonStatus = ButtonStatus.ACTIVE;
       }
     })
+  }
+
+  clearForm() {
+    this.passwordInput.value = "";
+    this.passwordConfirmInput.value = "";
+
+    this.submitButtonStatus = ButtonStatus.ACTIVE;
   }
 }
