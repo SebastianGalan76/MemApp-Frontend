@@ -1,0 +1,8 @@
+<div id="button" [ngClass]="status" (click)="submit()">
+    @if (status == 'active') {
+    {{text}}
+    }
+    @if (status == 'loading') {
+    <ng-lottie height="120px" [options]="{path: '/animation/loading1.json'}" />
+    }
+</div>

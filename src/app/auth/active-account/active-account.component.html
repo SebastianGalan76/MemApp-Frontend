@@ -16,9 +16,7 @@
         <div id="error-message">
             {{errorMessage}}
         </div>
-        <div id="submin-button" (click)="onSubmit()">
-            Aktywuj konto
-        </div>
+        <auth-submit-button [text]="'Aktywuj konto'" [status]="submitButtonStatus" (onSubmit)="onSubmit()" />
         <span class="info">Nie masz konta? <a routerLink="/auth/signUp" class="link">Zarejestruj się</a></span>
     </footer>
 </div>

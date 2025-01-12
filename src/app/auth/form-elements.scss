@@ -180,17 +180,3 @@ $color-focus: #5db6ff;
         color: $link-color-blue-dark;
     }
 }
-
-#submin-button {
-    text-align: center;
-    background-color: $link-color-blue;
-    padding: 10px;
-    border-radius: 8px;
-    font-weight: 600;
-    color: white;
-
-    &:hover {
-        cursor: pointer;
-        background-color: $link-color-blue-dark;
-    }
-}

@@ -29,7 +29,7 @@ export const routes: Routes = [{
         path: 'active/:uuid',
         component: SignInComponent
     }, {
-        path: 'changePassword/:uuid',
+        path: 'changePassword',
         component: ChangePasswordComponent
     }]
 }];
