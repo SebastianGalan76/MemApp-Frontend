@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { IPopup } from '../popup.interface';
+import { AfterViewInit, Component, ComponentRef, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { Popup } from '../popup-container.component';
 import { PopupService } from '../../../../service/popup.service';
 import { NgClass } from '@angular/common';
@@ -11,18 +10,31 @@ import { NgClass } from '@angular/common';
   templateUrl: './popup.component.html',
   styleUrl: './popup.component.scss'
 })
-export class PopupComponent implements IPopup {
+export class PopupComponent {
+  @ViewChild('popupContainer', { read: ViewContainerRef, static: true }) popupContainer!: ViewContainerRef;
+
   @Input({ required: true }) popup!: Popup;
+  @Input() backgroundClickClosePopup: boolean = true;
+
   isActive: boolean = true;
 
+  private isMouseDownInsideContainer = false;
+
   constructor(
-    private popupService: PopupService
-  ) {
+    protected popupService: PopupService
+  ) { }
 
-  }
+  setContent(component: any) {
+    this.popupContainer.clear();
+    const componentRef = this.popupContainer.createComponent(component);
 
-  active() {
-    this.popupService.showPopup(PopupComponent, []);
+    if (this.popup.data) {
+      this.popup.data.forEach((element: { name: string; value: unknown; }) => {
+        componentRef.setInput(element.name, element.value);
+      });
+    }
+
+    this.popup.componentRef = componentRef;
   }
 
   close(): void {
@@ -34,7 +46,18 @@ export class PopupComponent implements IPopup {
     this.popupService.closePopup(this.popup.id);
   }
 
-  onClose(): void {
+  onMouseDown(event: MouseEvent) {
+    if (event.target === event.currentTarget) {
+      this.isMouseDownInsideContainer = true;
+    }
+  }
 
+  onMouseUp(event: MouseEvent) {
+    if (this.isMouseDownInsideContainer && event.target === event.currentTarget) {
+      if (this.backgroundClickClosePopup) {
+        this.close();
+      }
+    }
+    this.isMouseDownInsideContainer = false;
   }
 }

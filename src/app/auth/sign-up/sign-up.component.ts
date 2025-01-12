@@ -4,6 +4,8 @@ import { RouterLink } from '@angular/router';
 import { AuthInputComponent, InputModel } from "../input/input.component";
 import { ApiService } from '../../../service/api.service';
 import { Response } from '../../../model/response/Response';
+import { PopupService } from '../../../service/popup.service';
+import { AccountCreatedComponent } from '../popup/account-created/account-created.component';
 
 @Component({
   selector: 'app-sign-up',
@@ -91,7 +93,8 @@ export class SignUpComponent {
   errorMessage: string = "";
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private popupService: PopupService
   ) { }
 
   onSubmit(): void {
@@ -121,7 +124,7 @@ export class SignUpComponent {
       password: this.passwordInput.value
     }, {}).subscribe({
       next: () => {
-
+        this.popupService.showPopup(AccountCreatedComponent, [], [{ name: 'backgroundClickClosePopup', value: false }]);
       },
       error: (response) => {
         var responseError = response.error;

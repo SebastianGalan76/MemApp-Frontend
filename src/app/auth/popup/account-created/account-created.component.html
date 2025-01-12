@@ -1,5 +1,10 @@
 <div id="wrapper">
-    <lottie-animation-view [options]="lottieConfig" [width]="300" [height]="600"
-        (animCreated)="handleAnimation($event)">
-    </lottie-animation-view>
+    <ng-lottie [options]="{path: '/animation/success1.json', loop: false}" />
+
+    <div id="content" [ngClass]="{'show': isShow}">
+        <h1>Zarejestrowano pomyślnie</h1>
+        <h2>Za moment otrzymasz e-mail aktywujący konto.<br>Wejdź na swoją pocztę i aktywuj konto.</h2>
+
+        <div id="button" (click)="close()">OK</div>
+    </div>
 </div>

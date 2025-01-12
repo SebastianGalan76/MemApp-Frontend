@@ -1,6 +1,5 @@
 import { Injectable, Type } from '@angular/core';
 import { PopupContainerComponent } from '../app/shared/popup-container/popup-container.component';
-import { IPopup } from '../app/shared/popup-container/popup.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -12,8 +11,8 @@ export class PopupService {
         this.popupContainer = popupContainer;
     }
 
-    showPopup(component: Type<IPopup>, data?: any[]): void {
-        this.popupContainer.showPopup(component, data);
+    showPopup(component: Type<any>, data?: any[], options?: any[]): void {
+        this.popupContainer.showPopup(component, data, options);
     }
 
     closePopup(id: number) {
