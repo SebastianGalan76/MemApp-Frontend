@@ -69,10 +69,15 @@ export class SignInComponent {
   }
 
   onSubmit(): void {
+    var isFormValid = true;
     if (!this.emailInput.component?.isValid()) {
-      return;
+      isFormValid = false;
     }
     if (!this.passwordInput.component?.isValid()) {
+      isFormValid = false;
+    }
+
+    if (!isFormValid) {
       return;
     }
 

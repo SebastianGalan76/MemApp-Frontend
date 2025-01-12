@@ -101,16 +101,21 @@ export class SignUpComponent {
   ) { }
 
   onSubmit(): void {
+    var isFormValid = true;
     if (!this.loginInput.component?.isValid()) {
-      return;
+      isFormValid = false;
     }
     if (!this.emailInput.component?.isValid()) {
-      return;
+      isFormValid = false;
     }
     if (!this.passwordInput.component?.isValid()) {
-      return;
+      isFormValid = false;
     }
     if (!this.passwordConfirmInput.component?.isValid()) {
+      isFormValid = false;
+    }
+
+    if (!isFormValid) {
       return;
     }
 

@@ -68,10 +68,15 @@ export class ChangePasswordComponent {
   }
 
   onSubmit(): void {
+    var isFormValid = true;
     if (!this.passwordInput.component?.isValid()) {
-      return;
+      isFormValid = false;
     }
     if (!this.passwordConfirmInput.component?.isValid()) {
+      isFormValid = false;
+    }
+
+    if (!isFormValid) {
       return;
     }
 
