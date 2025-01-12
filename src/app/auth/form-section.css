@@ -1,3 +1,22 @@
+#wrapper header #back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#wrapper header #back-button i {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 2px solid #323232;
+  background-color: rgb(240, 240, 240);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#wrapper header #back-button i:hover {
+  cursor: pointer;
+  background-color: rgb(212, 212, 212);
+}
 #wrapper header h1 {
   font-size: 1.5rem;
 }

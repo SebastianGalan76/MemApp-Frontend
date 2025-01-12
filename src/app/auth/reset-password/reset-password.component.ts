@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthInputComponent, InputModel } from '../input/input.component';
 import { ApiService } from '../../../service/api.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -30,6 +30,8 @@ export class ResetPasswordComponent {
 
   constructor(
     private apiService: ApiService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   onSubmit(): void {
@@ -51,5 +53,9 @@ export class ResetPasswordComponent {
         }
       }
     })
+  }
+
+  moveBack() {
+    this.router.navigate(['../signIn'], { relativeTo: this.route });
   }
 }

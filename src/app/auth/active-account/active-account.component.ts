@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthInputComponent, InputModel } from '../input/input.component';
 import { ApiService } from '../../../service/api.service';
 
@@ -30,6 +30,8 @@ export class ActiveAccountComponent {
 
   constructor(
     private apiService: ApiService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   onSubmit(): void {
@@ -51,5 +53,9 @@ export class ActiveAccountComponent {
         }
       }
     })
+  }
+
+  moveBack() {
+    this.router.navigate(['../signIn'], { relativeTo: this.route });
   }
 }
