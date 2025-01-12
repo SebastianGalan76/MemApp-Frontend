@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AuthInputComponent, InputModel } from '../input/input.component';
 import { ApiService } from '../../../service/api.service';
-import { TokenResponse } from '../../../model/response/TokenResponse';
+import { SignInResponse } from '../../../model/response/TokenResponse';
 import { CookieService } from '../../../service/cookie.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthSubmitButtonComponent, ButtonStatus } from "../submit-button/submit-button.component";
 import { PopupService } from '../../../service/popup.service';
 import { AccountActivatedPopupComponent } from '../popup/account-activated/account-activated.component';
+import { UserService } from '../../../service/user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -54,6 +55,7 @@ export class SignInComponent {
 
   constructor(
     private apiService: ApiService,
+    private userService: UserService,
     private popupService: PopupService,
     private route: ActivatedRoute,
     private router: Router
@@ -84,13 +86,14 @@ export class SignInComponent {
     this.errorMessage = "";
     this.submitButtonStatus = ButtonStatus.LOADING;
 
-    this.apiService.post<TokenResponse>("/auth/signIn", {
+    this.apiService.post<SignInResponse>("/auth/signIn", {
       identifier: this.emailInput.value,
       password: this.passwordInput.value
     }, {}).subscribe({
       next: (response) => {
         CookieService.setCookie('jwt_token', response.token, 30);
         this.router.navigate(['/']);
+        this.userService.setUser(response.user);
       },
       error: (response) => {
         var responseError = response.error;

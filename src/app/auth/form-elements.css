@@ -48,12 +48,12 @@
   font-weight: 200;
   opacity: 0.5;
 }
-.input-wrapper .input-area input:focus + .icon {
+.input-wrapper .input-area input:not(.incorrect):focus + .icon {
   color: #5db6ff;
   border-right: 2px solid #5db6ff;
   opacity: 0.5;
 }
-.input-wrapper .input-area input:focus + .icon + .icon-right {
+.input-wrapper .input-area input:not(.incorrect):focus + .icon + .icon-right {
   color: #5db6ff;
 }
 .input-wrapper .input-area .icon {
@@ -101,6 +101,9 @@
 .input-wrapper.incorrect .input-area .icon {
   color: #ff6666;
   border-right: 2px solid #ff6666;
+}
+.input-wrapper.incorrect .input-area .icon-right {
+  color: #ff6666;
 }
 .input-wrapper.incorrect #error {
   display: block;

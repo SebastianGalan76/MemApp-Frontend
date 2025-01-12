@@ -59,13 +59,13 @@ $color-focus: #5db6ff;
             }
         }
 
-        input:focus + .icon {
+        input:not(.incorrect):focus + .icon {
             color: $color-focus;
             border-right: 2px solid $color-focus;
             opacity: 0.5;
         }
 
-        input:focus + .icon + .icon-right {
+        input:not(.incorrect):focus + .icon + .icon-right {
             color: $color-focus;
         }
 
@@ -128,6 +128,10 @@ $color-focus: #5db6ff;
             .icon {
                 color: $text-color-red;
                 border-right: 2px solid $text-color-red;
+            }
+
+            .icon-right {
+                color: $text-color-red;
             }
         }
 

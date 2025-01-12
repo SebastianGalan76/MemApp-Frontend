@@ -5,12 +5,11 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { CookieService } from './cookie.service';
 
-export interface User{
+export interface User {
   id: number;
   login: string;
   email: string;
   role: string;
-  uuid: string;
 }
 
 @Injectable({
@@ -23,14 +22,19 @@ export class UserService {
     private apiService: ApiService,
   ) { }
 
+  setUser(user: User) {
+    this.user = user;
+    this.saveUser();
+  }
+
   getUser(): Observable<User | null> {
-    if(this.user){
+    if (this.user) {
       return of(this.user);
     }
 
     const storedUser = sessionStorage.getItem('user');
     if (storedUser) {
-      if(CookieService.isJwtTokenExpired()){
+      if (CookieService.isJwtTokenExpired()) {
         sessionStorage.removeItem('user');
         return of(null);
       }
@@ -46,9 +50,8 @@ export class UserService {
             login: data.login,
             email: data.email,
             role: data.role,
-            uuid: data.uuid
           }
-          
+
           this.saveUser();
           return this.user;
         } else {
@@ -63,11 +66,11 @@ export class UserService {
     );
   }
 
-  saveUser(){
+  saveUser() {
     sessionStorage.setItem('user', JSON.stringify(this.user));
   }
 
-  logout(){
+  logout() {
     sessionStorage.removeItem('user');
     CookieService.eraseCookie('jwt_token');
     this.user = null;

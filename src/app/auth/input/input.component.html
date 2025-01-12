@@ -2,7 +2,7 @@
     <label [for]="model.label">{{model.label}}</label>
     <div class="input-area">
         <input [id]="model.label" [type]="model.type" [placeholder]="model.label" [maxlength]="model.maxLength!"
-            [(ngModel)]="model.value" (input)="onInput()" (change)="onChange()">
+            [(ngModel)]="model.value" (input)="onInput()" (change)="onChange()" [ngClass]="{'incorrect': model.error}">
         <div class="icon">
             <i [className]="model.icon"></i>
         </div>
