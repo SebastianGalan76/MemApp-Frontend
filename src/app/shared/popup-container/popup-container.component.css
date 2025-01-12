@@ -1,0 +1,8 @@
+#popup-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100dvw;
+  max-height: 100dvh;
+  z-index: 10000;
+}/*# sourceMappingURL=popup-container.component.css.map */

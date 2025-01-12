@@ -1,0 +1,12 @@
+<div id="container" [ngClass]="{'show': isActive}" (click)="close()">
+    <div class="popup hidden" (click)="$event.stopPropagation()">
+        <div class="popup-content">
+            <button (click)="active()">popup works!</button>
+
+
+
+            <p>xxx</p> {{popup.id}}
+            <button (click)="close()">Close</button>
+        </div>
+    </div>
+</div>

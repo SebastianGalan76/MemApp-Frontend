@@ -1,0 +1,60 @@
+#container {
+    width: 100dvw;
+    height: 100dvh;
+
+    background-color: rgba(0, 0, 0, 0.25);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+
+    .popup {
+        scale: 0;
+        visibility: hidden;
+
+        transition:
+            visibility 0.1s ease,
+            scale 0.25s ease;
+    }
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+
+        transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease;
+
+        .popup {
+            visibility: visible;
+            scale: 1;
+
+            transition:
+                visibility 0.2s ease,
+                scale 0.25s ease;
+        }
+    }
+}
+
+.popup-content {
+    background-color: white;
+
+    padding: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: black;
+    max-height: 90dvh;
+    overflow-y: auto;
+}
