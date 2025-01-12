@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AuthInputComponent, InputModel } from '../input/input.component';
 import { ApiService } from '../../../service/api.service';
+import { AuthSubmitButtonComponent, ButtonStatus } from '../submit-button/submit-button.component';
 
 @Component({
   selector: 'app-change-password',
   standalone: true,
-  imports: [RouterLink, AuthInputComponent],
+  imports: [RouterLink, AuthInputComponent, AuthSubmitButtonComponent],
   templateUrl: './change-password.component.html',
   styleUrls: ['../form-section.scss', '../form-elements.scss']
 })
@@ -49,7 +50,8 @@ export class ChangePasswordComponent {
     }
   };
 
-  isRuleAndPPAccepted: boolean = false;
+  submitButtonStatus: ButtonStatus = ButtonStatus.ACTIVE;
+
   errorMessage: string = "";
   token: string | null = null;
 

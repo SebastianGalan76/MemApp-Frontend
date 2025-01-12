@@ -6,11 +6,12 @@ import { ApiService } from '../../../service/api.service';
 import { Response } from '../../../model/response/Response';
 import { PopupService } from '../../../service/popup.service';
 import { AccountCreatedComponent } from '../popup/account-created/account-created.component';
+import { AuthSubmitButtonComponent, ButtonStatus } from "../submit-button/submit-button.component";
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [FormsModule, RouterLink, AuthInputComponent],
+  imports: [FormsModule, RouterLink, AuthInputComponent, AuthSubmitButtonComponent],
   templateUrl: './sign-up.component.html',
   styleUrls: ['../form-section.scss', '../form-elements.scss']
 })
@@ -89,6 +90,8 @@ export class SignUpComponent {
     }
   };
 
+  submitButtonStatus: ButtonStatus = ButtonStatus.ACTIVE;
+
   isRuleAndPPAccepted: boolean = false;
   errorMessage: string = "";
 
@@ -118,6 +121,7 @@ export class SignUpComponent {
 
     this.errorMessage = "";
 
+    this.submitButtonStatus = ButtonStatus.LOADING;
     this.apiService.post<Response>("/auth/signUp", {
       login: this.loginInput.value,
       email: this.emailInput.value,
@@ -125,6 +129,7 @@ export class SignUpComponent {
     }, {}).subscribe({
       next: () => {
         this.popupService.showPopup(AccountCreatedComponent, [], [{ name: 'backgroundClickClosePopup', value: false }]);
+        this.clearForm();
       },
       error: (response) => {
         var responseError = response.error;
@@ -144,8 +149,20 @@ export class SignUpComponent {
           }
 
           this.errorMessage = responseError.message;
+          this.submitButtonStatus = ButtonStatus.ACTIVE;
         }
       }
     })
+  }
+
+  clearForm() {
+    this.loginInput.value = "";
+    this.emailInput.value = "";
+    this.passwordInput.value = "";
+    this.passwordConfirmInput.value = "";
+
+    this.isRuleAndPPAccepted = false;
+
+    this.submitButtonStatus = ButtonStatus.ACTIVE;
   }
 }

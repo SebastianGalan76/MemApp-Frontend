@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { AuthInputComponent, InputModel } from '../input/input.component';
 import { ApiService } from '../../../service/api.service';
 import { RouterLink } from '@angular/router';
+import { AuthSubmitButtonComponent, ButtonStatus } from '../submit-button/submit-button.component';
 
 @Component({
   selector: 'app-reset-password',
   standalone: true,
-  imports: [RouterLink, AuthInputComponent],
+  imports: [RouterLink, AuthInputComponent, AuthSubmitButtonComponent],
   templateUrl: './reset-password.component.html',
   styleUrls: ['../form-section.scss', '../form-elements.scss']
 })
@@ -26,6 +27,7 @@ export class ResetPasswordComponent {
     }
   };
 
+  submitButtonStatus: ButtonStatus = ButtonStatus.ACTIVE;
   errorMessage: string = "";
 
   constructor(

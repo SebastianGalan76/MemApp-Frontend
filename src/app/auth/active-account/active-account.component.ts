@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthInputComponent, InputModel } from '../input/input.component';
 import { ApiService } from '../../../service/api.service';
+import { AuthSubmitButtonComponent, ButtonStatus } from '../submit-button/submit-button.component';
 
 @Component({
   selector: 'app-active-account',
   standalone: true,
-  imports: [RouterLink, AuthInputComponent],
+  imports: [RouterLink, AuthInputComponent, AuthSubmitButtonComponent],
   templateUrl: './active-account.component.html',
   styleUrls: ['../form-section.scss', '../form-elements.scss']
 })
@@ -26,6 +27,7 @@ export class ActiveAccountComponent {
     }
   };
 
+  submitButtonStatus: ButtonStatus = ButtonStatus.ACTIVE;
   errorMessage: string = "";
 
   constructor(

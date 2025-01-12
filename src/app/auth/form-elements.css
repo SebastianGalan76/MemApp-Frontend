@@ -137,17 +137,4 @@
 }
 .link:hover {
   color: #0481db;
-}
-
-#submin-button {
-  text-align: center;
-  background-color: #00b3ff;
-  padding: 10px;
-  border-radius: 8px;
-  font-weight: 600;
-  color: white;
-}
-#submin-button:hover {
-  cursor: pointer;
-  background-color: #0481db;
 }/*# sourceMappingURL=form-elements.css.map */

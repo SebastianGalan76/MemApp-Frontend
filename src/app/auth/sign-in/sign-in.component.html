@@ -21,9 +21,8 @@
         <div id="error-message">
             {{errorMessage}}
         </div>
-        <div id="submin-button" (click)="onSubmit()">
-            Zaloguj
-        </div>
+        <auth-submit-button [text]="'Zaloguj'" [status]="submitButtonStatus" (onSubmit)="onSubmit()" />
+
         <span class="info">Nie masz konta? <a routerLink="/auth/signUp" class="link">Zarejestruj się</a></span>
     </footer>
 </div>

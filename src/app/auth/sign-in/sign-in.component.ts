@@ -5,11 +5,12 @@ import { ApiService } from '../../../service/api.service';
 import { TokenResponse } from '../../../model/response/TokenResponse';
 import { CookieService } from '../../../service/cookie.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { AuthSubmitButtonComponent, ButtonStatus } from "../submit-button/submit-button.component";
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [CommonModule, AuthInputComponent, RouterLink],
+  imports: [CommonModule, AuthInputComponent, RouterLink, AuthSubmitButtonComponent],
   templateUrl: './sign-in.component.html',
   styleUrls: ['../form-section.scss', '../form-elements.scss']
 })
@@ -46,6 +47,7 @@ export class SignInComponent {
     }
   };
 
+  submitButtonStatus: ButtonStatus = ButtonStatus.ACTIVE;
   errorMessage: string = "";
 
   constructor(
