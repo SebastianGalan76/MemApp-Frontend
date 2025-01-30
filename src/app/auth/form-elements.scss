@@ -1,10 +1,9 @@
-@import "../../style/base";
-
 $color-background: #00000008;
 $color-border: rgba(0, 0, 0, 0.052);
 
 $text-color: #7a8395;
-$text-incorrect-color: blue;
+$text-incorrect-color: rgb(255, 92, 111);
+$text-color-red: rgb(255, 92, 111);
 $color-white: white;
 $color-focus: #5db6ff;
 
@@ -178,9 +177,9 @@ $color-focus: #5db6ff;
 }
 
 .link {
-    color: $link-color-blue;
+    color: var(--color-link-blue);
 
     &:hover {
-        color: $link-color-blue-dark;
+        color: var(--color-link-blue-accent);
     }
 }

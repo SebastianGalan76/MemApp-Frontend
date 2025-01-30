@@ -1,10 +1,8 @@
-@import "../../../style/base";
-
 #button {
     width: 100%;
     height: 50px;
 
-    background-color: $link-color-blue;
+    background-color: var(--color-link-blue);
     display: flex;
 
     align-items: center;
@@ -18,11 +16,11 @@
 
     &:hover {
         cursor: pointer;
-        background-color: $link-color-blue-dark;
+        background-color: var(--color-link-blue-accent);
     }
 
     &.loading {
-        background-color: $link-color-blue-dark;
+        background-color: var(--color-link-blue-accent);
         cursor: not-allowed;
     }
 

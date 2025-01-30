@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ComponentRef, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { Popup } from '../popup-container.component';
 import { PopupService } from '../../../../service/popup.service';
 import { NgClass } from '@angular/common';

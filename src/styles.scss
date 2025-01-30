@@ -1,5 +1,3 @@
-@import "style/base";
-
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +9,7 @@ body {
     font-family: "Poppins", serif;
     min-width: 360px;
 
-    background-color: $background-color;
+    background-color: var(--color-background);
 }
 
 a {

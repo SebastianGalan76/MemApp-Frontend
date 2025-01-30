@@ -1,5 +1,3 @@
-@import "../../style/base";
-
 #wrapper {
     header {
         #back-button {
@@ -61,7 +59,7 @@
 
         #error-message {
             font-size: 0.9rem;
-            color: $text-color-red;
+            color: var(--color-text-red);
             text-align: center;
         }
 
