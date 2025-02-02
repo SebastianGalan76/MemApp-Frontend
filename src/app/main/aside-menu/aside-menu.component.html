@@ -1,0 +1,25 @@
+<div id="wrapper" [ngClass]="{'active': isActive}">
+    <div id="container" #scrollableContainer (scroll)="onScroll()">
+        <div id="main-menu">
+            <nav>
+                <ul>
+                    <li><i class="fa-solid fa-house"></i> Strona główna</li>
+                    <li><i class="fa-solid fa-hourglass-start"></i> Poczekalnia</li>
+                    <li><i class="fa-solid fa-shuffle"></i> Losowe</li>
+                    <li><i class="fa-solid fa-magnifying-glass-chart"></i> Odkrywaj</li>
+                    <li><i class="fa-solid fa-eye"></i> Obserwowani</li>
+                </ul>
+            </nav>
+        </div>
+
+        <div id="settings-section">
+            <div id="settings-button">
+                <i class="fa-solid fa-gear"></i> Ustawienia
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (isActive) {
+<div id="backdrop-button" (click)="toggleMenu()"></div>
+}

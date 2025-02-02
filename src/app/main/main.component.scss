@@ -1,0 +1,14 @@
+#container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+
+    app-aside-menu {
+        flex-shrink: 0;
+    }
+
+    #content {
+        flex-grow: 1;
+    }
+}
