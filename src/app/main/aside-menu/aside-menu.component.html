@@ -1,6 +1,9 @@
 <div id="wrapper" [ngClass]="{'active': isActive}">
     <div id="container" #scrollableContainer (scroll)="onScroll()">
         <div id="main-menu">
+            <div id="logo" routerLink="/">
+                <img src="/img/logo-white.webp" />
+            </div>
             <nav>
                 <ul>
                     <li><i class="fa-solid fa-house"></i> Strona główna</li>
