@@ -1,6 +1,28 @@
 <div id="container">
+    <div id="menu-button" (click)="asideMenuService.toggleMenu()" [ngClass]="{'active': asideMenuService.isActive}">
+        <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-xmark"></i>
+    </div>
+
+    <div id="logo" routerLink="/">
+        <img src="/img/logo-white.webp" />
+    </div>
 
     <div id="user-section">
-        <div class="button" routerLink="/auth/signIn">Logowanie</div>
+        @if (parent.user) {
+        <div id="notification-button" title="Powiadomienia">
+            <i class="fa-regular fa-bell"></i>
+
+            <div id="counter">3</div>
+        </div>
+
+        <div id="user-picture">
+            <img
+                src="https://e7.pngegg.com/pngimages/312/283/png-clipart-man-s-face-avatar-computer-icons-user-profile-business-user-avatar-blue-face-thumbnail.png" />
+        </div>
+        }
+        @else {
+        <div id="signIn-button" routerLink="/auth/signIn">Logowanie</div>
+        }
     </div>
 </div>

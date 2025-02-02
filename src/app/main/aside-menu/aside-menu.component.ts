@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, ElementRef, OnDestroy, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, Injectable, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -13,15 +13,10 @@ export class AsideMenuComponent implements OnDestroy {
   @ViewChild("scrollableContainer", { static: true }) containerRef!: ElementRef<HTMLDivElement>;
   scrollTimeout: any;
 
-  isActive: boolean = false;
-
   constructor(
+    public service: AsideMenuService,
     private renderer: Renderer2
   ) { }
-
-  toggleMenu(): void {
-    this.isActive = !this.isActive;
-  }
 
   onScroll(): void {
     const scrollable = this.containerRef.nativeElement;
@@ -37,5 +32,16 @@ export class AsideMenuComponent implements OnDestroy {
     if (this.scrollTimeout) {
       clearTimeout(this.scrollTimeout);
     }
+  }
+}
+
+@Injectable({
+  providedIn: "root"
+})
+export class AsideMenuService {
+  isActive: boolean = false;
+
+  toggleMenu(): void {
+    this.isActive = !this.isActive;
   }
 }

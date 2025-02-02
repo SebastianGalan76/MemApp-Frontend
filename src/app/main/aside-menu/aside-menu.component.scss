@@ -4,15 +4,14 @@
 
     background-color: var(--color-background2);
     color: var(--color-text);
-    border-right: 2px solid var(--color-background4);
 
     user-select: none;
 
     position: sticky;
-    top: 50px;
+    top: 60px;
 
     overflow: hidden;
-    z-index: 1000;
+    z-index: 100;
 
     @media (max-width: 1200px) {
         width: 250px;
@@ -24,7 +23,7 @@
 
     &.active {
         @media (max-width: 1000px) {
-            width: 280px;
+            width: 250px;
             position: fixed;
         }
     }
@@ -41,6 +40,8 @@
     scrollbar-gutter: stable;
     -webkit-overflow-scrolling: touch;
 
+    border-right: 2px solid var(--color-background4);
+
     #main-menu {
         flex-grow: 1;
 
@@ -53,6 +54,7 @@
             justify-content: center;
 
             cursor: pointer;
+            margin-bottom: 50px;
 
             img {
                 max-width: 150px;
@@ -62,10 +64,13 @@
                 object-fit: cover;
                 display: block;
             }
+
+            @media (max-width: 1000px) {
+                display: none;
+            }
         }
 
         nav {
-            margin-top: 50px;
             padding: 10px 5px;
 
             ul {

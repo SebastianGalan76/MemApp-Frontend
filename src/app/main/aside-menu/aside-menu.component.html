@@ -1,4 +1,4 @@
-<div id="wrapper" [ngClass]="{'active': isActive}">
+<div id="wrapper" [ngClass]="{'active': service.isActive}">
     <div id="container" #scrollableContainer (scroll)="onScroll()">
         <div id="main-menu">
             <div id="logo" routerLink="/">
@@ -9,7 +9,7 @@
                     <li><i class="fa-solid fa-house"></i> Strona główna</li>
                     <li><i class="fa-solid fa-hourglass-start"></i> Poczekalnia</li>
                     <li><i class="fa-solid fa-shuffle"></i> Losowe</li>
-                    <li><i class="fa-solid fa-magnifying-glass-chart"></i> Odkrywaj</li>
+                    <li><i class="fa-solid fa-compass"></i> Odkrywaj</li>
                     <li><i class="fa-solid fa-eye"></i> Obserwowani</li>
                 </ul>
             </nav>
@@ -23,6 +23,6 @@
     </div>
 </div>
 
-@if (isActive) {
-<div id="backdrop-button" (click)="toggleMenu()"></div>
+@if (service.isActive) {
+<div id="backdrop-button" (click)="service.toggleMenu()"></div>
 }
