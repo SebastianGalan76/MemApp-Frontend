@@ -6,6 +6,7 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { ActiveAccountComponent } from './auth/active-account/active-account.component';
 import { MainComponent } from './main/main.component';
+import { HomeComponent } from './main/home/home.component';
 
 export const routes: Routes = [
     {
@@ -36,6 +37,10 @@ export const routes: Routes = [
         }]
     }, {
         path: "",
-        component: MainComponent
+        component: MainComponent,
+        children: [{
+            path: "",
+            component: HomeComponent
+        }]
     }
 ];

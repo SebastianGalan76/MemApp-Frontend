@@ -1,0 +1,11 @@
+#container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+}
+#container app-aside-menu {
+  flex-shrink: 0;
+}
+#container #content {
+  flex-grow: 1;
+}/*# sourceMappingURL=main.component.css.map */

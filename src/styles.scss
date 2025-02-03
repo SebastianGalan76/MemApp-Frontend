@@ -16,3 +16,16 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--color-background4);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-theme);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-theme-accent);
+}

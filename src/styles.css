@@ -8,10 +8,26 @@ body {
   color: rgb(255, 253, 240);
   font-family: "Poppins", serif;
   min-width: 360px;
-  background-color: #151b29;
+  background-color: var(--color-background);
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background4);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-theme);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-theme-accent);
 }/*# sourceMappingURL=styles.css.map */

@@ -35,7 +35,7 @@
   color: #5db6ff;
 }
 .input-wrapper .input-area input.incorrect {
-  background-color: blue;
+  background-color: rgb(255, 92, 111);
   color: white;
 }
 .input-wrapper .input-area input::-moz-placeholder {
@@ -81,29 +81,29 @@
 }
 .input-wrapper #error {
   display: none;
-  color: #ff6666;
+  color: rgb(255, 92, 111);
   font-size: 0.9rem;
 }
 .input-wrapper.incorrect label {
-  color: #ff6666;
+  color: rgb(255, 92, 111);
 }
 .input-wrapper.incorrect .input-area input {
-  color: #ff6666;
+  color: rgb(255, 92, 111);
   background-color: #ffdada;
-  border: 1px solid #ff6666;
+  border: 1px solid rgb(255, 92, 111);
 }
 .input-wrapper.incorrect .input-area input::-moz-placeholder {
-  color: #ff6666;
+  color: rgb(255, 92, 111);
 }
 .input-wrapper.incorrect .input-area input::placeholder {
-  color: #ff6666;
+  color: rgb(255, 92, 111);
 }
 .input-wrapper.incorrect .input-area .icon {
-  color: #ff6666;
-  border-right: 2px solid #ff6666;
+  color: rgb(255, 92, 111);
+  border-right: 2px solid rgb(255, 92, 111);
 }
 .input-wrapper.incorrect .input-area .icon-right {
-  color: #ff6666;
+  color: rgb(255, 92, 111);
 }
 .input-wrapper.incorrect #error {
   display: block;
@@ -136,8 +136,8 @@
 }
 
 .link {
-  color: #00b3ff;
+  color: var(--color-link-blue);
 }
 .link:hover {
-  color: #0481db;
+  color: var(--color-link-blue-accent);
 }/*# sourceMappingURL=form-elements.css.map */

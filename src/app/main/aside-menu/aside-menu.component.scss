@@ -8,7 +8,7 @@
     user-select: none;
 
     position: sticky;
-    top: 60px;
+    top: 0;
 
     overflow: hidden;
     z-index: 100;
@@ -23,6 +23,9 @@
 
     &.active {
         @media (max-width: 1000px) {
+            position: sticky;
+            top: 60px;
+
             width: 250px;
             position: fixed;
         }

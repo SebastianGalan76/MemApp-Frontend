@@ -1,0 +1,121 @@
+#container {
+  width: 100%;
+  min-height: 60px;
+  background-color: var(--color-background3);
+  border-bottom: 2px solid var(--color-background4);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  position: relative;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+}
+#container #menu-button {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: none;
+}
+#container #menu-button .fa-solid {
+  position: absolute;
+}
+#container #menu-button .fa-xmark {
+  transform: scale(0);
+}
+#container #menu-button.active .fa-bars {
+  transform: scale(0);
+}
+#container #menu-button.active .fa-xmark {
+  transform: scale(1);
+}
+@media (max-width: 1000px) {
+  #container #menu-button {
+    display: flex;
+  }
+}
+#container #logo {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 8px;
+}
+#container #logo img {
+  max-width: 120px;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (max-width: 1000px) {
+  #container #logo {
+    display: flex;
+  }
+}
+#container #user-section {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  gap: 20px;
+}
+#container #user-section #user-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3647058824);
+  cursor: pointer;
+}
+#container #user-section #user-picture img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+#container #user-section #notification-button {
+  width: 36px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #5b5fc3;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 36px;
+  position: relative;
+  cursor: pointer;
+}
+#container #user-section #notification-button #counter {
+  background-color: rgb(255, 96, 96);
+  color: #ffffff;
+  border-radius: 100%;
+  font-size: 0.7em;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-weight: 500;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+}
+#container #user-section #notification-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+#container #user-section #signIn-button {
+  padding: 5px 25px;
+  border-radius: 12px;
+  background-color: var(--color-theme);
+}
+#container #user-section #signIn-button:hover {
+  cursor: pointer;
+  background-color: var(--color-theme-accent);
+}/*# sourceMappingURL=header.component.css.map */

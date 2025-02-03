@@ -2,13 +2,16 @@
   width: 100%;
   height: 100dvh;
   display: flex;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 #wrapper #left-panel {
   position: relative;
   width: 40%;
   height: 100dvh;
   background-color: rgb(246, 246, 246);
-  color: #313640;
+  color: var(--color-text-dark-blue);
 }
 #wrapper #left-panel #form-section {
   width: min(400px, 100vw);
@@ -51,7 +54,7 @@
   margin-top: 30px;
 }
 #wrapper #left-panel #form-section footer nav {
-  color: #00b3ff;
+  color: var(--color-link-blue);
 }
 #wrapper #left-panel #form-section footer nav ul {
   display: flex;
@@ -65,7 +68,7 @@
   text-align: center;
 }
 #wrapper #left-panel #form-section footer nav ul li:hover {
-  color: #0481db;
+  color: var(--color-link-blue-accent);
 }
 #wrapper #left-panel #form-section footer span {
   margin-top: 20px;

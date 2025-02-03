@@ -46,7 +46,7 @@
 }
 #wrapper footer #error-message {
   font-size: 0.9rem;
-  color: #ff6666;
+  color: var(--color-text-red);
   text-align: center;
 }
 #wrapper footer .info {
