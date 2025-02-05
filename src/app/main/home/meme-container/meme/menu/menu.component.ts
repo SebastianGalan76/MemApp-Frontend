@@ -1,5 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
+import { MemeComponent } from '../meme.component';
 
 @Component({
   selector: 'meme-dropdown-menu',
@@ -17,6 +18,7 @@ export class MenuComponent implements OnDestroy {
   private clickListener: (() => void) | null = null;
 
   constructor(
+    public parent: MemeComponent,
     private elementRef: ElementRef,
     private renderer: Renderer2
   ) { }

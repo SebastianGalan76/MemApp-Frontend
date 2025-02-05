@@ -1,4 +1,26 @@
-@import "base";
+$color-background: #f0f0f0;
+$color-background-light: #ffffff;
+
+$color-theme: #7e68ff;
+$color-theme-dark: #604adb;
+
+$color-white: #f7faff;
+
+$color-red: rgb(255, 63, 63);
+$color-red-dark: rgb(216, 48, 48);
+$color-incorrect: rgb(255, 63, 63);
+
+$color-green: rgb(113, 204, 29);
+$color-green-dark: rgb(91, 161, 25);
+
+$color-dark: #00000010;
+
+$color-aside-border: #cbd2e9;
+
+$color-text-1: #595677;
+$color-text-1-dark: #282642;
+
+$color-border: #d1d1d1;
 
 .input-area {
     position: relative;
@@ -400,12 +422,22 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 .select-value-area {
-    background-color: $color-dark;
-    border: 2px solid $color-theme;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 16px;
-    color: $color-theme;
+    position: relative;
+
+    select {
+        width: 100%;
+        height: 50px;
+        border-radius: 10px;
+
+        border: 2px solid $color-border;
+
+        font-weight: 600;
+        color: $color-border;
+        padding: 0 10px;
+        background-color: transparent;
+
+        color: $color-text-1;
+    }
 
     option {
         background-color: $color-white;

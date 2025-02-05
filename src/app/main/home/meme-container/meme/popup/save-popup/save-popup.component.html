@@ -1,0 +1,73 @@
+<div id="container">
+    <div id="header">
+        <span class="text">Zapisz na liście</span>
+
+        <i class="fa-solid fa-xmark" (click)="close()"></i>
+    </div>
+    <div id="list-container">
+        <div class="item">
+            <div>
+                <span class="checkbox"></span>
+                <span class="label">Polityka</span>
+            </div>
+            <i class="accessibility fa-solid fa-lock"></i>
+        </div>
+        <div class="item">
+            <div>
+                <span class="checkbox"></span>
+                <span class="label">Szkoła zawodowa</span>
+            </div>
+            <i class="accessibility fa-solid fa-lock"></i>
+        </div>
+        <div class="item">
+            <div>
+                <span class="checkbox"></span>
+                <span class="label">Związek</span>
+            </div>
+            <i class="accessibility fa-solid fa-lock"></i>
+        </div>
+        <div class="item">
+            <div>
+                <span class="checkbox"></span>
+                <span class="label">Piłka nożna</span>
+            </div>
+            <i class="accessibility fa-solid fa-lock"></i>
+        </div>
+        <div class="item">
+            <div>
+                <span class="checkbox"></span>
+                <span class="label">Wybory prezydenckie w Polsce</span>
+            </div>
+            <i class="accessibility fa-solid fa-lock"></i>
+        </div>
+    </div>
+    <div id="footer">
+        @if (!isFormVisible) {
+        <div id="button" (click)="toggleForm()">
+            <i class="fa-regular fa-square-plus"></i>
+            <span class="text">Dodaj listę</span>
+        </div>
+        }
+        @else {
+        <div id="form">
+            <div class="input-area">
+                <input type="text" placeholder="Nazwa" [(ngModel)]="listName">
+            </div>
+
+            <div class="select-value-area">
+                <select id="accessibility" [(ngModel)]="accessibility">
+                    <option value="PUBLIC">Publiczna</option>
+                    <option value="NOT_PUBLIC">Niepubliczna</option>
+                    <option value="PRIVATE">Prywatna</option>
+                </select>
+            </div>
+            @if (formErrorMessage) {
+            <span class="error">{{formErrorMessage}}</span>
+            }
+            <div id="create-list-button" (click)="createList()">
+                Stwórz
+            </div>
+        </div>
+        }
+    </div>
+</div>

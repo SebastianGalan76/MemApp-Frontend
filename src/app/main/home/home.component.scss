@@ -22,7 +22,8 @@
         flex-shrink: 0;
 
         .panel {
-            background-color: var(--color-background4);
+            background-color: var(--color-background-50);
+            border: 2px solid var(--color-background-60);
             border-radius: 10px;
         }
 
