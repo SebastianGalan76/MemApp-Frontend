@@ -25,4 +25,9 @@
   #container #aside-menu {
     display: none;
   }
+}
+@media (max-width: 1200px) {
+  #container {
+    width: 96%;
+  }
 }/*# sourceMappingURL=home.component.css.map */

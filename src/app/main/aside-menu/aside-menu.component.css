@@ -1,7 +1,7 @@
 #wrapper {
   width: 280px;
   height: 100vh;
-  background-color: var(--color-background2);
+  background-color: var(--color-background-40);
   color: var(--color-text);
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -9,7 +9,7 @@
   position: sticky;
   top: 0;
   overflow: hidden;
-  z-index: 100;
+  z-index: 900;
 }
 @media (max-width: 1200px) {
   #wrapper {
@@ -38,7 +38,7 @@
   overflow-y: auto;
   scrollbar-gutter: stable;
   -webkit-overflow-scrolling: touch;
-  border-right: 2px solid var(--color-background4);
+  border-right: 2px solid var(--color-background-50);
 }
 #container #main-menu {
   flex-grow: 1;
@@ -81,7 +81,7 @@
 #container #main-menu nav ul li:hover {
   color: var(--color-theme);
   cursor: pointer;
-  background-color: var(--color-background);
+  background-color: var(--color-background-30);
 }
 #container::-webkit-scrollbar {
   width: 8px;
@@ -108,7 +108,7 @@
   padding: 10px;
 }
 #settings-section #settings-button:hover {
-  background-color: var(--color-background);
+  background-color: var(--color-background-30);
   color: var(--color-theme);
   cursor: pointer;
   opacity: 1;
@@ -119,10 +119,10 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 500;
     background-color: rgba(0, 0, 0, 0.4);
-    -webkit-backdrop-filter: blur(2px);
-            backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
     -webkit-user-select: none;
        -moz-user-select: none;
             user-select: none;

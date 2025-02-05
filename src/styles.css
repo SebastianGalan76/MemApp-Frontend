@@ -8,7 +8,7 @@ body {
   color: rgb(255, 253, 240);
   font-family: "Poppins", serif;
   min-width: 360px;
-  background-color: var(--color-background);
+  background-color: var(--color-background-30);
 }
 
 a {
@@ -21,7 +21,7 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-background4);
+  background: var(--color-background-40);
 }
 
 ::-webkit-scrollbar-thumb {

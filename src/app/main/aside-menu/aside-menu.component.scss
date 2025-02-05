@@ -2,7 +2,7 @@
     width: 280px;
     height: 100vh;
 
-    background-color: var(--color-background2);
+    background-color: var(--color-background-40);
     color: var(--color-text);
 
     user-select: none;
@@ -11,7 +11,7 @@
     top: 0;
 
     overflow: hidden;
-    z-index: 100;
+    z-index: 900;
 
     @media (max-width: 1200px) {
         width: 250px;
@@ -43,7 +43,7 @@
     scrollbar-gutter: stable;
     -webkit-overflow-scrolling: touch;
 
-    border-right: 2px solid var(--color-background4);
+    border-right: 2px solid var(--color-background-50);
 
     #main-menu {
         flex-grow: 1;
@@ -93,7 +93,7 @@
                         color: var(--color-theme);
                         cursor: pointer;
 
-                        background-color: var(--color-background);
+                        background-color: var(--color-background-30);
                     }
                 }
             }
@@ -134,7 +134,7 @@
         padding: 10px;
 
         &:hover {
-            background-color: var(--color-background);
+            background-color: var(--color-background-30);
             color: var(--color-theme);
             cursor: pointer;
 
@@ -149,10 +149,10 @@
         top: 0;
         left: 0;
 
-        z-index: 10;
+        z-index: 500;
 
         background-color: rgba(0, 0, 0, 0.4);
-        backdrop-filter: blur(2px);
+        backdrop-filter: blur(5px);
 
         user-select: none;
 

@@ -1,12 +1,12 @@
 #container {
-    background-color: var(--color-background4);
+    background-color: var(--color-background-50);
 
     padding: 10px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    border: 2px solid var(--color-background5);
+    border: 2px solid var(--color-background-60);
 
     #header {
         display: flex;
@@ -57,7 +57,7 @@
         overflow: hidden;
 
         border-radius: 10px;
-        border: 2px solid var(--color-background5);
+        border: 2px solid var(--color-background-60);
         user-select: none;
 
         #background {

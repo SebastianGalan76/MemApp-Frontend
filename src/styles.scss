@@ -9,7 +9,7 @@ body {
     font-family: "Poppins", serif;
     min-width: 360px;
 
-    background-color: var(--color-background);
+    background-color: var(--color-background-30);
 }
 
 a {
@@ -21,7 +21,7 @@ a {
     width: 10px;
 }
 ::-webkit-scrollbar-track {
-    background: var(--color-background4);
+    background: var(--color-background-40);
 }
 ::-webkit-scrollbar-thumb {
     background: var(--color-theme);

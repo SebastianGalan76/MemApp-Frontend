@@ -23,13 +23,13 @@
     #menu-container {
         position: absolute;
 
-        background-color: var(--color-background2);
-        border: 1px solid var(--color-background5);
+        background-color: var(--color-background-60);
+        border: 1px solid var(--color-background-70);
         filter: drop-shadow(1px 5px 4px #00000081);
 
         border-radius: 5px;
 
-        z-index: 1000;
+        z-index: 600;
         user-select: none;
 
         max-width: 0;
@@ -64,7 +64,7 @@
 
                 &:hover {
                     cursor: pointer;
-                    background-color: var(--color-background3);
+                    background-color: var(--color-background-50);
                 }
             }
 
@@ -75,7 +75,7 @@
 
         .dividing-line {
             width: 100%;
-            border-bottom: 1px solid var(--color-background5);
+            border-bottom: 1px solid var(--color-background-70);
         }
 
         &.active {
