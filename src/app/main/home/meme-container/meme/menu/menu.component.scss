@@ -1,0 +1,86 @@
+#container {
+    position: relative;
+
+    #button {
+        border-radius: 100%;
+
+        color: var(--color-text-white-light);
+        font-size: 1.4rem;
+
+        text-align: center;
+        line-height: 36px;
+
+        height: 36px;
+        width: 36px;
+
+        &:hover {
+            color: var(--color-text-white);
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    #menu-container {
+        position: absolute;
+
+        background-color: var(--color-background2);
+        border: 1px solid var(--color-background5);
+        filter: drop-shadow(1px 5px 4px #00000081);
+
+        border-radius: 5px;
+
+        z-index: 1000;
+        user-select: none;
+
+        max-width: 0;
+        max-height: 0;
+
+        transition:
+            max-height 0.3s ease-in-out,
+            max-width 0.3s ease-in-out;
+        overflow: hidden;
+
+        .section {
+            padding: 10px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .button {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 7px 15px;
+                border-radius: 10px;
+
+                min-width: 200px;
+
+                i {
+                    width: 30px;
+                    text-align: center;
+                    font-size: 1.25em;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: var(--color-background3);
+                }
+            }
+
+            &.red {
+                color: var(--color-text-red);
+            }
+        }
+
+        .dividing-line {
+            width: 100%;
+            border-bottom: 1px solid var(--color-background5);
+        }
+
+        &.active {
+            max-width: 300px;
+            max-height: 500px;
+        }
+    }
+}

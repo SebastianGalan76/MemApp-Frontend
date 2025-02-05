@@ -1,0 +1,34 @@
+<div id="container">
+    <i id="button" class="fa-solid fa-ellipsis" (click)="toggleMenu($event)"></i>
+
+    <div id="menu-container" [ngClass]="{'active': isActive}" [style]="{'top': yPos+'px', 'right': xPos+'px'}">
+        <div class="section">
+            <div class="button">
+                <span class="text">Kopiuj link</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+
+            <div class="button">
+                <span class="text">Udostępnij</span>
+                <i class="fa-solid fa-share-nodes"></i>
+            </div>
+
+            <div class="button">
+                <span class="text">Zapisz</span>
+                <i class="fa-solid fa-bookmark"></i>
+            </div>
+        </div>
+        <div class="dividing-line"></div>
+        <div class="section red">
+            <div class="button">
+                <span class="text">Wycisz</span>
+                <i class="fa-solid fa-user-large-slash"></i>
+            </div>
+
+            <div class="button">
+                <span class="text">Zgłoś</span>
+                <i class="fa-solid fa-flag"></i>
+            </div>
+        </div>
+    </div>
+</div>
