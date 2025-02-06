@@ -34,149 +34,191 @@
         }
     }
 
-    #list-container {
-        border-top: 1px solid var(--color-background-70);
-        border-bottom: 1px solid var(--color-background-70);
+    #user-logged-in {
+        #list-container {
+            border-top: 1px solid var(--color-background-70);
+            border-bottom: 1px solid var(--color-background-70);
 
-        min-height: 100px;
-        max-height: 250px;
-        overflow-y: auto;
-
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-
-        padding: 10px;
-
-        .item {
-            width: 100%;
+            min-height: 100px;
+            max-height: 250px;
+            overflow-y: auto;
 
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 5px 10px;
-            border-radius: 10px;
+            flex-direction: column;
+            gap: 5px;
 
-            > div {
+            padding: 10px;
+
+            .item {
+                width: 100%;
+
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                justify-content: space-between;
+                padding: 5px 10px;
+                border-radius: 10px;
 
-                overflow: hidden;
-                margin-right: 10px;
+                > div {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
 
-                .label {
-                    white-space: nowrap;
                     overflow: hidden;
-                    text-overflow: ellipsis;
-                    flex-grow: 1;
+                    margin-right: 10px;
+
+                    .label {
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        flex-grow: 1;
+                    }
+
+                    .checkbox {
+                        flex-shrink: 0;
+                    }
+                }
+
+                .accessibility {
+                    width: 30px;
+                    text-align: center;
+
+                    flex-shrink: 0;
+                }
+
+                input[type="checkbox"] {
+                    display: none;
                 }
 
                 .checkbox {
-                    flex-shrink: 0;
+                    width: 20px;
+                    height: 20px;
+                    border: 2px solid #ccc;
+                    border-radius: 50%;
+                    display: inline-block;
+                    position: relative;
+                    cursor: pointer;
+                }
+
+                input[type="checkbox"]:checked + .checkbox {
+                    background-color: #007bff;
+                    border-color: #007bff;
+                }
+
+                .checkbox::after {
+                    content: "";
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: white;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    opacity: 0;
+                    transition: opacity 0.2s ease;
+                }
+
+                input[type="checkbox"]:checked + .checkbox::after {
+                    opacity: 1;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: var(--color-background-30);
+                }
+            }
+        }
+
+        #footer {
+            #button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                gap: 10px;
+                padding: 10px;
+                font-size: 1.2em;
+                margin: 10px;
+
+                border-radius: 10px;
+                background-color: var(--color-background-60);
+                color: var(--color-background-120);
+
+                i {
+                    font-size: 1.4em;
+                }
+
+                &:hover {
+                    background-color: var(--color-background-70);
+                    color: var(--color-background-140);
+                    cursor: pointer;
                 }
             }
 
-            .accessibility {
-                width: 30px;
-                text-align: center;
+            #form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
 
-                flex-shrink: 0;
-            }
+                width: 100%;
+                padding: 10px;
 
-            input[type="checkbox"] {
-                display: none;
-            }
+                #create-list-button {
+                    padding: 8px;
+                    text-align: center;
 
-            .checkbox {
-                width: 20px;
-                height: 20px;
-                border: 2px solid #ccc;
-                border-radius: 50%;
-                display: inline-block;
-                position: relative;
-                cursor: pointer;
-            }
+                    background-color: var(--color-theme);
+                    border-radius: 8px;
 
-            input[type="checkbox"]:checked + .checkbox {
-                background-color: #007bff;
-                border-color: #007bff;
-            }
+                    &:hover {
+                        cursor: pointer;
+                        background-color: var(--color-theme-accent);
+                    }
+                }
 
-            .checkbox::after {
-                content: "";
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background-color: white;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                opacity: 0;
-                transition: opacity 0.2s ease;
-            }
-
-            input[type="checkbox"]:checked + .checkbox::after {
-                opacity: 1;
-            }
-
-            &:hover {
-                cursor: pointer;
-                background-color: var(--color-background-30);
+                .error {
+                    color: var(--color-text-red);
+                }
             }
         }
     }
 
-    #footer {
-        #button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    #user-not-logged-in {
+        border-top: 1px solid var(--color-background-70);
+        padding: 20px;
+        width: 100%;
 
-            gap: 10px;
-            padding: 10px;
-            font-size: 1.2em;
-            margin: 10px;
+        #panel {
+            padding: 40px 10px;
+            border-radius: 5px;
+            background-color: #ffffff10;
 
-            border-radius: 10px;
-            background-color: var(--color-background-60);
-            color: var(--color-background-120);
-
-            i {
-                font-size: 1.4em;
-            }
-
-            &:hover {
-                background-color: var(--color-background-70);
-                color: var(--color-background-140);
-                cursor: pointer;
-            }
-        }
-
-        #form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-
-            width: 100%;
-            padding: 10px;
-
-            #create-list-button {
-                padding: 8px;
+            #info {
                 text-align: center;
-
+            }
+            #sign-in-button {
+                margin-top: 30px;
+                padding: 6px;
                 background-color: var(--color-theme);
-                border-radius: 8px;
+                text-align: center;
+                border-radius: 10px;
 
                 &:hover {
                     cursor: pointer;
                     background-color: var(--color-theme-accent);
                 }
             }
+            .link {
+                color: var(--color-theme);
 
-            .error {
-                color: var(--color-text-red);
+                &:hover {
+                    cursor: pointer;
+                    color: var(--color-theme-accent);
+                }
+            }
+
+            #sign-up-info {
+                font-size: 0.9em;
             }
         }
     }

@@ -29,7 +29,7 @@
   cursor: pointer;
   color: var(--color-background-140);
 }
-#container #list-container {
+#container #user-logged-in #list-container {
   border-top: 1px solid var(--color-background-70);
   border-bottom: 1px solid var(--color-background-70);
   min-height: 100px;
@@ -40,7 +40,7 @@
   gap: 5px;
   padding: 10px;
 }
-#container #list-container .item {
+#container #user-logged-in #list-container .item {
   width: 100%;
   display: flex;
   align-items: center;
@@ -48,31 +48,31 @@
   padding: 5px 10px;
   border-radius: 10px;
 }
-#container #list-container .item > div {
+#container #user-logged-in #list-container .item > div {
   display: flex;
   align-items: center;
   gap: 10px;
   overflow: hidden;
   margin-right: 10px;
 }
-#container #list-container .item > div .label {
+#container #user-logged-in #list-container .item > div .label {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   flex-grow: 1;
 }
-#container #list-container .item > div .checkbox {
+#container #user-logged-in #list-container .item > div .checkbox {
   flex-shrink: 0;
 }
-#container #list-container .item .accessibility {
+#container #user-logged-in #list-container .item .accessibility {
   width: 30px;
   text-align: center;
   flex-shrink: 0;
 }
-#container #list-container .item input[type=checkbox] {
+#container #user-logged-in #list-container .item input[type=checkbox] {
   display: none;
 }
-#container #list-container .item .checkbox {
+#container #user-logged-in #list-container .item .checkbox {
   width: 20px;
   height: 20px;
   border: 2px solid #ccc;
@@ -81,11 +81,11 @@
   position: relative;
   cursor: pointer;
 }
-#container #list-container .item input[type=checkbox]:checked + .checkbox {
+#container #user-logged-in #list-container .item input[type=checkbox]:checked + .checkbox {
   background-color: #007bff;
   border-color: #007bff;
 }
-#container #list-container .item .checkbox::after {
+#container #user-logged-in #list-container .item .checkbox::after {
   content: "";
   width: 10px;
   height: 10px;
@@ -98,14 +98,14 @@
   opacity: 0;
   transition: opacity 0.2s ease;
 }
-#container #list-container .item input[type=checkbox]:checked + .checkbox::after {
+#container #user-logged-in #list-container .item input[type=checkbox]:checked + .checkbox::after {
   opacity: 1;
 }
-#container #list-container .item:hover {
+#container #user-logged-in #list-container .item:hover {
   cursor: pointer;
   background-color: var(--color-background-30);
 }
-#container #footer #button {
+#container #user-logged-in #footer #button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,33 +117,67 @@
   background-color: var(--color-background-60);
   color: var(--color-background-120);
 }
-#container #footer #button i {
+#container #user-logged-in #footer #button i {
   font-size: 1.4em;
 }
-#container #footer #button:hover {
+#container #user-logged-in #footer #button:hover {
   background-color: var(--color-background-70);
   color: var(--color-background-140);
   cursor: pointer;
 }
-#container #footer #form {
+#container #user-logged-in #footer #form {
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 100%;
   padding: 10px;
 }
-#container #footer #form #create-list-button {
+#container #user-logged-in #footer #form #create-list-button {
   padding: 8px;
   text-align: center;
   background-color: var(--color-theme);
   border-radius: 8px;
 }
-#container #footer #form #create-list-button:hover {
+#container #user-logged-in #footer #form #create-list-button:hover {
   cursor: pointer;
   background-color: var(--color-theme-accent);
 }
-#container #footer #form .error {
+#container #user-logged-in #footer #form .error {
   color: var(--color-text-red);
+}
+#container #user-not-logged-in {
+  border-top: 1px solid var(--color-background-70);
+  padding: 20px;
+  width: 100%;
+}
+#container #user-not-logged-in #panel {
+  padding: 40px 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.062745098);
+}
+#container #user-not-logged-in #panel #info {
+  text-align: center;
+}
+#container #user-not-logged-in #panel #sign-in-button {
+  margin-top: 30px;
+  padding: 6px;
+  background-color: var(--color-theme);
+  text-align: center;
+  border-radius: 10px;
+}
+#container #user-not-logged-in #panel #sign-in-button:hover {
+  cursor: pointer;
+  background-color: var(--color-theme-accent);
+}
+#container #user-not-logged-in #panel .link {
+  color: var(--color-theme);
+}
+#container #user-not-logged-in #panel .link:hover {
+  cursor: pointer;
+  color: var(--color-theme-accent);
+}
+#container #user-not-logged-in #panel #sign-up-info {
+  font-size: 0.9em;
 }
 
 .input-area {

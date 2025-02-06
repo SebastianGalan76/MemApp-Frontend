@@ -4,70 +4,67 @@
 
         <i class="fa-solid fa-xmark" (click)="close()"></i>
     </div>
-    <div id="list-container">
-        <div class="item">
-            <div>
-                <span class="checkbox"></span>
-                <span class="label">Polityka</span>
-            </div>
-            <i class="accessibility fa-solid fa-lock"></i>
+    @if (user) {
+    <div id="user-logged-in">
+        <div id="list-container">
+            <ng-container #listContainer />
         </div>
-        <div class="item">
-            <div>
-                <span class="checkbox"></span>
-                <span class="label">Szkoła zawodowa</span>
+        <div id="footer">
+            @if (!isFormVisible) {
+            <div id="button" (click)="isFormVisible = true">
+                <i class="fa-regular fa-square-plus"></i>
+                <span class="text">Dodaj listę</span>
             </div>
-            <i class="accessibility fa-solid fa-lock"></i>
-        </div>
-        <div class="item">
-            <div>
-                <span class="checkbox"></span>
-                <span class="label">Związek</span>
-            </div>
-            <i class="accessibility fa-solid fa-lock"></i>
-        </div>
-        <div class="item">
-            <div>
-                <span class="checkbox"></span>
-                <span class="label">Piłka nożna</span>
-            </div>
-            <i class="accessibility fa-solid fa-lock"></i>
-        </div>
-        <div class="item">
-            <div>
-                <span class="checkbox"></span>
-                <span class="label">Wybory prezydenckie w Polsce</span>
-            </div>
-            <i class="accessibility fa-solid fa-lock"></i>
-        </div>
-    </div>
-    <div id="footer">
-        @if (!isFormVisible) {
-        <div id="button" (click)="toggleForm()">
-            <i class="fa-regular fa-square-plus"></i>
-            <span class="text">Dodaj listę</span>
-        </div>
-        }
-        @else {
-        <div id="form">
-            <div class="input-area">
-                <input type="text" placeholder="Nazwa" [(ngModel)]="listName">
-            </div>
-
-            <div class="select-value-area">
-                <select id="accessibility" [(ngModel)]="accessibility">
-                    <option value="PUBLIC">Publiczna</option>
-                    <option value="NOT_PUBLIC">Niepubliczna</option>
-                    <option value="PRIVATE">Prywatna</option>
-                </select>
-            </div>
-            @if (formErrorMessage) {
-            <span class="error">{{formErrorMessage}}</span>
             }
-            <div id="create-list-button" (click)="createList()">
-                Stwórz
+            @else {
+            <div id="form">
+                <div class="input-area">
+                    <input type="text" placeholder="Nazwa" [(ngModel)]="listName">
+                </div>
+
+                <div class="select-value-area">
+                    <select id="accessibility" [(ngModel)]="accessibility">
+                        <option value="PUBLIC">Publiczna</option>
+                        <option value="NOT_PUBLIC">Niepubliczna</option>
+                        <option value="PRIVATE">Prywatna</option>
+                    </select>
+                </div>
+                @if (formErrorMessage) {
+                <span class="error">{{formErrorMessage}}</span>
+                }
+                <div id="create-list-button" (click)="createList()">
+                    Stwórz
+                </div>
             </div>
+            }
         </div>
-        }
     </div>
+    }
+    @else{
+    <div id="user-not-logged-in">
+        <div id="panel">
+            <div id="info">Musisz się zalogować, aby zapisać post na swoim koncie.
+            </div>
+            <div id="sign-in-button" routerLink="/auth/signIn" (click)="close()">
+                Zaloguj się
+            </div>
+            <div id="sign-up-info">Nie masz konta? <span class="link" routerLink="/auth/signUp"
+                    (click)="close()">Zarejestruj się</span></div>
+        </div>
+    </div>
+    }
 </div>
+
+<ng-template #listTemplate let-element="element">
+    <div class="item" (click)="selectList(element)">
+        <div>
+            <input type="checkbox" [checked]="element.isSelected" (click)="$event.stopPropagation()">
+            <span class="checkbox"></span>
+            <span class="label">{{element.list.name}}</span>
+        </div>
+        <i class="accessibility fa-solid" [title]="element.list.accessibility == 'PRIVATE' ? 'Prywatna lista' :
+        element.list.accessibility == 'PUBLIC' ? 'Publiczna lista' :
+        element.list.accessibility == 'NOT_PUBLIC' ? 'Niepubliczna lista' : 'Nieznany status'"
+            [ngClass]="{'fa-lock': element.list.accessibility == 'PRIVATE', 'fa-eye':element.list.accessibility == 'PUBLIC', 'fa-lock-open':element.list.accessibility == 'NOT_PUBLIC'}"></i>
+    </div>
+</ng-template>

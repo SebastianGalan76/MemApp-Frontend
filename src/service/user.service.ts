@@ -4,12 +4,14 @@ import { ApiService } from './api.service';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { CookieService } from './cookie.service';
+import { UserMemeList } from '../model/UserMemeList';
 
 export interface User {
   id: number;
   login: string;
   email: string;
   role: string;
+  ownedMemeLists: UserMemeList[];
 }
 
 @Injectable({
@@ -45,12 +47,7 @@ export class UserService {
     return this.apiService.get<User | null>("/user", { withCredentials: true }).pipe(
       map(data => {
         if (data) {
-          this.user = {
-            id: data.id,
-            login: data.login,
-            email: data.email,
-            role: data.role,
-          }
+          this.user = data;
 
           this.saveUser();
           return this.user;
