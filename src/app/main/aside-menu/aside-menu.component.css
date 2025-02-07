@@ -114,6 +114,12 @@
   opacity: 1;
 }
 
+.dividing-line {
+  margin-left: 10px;
+  border-bottom: 2px solid var(--color-background-60);
+  width: calc(100% - 20px);
+}
+
 @media (max-width: 1000px) {
   #backdrop-button {
     position: fixed;

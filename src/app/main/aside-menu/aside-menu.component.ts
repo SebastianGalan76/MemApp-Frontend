@@ -1,11 +1,12 @@
 import { NgClass } from '@angular/common';
 import { Component, ElementRef, Injectable, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { UserMemeListAsideMenuElementComponent } from "./element/user-meme-list/user-meme-list.component";
 
 @Component({
   selector: 'app-aside-menu',
   standalone: true,
-  imports: [NgClass, RouterLink],
+  imports: [NgClass, RouterLink, UserMemeListAsideMenuElementComponent],
   templateUrl: './aside-menu.component.html',
   styleUrl: './aside-menu.component.scss'
 })

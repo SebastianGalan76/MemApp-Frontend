@@ -1,0 +1,16 @@
+<div id="expandable-item" [ngClass]="{'expanded': isExpanded}">
+    <div id="header" (click)="toggleExpandedItem()">
+        <div class="title">Listy</div>
+        <div class="icon"><i class="fa-solid fa-chevron-down"></i></div>
+    </div>
+
+    <div id="container" #container (click)="$event.stopPropagation()" [ngClass]="{'not-initialized': !isInitialized}"
+        [ngStyle]="{'max-height': isExpanded ? containerHeight + 'px' : (isInitialized ? '0px' : 'auto')}">
+        <ul>
+            <li *ngFor="let list of parent.user?.ownedMemeLists">{{list.name}}</li>
+        </ul>
+        <div id="create-list-button">
+            <i class="fa-regular fa-square-plus"></i> Stwórz listę
+        </div>
+    </div>
+</div>
