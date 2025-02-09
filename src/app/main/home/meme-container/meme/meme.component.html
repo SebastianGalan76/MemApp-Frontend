@@ -31,20 +31,15 @@
         </div>
     </div>
     <div id="footer">
-        <div class="section">
-            <i class="vote-button fa-solid fa-square-caret-up"></i>
-            <i class="vote-button fa-solid fa-square-caret-down"></i>
-
-            <div class="value">+324</div>
-        </div>
+        <meme-rating-section />
         <div class="section comment">
             <i class="fa-solid fa-comment"></i>
 
             <div class="value">55</div>
         </div>
         <div id="menu">
-            <i class="fa-solid fa-share-nodes"></i>
-            <i class="fa-solid fa-bookmark" (click)="save()"></i>
+            <i class="fa-solid fa-share-nodes" title="Udostępnij post"></i>
+            <i class="fa-solid fa-bookmark" (click)="save()" title="Zapisz post"></i>
         </div>
     </div>
 </div>

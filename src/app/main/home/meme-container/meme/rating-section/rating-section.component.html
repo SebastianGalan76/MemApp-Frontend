@@ -1,0 +1,8 @@
+<div id="container">
+    <i class="vote-button fa-solid fa-square-caret-up" (click)="rate(1)" title="Podoba mi się"
+        [ngClass]="{'selected' : currentUserRating == 1}"></i>
+    <i class="vote-button fa-solid fa-square-caret-down" (click)="rate(-1)" title="Nie podoba mi się"
+        [ngClass]="{'selected' : currentUserRating == -1}"></i>
+
+    <div id="value">{{parent.rating}}</div>
+</div>

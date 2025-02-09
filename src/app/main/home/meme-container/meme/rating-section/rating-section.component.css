@@ -1,0 +1,18 @@
+#container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#container #value {
+  min-width: 60px;
+}
+#container .vote-button {
+  font-size: 1.4em;
+}
+#container .vote-button.selected {
+  color: var(--color-text-white);
+}
+#container .vote-button:hover {
+  cursor: pointer;
+  color: var(--color-text-white);
+}/*# sourceMappingURL=rating-section.component.css.map */

@@ -124,6 +124,10 @@
             align-items: center;
             gap: 6px;
 
+            .value {
+                min-width: 60px;
+            }
+
             .vote-button:hover {
                 cursor: pointer;
                 color: var(--color-text-white);
