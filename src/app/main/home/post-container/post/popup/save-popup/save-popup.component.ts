@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { PopupComponent } from '../../../../../../shared/popup-container/popup/popup.component';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../../../../../service/api.service';
@@ -8,6 +8,9 @@ import { User, UserService } from '../../../../../../../service/user.service';
 import { HttpParams } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
+import { Response } from '../../../../../../../model/response/Response';
+import { Post } from '../../../../../../../model/Post';
+import { debounceTime, Observable, Subject, switchMap, takeUntil, tap } from 'rxjs';
 
 class ListElement {
   list!: UserMemeList;
@@ -24,6 +27,9 @@ class ListElement {
 export class SaveMemePopupComponent implements AfterViewInit {
   @ViewChild('listContainer', { read: ViewContainerRef }) listContainer!: ViewContainerRef;
   @ViewChild('listTemplate', { read: TemplateRef }) listTemplate!: TemplateRef<any>;
+
+  @Input({ required: true }) post!: Post;
+
   listElements: ListElement[] = [];
 
   formErrorMessage: string | null = null;
@@ -34,12 +40,21 @@ export class SaveMemePopupComponent implements AfterViewInit {
 
   user: User | null = null;
 
+  private requestSubject = new Subject<ListElement>();
+  private destroy$ = new Subject<void>();
+
   constructor(
     private parent: PopupComponent,
     private apiService: ApiService,
     private userService: UserService,
     private cdr: ChangeDetectorRef
-  ) { }
+  ) {
+    this.requestSubject.pipe(
+      debounceTime(500),
+      switchMap((element) => this.sendRequest(element)),
+      takeUntil(this.destroy$)
+    ).subscribe();
+  }
 
   ngAfterViewInit(): void {
     this.userService.getUser().subscribe({
@@ -91,6 +106,21 @@ export class SaveMemePopupComponent implements AfterViewInit {
 
   selectList(element: ListElement) {
     element.isSelected = !element.isSelected;
+
+    this.requestSubject.next(element);
+  }
+
+  private sendRequest(element: ListElement): Observable<Response> {
+    return this.apiService.post<Response>("/user-post-list/save/" + this.post.id + "/" + element.list.id, null, { withCredentials: true })
+      .pipe(tap(() => {
+        if (element.isSelected) {
+          this.post.user.postListIds.push(element.list.id);
+        }
+        else {
+          this.post.user.postListIds = this.post.user.postListIds.filter(id => id != element.list.id);
+        }
+      })
+      );
   }
 
   private populateContainer() {
@@ -106,11 +136,16 @@ export class SaveMemePopupComponent implements AfterViewInit {
   private createListElement(list: UserMemeList): void {
     const element = {
       list: list,
-      isSelected: false
+      isSelected: this.post.user.postListIds.includes(list.id)
     }
 
     this.listElements.push(element);
     this.listContainer.createEmbeddedView(this.listTemplate, { element: element });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   close() {

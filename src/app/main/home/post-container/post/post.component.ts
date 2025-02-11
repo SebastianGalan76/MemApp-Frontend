@@ -41,7 +41,9 @@ export class PostComponent implements OnInit {
   }
 
   save(): void {
-    this.popupService.showPopup(SaveMemePopupComponent, []);
+    this.popupService.showPopup(SaveMemePopupComponent, [
+      { name: 'post', value: this.post }
+    ]);
   }
 
 }
