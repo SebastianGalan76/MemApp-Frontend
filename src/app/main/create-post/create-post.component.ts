@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AutoTextareaResizeDirective } from '../../directive/auto-textarea-resize.directive';
 import { FormsModule } from '@angular/forms';
-import { ContentType, PostContent, PostContentComponent } from '../home/meme-container/meme/content/content.component';
+import { ContentType, PostContent, PostContentComponent } from '../home/post-container/post/content/content.component';
 import { ApiService } from '../../../service/api.service';
 
 interface NewPostDto {

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MemeComponent } from '../meme.component';
+import { PostComponent } from '../post.component';
 import { ApiService } from '../../../../../../service/api.service';
 import { HttpParams } from '@angular/common/http';
 import { NgClass } from '@angular/common';
@@ -15,7 +15,7 @@ export class RatingSectionComponent {
   currentUserRating: -1 | 0 | 1 = 0;
 
   constructor(
-    public parent: MemeComponent,
+    public parent: PostComponent,
     private apiService: ApiService,
   ) { }
 
