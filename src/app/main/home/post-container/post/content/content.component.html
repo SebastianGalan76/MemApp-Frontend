@@ -1,6 +1,6 @@
 <div id="container">
     @if (content) {
-    @if (content.type == ContentType.IMAGE) {
+    @if (content.type == PostType.IMAGE) {
     <div id="picture-type">
         <div id="background">
             <img [src]="content.content" />
@@ -12,10 +12,12 @@
     </div>
     }
     @else {
+    <!--
     <div id="tiktok-type">
         <iframe height="600px" width="100%" [src]="getSafeUrl(content.content)" allow="fullscreen"
             title="test"></iframe>
-    </div>
+    </div>    
+    -->
     }
     }
 </div>

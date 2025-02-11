@@ -71,7 +71,7 @@ export class SaveMemePopupComponent implements AfterViewInit {
       .set('accessibility', this.accessibility);
 
     this.apiService.post<ObjectResponse<UserMemeList>>(
-      "/user-meme-list/create", null, { withCredentials: true, params: params })
+      "/user-post-list/create", null, { withCredentials: true, params: params })
       .subscribe({
         next: (response) => {
           this.isFormVisible = false;

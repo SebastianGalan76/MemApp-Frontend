@@ -7,28 +7,22 @@
             </div>
             <div>
                 <div id="user-name">
-                    DreaMPL
+                    {{post.owner.login}}
                 </div>
                 <div id="publication-date">
-                    24.10.2024 15:32
+                    {{post.createdAt | date:'dd.MM.yyyy HH:mm'}}
                 </div>
             </div>
         </div>
         <meme-dropdown-menu />
     </div>
+    @if (post.text) {
     <div id="text">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
+        {{post.text}}
     </div>
+    }
     <div id="content-wrapper">
-        <div id="background">
-            <img src="/img/meme/meme1.jpg" />
-        </div>
-
-        <div id="content">
-            <img src="/img/meme/meme1.jpg" />
-        </div>
+        <post-content [content]="content" />
     </div>
     <div id="footer">
         <meme-rating-section />

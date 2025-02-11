@@ -1,13 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ContentType } from '../../../../../../model/Post';
 
 export interface PostContent {
   type: ContentType;
   content: string;
-}
-
-export enum ContentType {
-  IMAGE, TIKTOK, INSTAGRAM, X
 }
 
 @Component({
@@ -20,7 +17,7 @@ export enum ContentType {
 export class PostContentComponent {
   @Input({ required: true }) content!: PostContent | null;
 
-  ContentType = ContentType;
+  PostType = ContentType;
 
   constructor(private sanitizer: DomSanitizer) { }
 

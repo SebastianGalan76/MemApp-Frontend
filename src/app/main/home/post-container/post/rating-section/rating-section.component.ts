@@ -12,15 +12,13 @@ import { NgClass } from '@angular/common';
   styleUrl: './rating-section.component.scss'
 })
 export class RatingSectionComponent {
-  currentUserRating: -1 | 0 | 1 = 0;
-
   constructor(
     public parent: PostComponent,
     private apiService: ApiService,
   ) { }
 
   rate(rating: -1 | 0 | 1) {
-    if (rating == this.currentUserRating) {
+    if (rating == this.parent.post.user.rating) {
       return;
     }
 
@@ -28,8 +26,8 @@ export class RatingSectionComponent {
       .set("post_id", 1)
       .set("rating_value", rating);
 
-    this.parent.rating += rating;
-    this.currentUserRating = rating;
+    this.parent.post.rating += rating;
+    this.parent.post.user.rating = rating;
 
     this.apiService.post('/post/rate', null, { withCredentials: true, params: params }).subscribe({
       next: (response) => {

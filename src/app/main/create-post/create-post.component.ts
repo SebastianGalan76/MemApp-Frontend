@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { AutoTextareaResizeDirective } from '../../directive/auto-textarea-resize.directive';
 import { FormsModule } from '@angular/forms';
-import { ContentType, PostContent, PostContentComponent } from '../home/post-container/post/content/content.component';
+import { PostContent, PostContentComponent } from '../home/post-container/post/content/content.component';
 import { ApiService } from '../../../service/api.service';
+import { ContentType } from '../../../model/Post';
 
 interface NewPostDto {
   text: string;
@@ -95,7 +96,7 @@ export class CreatePostComponent {
 
     const newPostDto: NewPostDto = {
       text: this.text,
-      content: '',
+      content: this.fileUrl,
       type: 'IMAGE',
       visibility: 'PUBLIC',
     }
