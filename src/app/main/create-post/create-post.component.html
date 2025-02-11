@@ -1,0 +1,107 @@
+<div id="container">
+    <div id="content" class="panel">
+        <div id="post-type-container">
+            <div class="type selected"><i class="fa-solid fa-image"></i> Obraz</div>
+            <div class="type"><i class="fa-brands fa-tiktok"></i> TikTok</div>
+            <div class="type"><i class="fa-brands fa-instagram"></i> Instagram</div>
+            <div class="type"><i class="fa-brands fa-facebook-f"></i> Facebook</div>
+            <div class="type"><i class="fa-brands fa-x-twitter"></i> X</div>
+        </div>
+
+        <div id="post-container">
+            <div id="header">
+                <div id="basic-information">
+                    <div id="user-picture">
+                        <img
+                            src="https://e7.pngegg.com/pngimages/312/283/png-clipart-man-s-face-avatar-computer-icons-user-profile-business-user-avatar-blue-face-thumbnail.png" />
+                    </div>
+                    <div>
+                        <div id="user-name">
+                            DreaMPL
+                        </div>
+                        <div id="publication-date">
+                            24.10.2024 15:32
+                        </div>
+                    </div>
+                </div>
+                <i id="button" class="fa-solid fa-ellipsis"></i>
+            </div>
+            <div id="text">
+                <textarea autoTextareaResize placeholder="Tekst..." [(ngModel)]="text"></textarea>
+            </div>
+            <div id="content-wrapper">
+                @if (!showPreview) {
+                <div id="picture-content-type">
+                    <div class="section">
+                        <div class="icon">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <div class="header">Prześlij plik</div>
+                        <div class="file-input-container">
+                            <div class="file-input">
+                                <button type="button" (click)="fileInputs.click()">Wybierz plik</button>
+                                <input type="file" id="file-input" size="1" (change)="onFileChange($event)" #fileInputs>
+                            </div>
+                            <span class="file-name">{{fileName}}</span>
+                        </div>
+                        <div class="info">Dozwolone formaty:<br>PNG, JPG, GIF, WEBP</div>
+                    </div>
+                    <div class="section">
+                        <div class="icon">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </div>
+                        <div class="header">Wklej link</div>
+
+                        <div class="input-area">
+                            <input type="text" placeholder="Link" maxlength="512" [(ngModel)]="fileUrl"
+                                (change)="onFileUrlChange()">
+                            <div class="input-icon">
+                                <i class="fa-solid fa-shield"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+                @else{
+                <div id="close-preview-button" title="Zmień grafikę" (click)="editContent()">
+                    Edytuj
+                </div>
+
+                <post-content [content]="postContent" />
+                }
+            </div>
+            <div id="footer">
+                <div class="section">
+                    <i class="vote-button fa-solid fa-square-caret-up" title="Podoba mi się"></i>
+                    <i class="vote-button fa-solid fa-square-caret-down" title="Nie podoba mi się"></i>
+
+                    <div id="value">0</div>
+                </div>
+                <div class="section comment">
+                    <i class="fa-solid fa-comment"></i>
+
+                    <div class="value">0</div>
+                </div>
+                <div id="menu">
+                    <i class="fa-solid fa-share-nodes" title="Udostępnij post"></i>
+                    <i class="fa-solid fa-bookmark" title="Zapisz post"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="create-post-button" (click)="createPost()">
+            Stwórz
+        </div>
+    </div>
+    <div id="aside-menu">
+        <div class="panel" style="min-height: 250px;">
+
+        </div>
+        <div class="panel" style="min-height: 600px;">
+
+        </div>
+        <div class="panel" style="min-height:  300px;">
+
+        </div>
+    </div>
+</div>

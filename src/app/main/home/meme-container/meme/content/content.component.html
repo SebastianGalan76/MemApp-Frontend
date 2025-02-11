@@ -1,0 +1,21 @@
+<div id="container">
+    @if (content) {
+    @if (content.type == ContentType.IMAGE) {
+    <div id="picture-type">
+        <div id="background">
+            <img [src]="content.content" />
+        </div>
+
+        <div id="content">
+            <img [src]="content.content" />
+        </div>
+    </div>
+    }
+    @else {
+    <div id="tiktok-type">
+        <iframe height="600px" width="100%" [src]="getSafeUrl(content.content)" allow="fullscreen"
+            title="test"></iframe>
+    </div>
+    }
+    }
+</div>

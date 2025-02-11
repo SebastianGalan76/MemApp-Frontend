@@ -7,6 +7,7 @@ import { ChangePasswordComponent } from './auth/change-password/change-password.
 import { ActiveAccountComponent } from './auth/active-account/active-account.component';
 import { MainComponent } from './main/main.component';
 import { HomeComponent } from './main/home/home.component';
+import { CreatePostComponent } from './main/create-post/create-post.component';
 
 export const routes: Routes = [
     {
@@ -39,6 +40,9 @@ export const routes: Routes = [
         path: "",
         component: MainComponent,
         children: [{
+            path: "create",
+            component: CreatePostComponent
+        }, {
             path: "",
             component: HomeComponent
         }]
