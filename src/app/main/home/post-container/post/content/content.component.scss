@@ -6,7 +6,10 @@
     border: 2px solid var(--color-background-60);
     user-select: none;
 
-    #picture-type {
+    #image-type {
+        position: relative;
+        transition: all 0.8s ease;
+
         #background {
             position: absolute;
             top: 0;
@@ -49,6 +52,24 @@
                 margin-right: auto;
 
                 display: block;
+            }
+        }
+
+        #expand-button {
+            position: absolute;
+            bottom: 0;
+
+            width: 100%;
+
+            z-index: 200;
+
+            padding: 10px;
+            background-color: rgb(255, 90, 90);
+            text-align: center;
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgb(255, 64, 64);
             }
         }
     }

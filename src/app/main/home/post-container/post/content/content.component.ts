@@ -1,6 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, Renderer2, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ContentType } from '../../../../../../model/Post';
+import { NgClass, NgStyle } from '@angular/common';
+import { expand } from 'rxjs';
+import { ExpandableContent } from './ExpandableContent';
 
 export interface PostContent {
   type: ContentType;
@@ -10,16 +13,20 @@ export interface PostContent {
 @Component({
   selector: 'post-content',
   standalone: true,
-  imports: [],
+  imports: [NgStyle],
   templateUrl: './content.component.html',
   styleUrl: './content.component.scss'
 })
-export class PostContentComponent {
+export class PostContentComponent extends ExpandableContent {
   @Input({ required: true }) content!: PostContent | null;
 
   PostType = ContentType;
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(
+    private sanitizer: DomSanitizer
+  ) {
+    super();
+  }
 
   getSafeUrl(content: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.tiktok.com/player/v1/${content}?&music_info=0&description=0&rel=0&native_context_menu=0&closed_caption=0`);

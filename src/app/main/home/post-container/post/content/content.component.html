@@ -1,23 +1,34 @@
+@if (content) {
 <div id="container">
-    @if (content) {
     @if (content.type == PostType.IMAGE) {
-    <div id="picture-type">
+
+    <div id="image-type"
+        [ngStyle]="{'max-height': isExpanded ? containerHeight + 'px' : (isInitialized ? '1000px' : 'auto')}">
+
+        @if (containerHeight >= 1000 && !isExpanded) {
+        <div id="expand-button" (click)="toggleExpandedItem()">Rozwiń</div>
+        }
+
         <div id="background">
             <img [src]="content.content" />
         </div>
 
         <div id="content">
-            <img [src]="content.content" />
+            <img [src]="content.content" #pictureContainer (load)="calculateHeight()" />
         </div>
     </div>
+
     }
     @else {
-    <!--
+
+    }
+</div>
+}
+
+
+<!--
     <div id="tiktok-type">
         <iframe height="600px" width="100%" [src]="getSafeUrl(content.content)" allow="fullscreen"
             title="test"></iframe>
     </div>    
     -->
-    }
-    }
-</div>

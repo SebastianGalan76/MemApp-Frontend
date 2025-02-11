@@ -6,7 +6,7 @@ import { Post } from '../../../../model/Post';
 @Component({
   selector: 'app-post-container',
   standalone: true,
-  imports: [PostComponent],
+  imports: [],
   templateUrl: './post-container.component.html',
   styleUrl: './post-container.component.scss'
 })
