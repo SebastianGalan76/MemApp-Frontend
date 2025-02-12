@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, OnDestroy, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { PopupComponent } from '../../../../../../shared/popup-container/popup/popup.component';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../../../../../service/api.service';
@@ -24,7 +24,7 @@ class ListElement {
   templateUrl: './save-popup.component.html',
   styleUrl: './save-popup.component.scss'
 })
-export class SaveMemePopupComponent implements AfterViewInit {
+export class SaveMemePopupComponent implements AfterViewInit, OnDestroy {
   @ViewChild('listContainer', { read: ViewContainerRef }) listContainer!: ViewContainerRef;
   @ViewChild('listTemplate', { read: TemplateRef }) listTemplate!: TemplateRef<any>;
 
