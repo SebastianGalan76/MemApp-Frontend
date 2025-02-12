@@ -1,8 +1,7 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, Renderer2, ViewChild } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ContentType } from '../../../../../../model/Post';
-import { NgClass, NgStyle } from '@angular/common';
-import { expand } from 'rxjs';
+import { NgStyle } from '@angular/common';
 import { ExpandableContent } from './ExpandableContent';
 
 export interface PostContent {

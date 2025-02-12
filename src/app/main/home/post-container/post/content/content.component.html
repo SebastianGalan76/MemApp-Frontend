@@ -19,16 +19,11 @@
     </div>
 
     }
-    @else {
-
-    }
-</div>
-}
-
-
-<!--
+    @else if(content.type == PostType.TIKTOK){
     <div id="tiktok-type">
         <iframe height="600px" width="100%" [src]="getSafeUrl(content.content)" allow="fullscreen"
             title="test"></iframe>
-    </div>    
-    -->
+    </div>
+    }
+</div>
+}

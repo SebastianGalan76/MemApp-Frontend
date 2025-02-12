@@ -60,4 +60,9 @@
 #container #image-type #expand-button:hover {
   cursor: pointer;
   background-color: rgb(255, 64, 64);
+}
+#container #tiktok-type iframe {
+  display: block;
+  border: none;
+  border: 2px solid var(--color-background-60);
 }/*# sourceMappingURL=content.component.css.map */

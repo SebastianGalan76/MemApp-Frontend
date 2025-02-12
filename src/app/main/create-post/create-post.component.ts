@@ -32,6 +32,7 @@ export class CreatePostComponent {
   selectedFile?: File;
 
   postContent: PostContent | null = null;
+  errorMessage: string = "";
 
   private imageExtensions = ['png', 'jpeg', 'jpg', 'webp'];
 
@@ -93,6 +94,12 @@ export class CreatePostComponent {
   }
 
   createPost() {
+    if (!this.checkContent()) {
+      return;
+    }
+
+    this.errorMessage = "";
+
     const formData: FormData = new FormData();
 
     if (this.selectedFile) {
@@ -101,8 +108,8 @@ export class CreatePostComponent {
 
     const newPostDto: NewPostDto = {
       text: this.text,
-      content: this.fileUrl,
-      type: 'IMAGE',
+      content: this.postContent!.content,
+      type: this.postContent!.type,
       visibility: 'PUBLIC',
     }
 
@@ -128,6 +135,35 @@ export class CreatePostComponent {
 
     this.fileName = "Nie wybrano pliku";
     this.selectedFile = undefined;
+  }
+
+  private checkContent(): boolean {
+    if (!this.postContent) {
+      return false;
+    }
+
+    if (this.postContent.type == ContentType.IMAGE) {
+      if (this.selectedFile) {
+        const checkFileStatus = this.checkFile(this.selectedFile);
+
+        if (checkFileStatus == 2) {
+          this.errorMessage = "Akceptujemy jedynie rozszerzenia PNG, JPG, GIF i WEBP";
+          return false;
+        }
+        if (checkFileStatus == 3) {
+          this.errorMessage = "Wielkość pliku jest zbyt duża";
+          return false;
+        }
+      }
+      else {
+        if (!this.isImageLink(this.fileUrl)) {
+          this.errorMessage = "Wprowadziłeś nieprawidłowy link do obrazka";
+          return false;
+        }
+      }
+    }
+
+    return true;
   }
 
   private isImageLink(url: string): boolean {
@@ -172,7 +208,7 @@ export class CreatePostComponent {
   }
 
   private extractTikTokId(url: string): string | null {
-    const match = url.match(/\/video\/(\d+)\?/);
+    const match = url.match(/\/video\/(\d+)/);
     return match ? match[1] : null;
   }
 }

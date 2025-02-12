@@ -26,17 +26,25 @@ export class PostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    var content = "";
-    if (Utils.isValidUrl(this.post.content)) {
-      content = this.post.content;
-    }
-    else {
-      content = AppService.getBackendDomain() + this.post.content;
-    }
+    if (this.post.type == "IMAGE") {
+      var content = "";
+      if (Utils.isValidUrl(this.post.content)) {
+        content = this.post.content;
+      }
+      else {
+        content = AppService.getBackendDomain() + this.post.content;
+      }
 
-    this.content = {
-      type: this.post.type,
-      content: content
+      this.content = {
+        type: this.post.type,
+        content: content
+      }
+    }
+    if (this.post.type == "TIKTOK") {
+      this.content = {
+        type: this.post.type,
+        content: this.post.content
+      }
     }
   }
 
