@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { PostContent, PostContentComponent } from '../home/post-container/post/content/content.component';
 import { ApiService } from '../../../service/api.service';
 import { ContentType } from '../../../model/Post';
+import { ToastService, ToastType } from '../../../service/toast.service';
+import { Response } from '../../../model/response/Response';
+import { Router } from '@angular/router';
 
 interface NewPostDto {
   text: string;
@@ -33,7 +36,9 @@ export class CreatePostComponent {
   private imageExtensions = ['png', 'jpeg', 'jpg', 'webp'];
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private toastService: ToastService,
+    private router: Router
   ) { }
 
   onFileUrlChange() {
@@ -105,11 +110,12 @@ export class CreatePostComponent {
 
     this.apiService.post<Response>('/post/create', formData, { withCredentials: true }).subscribe({
       next: (response) => {
-        console.log(response);
+        this.toastService.show(response.message, ToastType.SUCCESS);
+        this.router.navigate(['/']);
       },
       error: (response) => {
         if (response.error) {
-          console.log(response);
+          this.toastService.show(response.error.error, ToastType.ERROR);
         }
       }
     })

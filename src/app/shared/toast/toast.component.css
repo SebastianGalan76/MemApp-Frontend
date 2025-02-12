@@ -1,0 +1,188 @@
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes slideInBottom {
+  from {
+    transform: translateY(200%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
+#container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  right: 10px;
+  top: 10px;
+  z-index: 100000000;
+  width: 500px;
+  max-height: 100vh;
+}
+#container .notification {
+  border-radius: 9px;
+  overflow: hidden;
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateX(100%);
+  animation: slideIn 0.2s ease-out forwards, fadeOut 0.5s forwards 5s;
+}
+#container .notification .up-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+#container .notification .up-panel .left-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#container .notification .up-panel .left-section .icon {
+  flex-shrink: 0;
+  font-size: 2em;
+}
+#container .notification .up-panel .left-section .message {
+  display: block;
+}
+#container .notification .up-panel .close {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#container .notification .up-panel .close:hover {
+  cursor: pointer;
+}
+#container .notification .progress-bar {
+  height: 10px;
+  width: 0;
+  animation: progress 6s linear forwards;
+}
+@keyframes progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+#container .notification.success {
+  background-color: #d5f8e0;
+  border: 2px solid #16c550;
+}
+#container .notification.success .message {
+  color: #16c550;
+}
+#container .notification.success .icon {
+  color: #16c550;
+}
+#container .notification.success .progress-bar {
+  background-color: #16c550;
+}
+#container .notification.error {
+  background-color: #fad4d4;
+  border: 2px solid #d65059;
+}
+#container .notification.error .message {
+  color: #d65059;
+}
+#container .notification.error .icon {
+  color: #d65059;
+}
+#container .notification.error .progress-bar {
+  background-color: #d65059;
+}
+#container .notification.info {
+  background-color: #d3e3f5;
+  border: 2px solid #4888cf;
+}
+#container .notification.info .message {
+  color: #4888cf;
+}
+#container .notification.info .icon {
+  color: #4888cf;
+}
+#container .notification.info .progress-bar {
+  background-color: #4888cf;
+}
+@media (max-width: 520px) {
+  #container {
+    width: calc(100% - 20px);
+    font-size: 0.8em;
+  }
+}
+
+#container-small {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  left: 10px;
+  bottom: 20px;
+  z-index: 100000000;
+  width: 500px;
+  max-height: 100vh;
+}
+#container-small .notification {
+  position: relative;
+  border-radius: 9px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transform: translateY(200%);
+  animation: slideInBottom 0.2s ease-out forwards, slideOutLeft 0.5s forwards 4s;
+  background-color: var(--color-background-130);
+  color: var(--color-background-30);
+  font-size: 1.05em;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+#container-small .notification .message {
+  padding: 15px 30px;
+}
+#container-small .notification .close {
+  padding: 10px;
+  font-size: 1.2em;
+}
+#container-small .notification .close:hover {
+  cursor: pointer;
+  color: var(--color-background-20);
+}
+@media (max-width: 520px) {
+  #container-small {
+    width: calc(100% - 20px);
+    font-size: 0.8em;
+  }
+}/*# sourceMappingURL=toast.component.css.map */

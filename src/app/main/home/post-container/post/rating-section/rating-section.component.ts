@@ -3,7 +3,8 @@ import { PostComponent } from '../post.component';
 import { ApiService } from '../../../../../../service/api.service';
 import { HttpParams } from '@angular/common/http';
 import { NgClass } from '@angular/common';
-import { debounce, debounceTime, mergeMap, Subject, switchMap, takeUntil, tap } from 'rxjs';
+import { debounceTime, Subject, switchMap, takeUntil } from 'rxjs';
+import { Response } from '../../../../../../model/response/Response';
 
 @Component({
   selector: 'meme-rating-section',
@@ -46,7 +47,7 @@ export class RatingSectionComponent implements OnDestroy {
   }
 
   private sendRequest(params: HttpParams) {
-    return this.apiService.post('/post/rate', null, { withCredentials: true, params: params });
+    return this.apiService.post<Response>('/post/rate', null, { withCredentials: true, params: params });
   }
 
   ngOnDestroy(): void {

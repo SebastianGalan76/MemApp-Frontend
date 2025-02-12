@@ -1,0 +1,247 @@
+$color-success-background: #d5f8e0;
+$color-success: #16c550;
+
+$color-error-background: #fad4d4;
+$color-error: #d65059;
+
+$color-info-background: #d3e3f5;
+$color-info: #4888cf;
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideInBottom {
+    from {
+        transform: translateY(200%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-200%);
+    }
+}
+
+#container {
+    position: fixed;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    right: 10px;
+    top: 10px;
+
+    z-index: 100000000;
+
+    width: 500px;
+    max-height: 100vh;
+
+    .notification {
+        border-radius: 9px;
+        overflow: hidden;
+
+        flex-shrink: 0;
+
+        opacity: 0;
+        transform: translateX(100%);
+        animation:
+            slideIn 0.2s ease-out forwards,
+            fadeOut 0.5s forwards 5s;
+
+        .up-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 10px;
+            gap: 10px;
+
+            .left-section {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                .icon {
+                    flex-shrink: 0;
+                    font-size: 2em;
+                }
+
+                .message {
+                    display: block;
+                }
+            }
+
+            .close {
+                width: 30px;
+                height: 30px;
+                padding: 5px;
+                border-radius: 5px;
+                font-size: 1.5em;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .close:hover {
+                cursor: pointer;
+            }
+        }
+
+        .progress-bar {
+            height: 10px;
+            width: 0;
+            animation: progress 6s linear forwards;
+        }
+
+        @keyframes progress {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+    }
+
+    .notification.success {
+        background-color: $color-success-background;
+        border: 2px solid $color-success;
+
+        .message {
+            color: $color-success;
+        }
+
+        .icon {
+            color: $color-success;
+        }
+
+        .progress-bar {
+            background-color: $color-success;
+        }
+    }
+
+    .notification.error {
+        background-color: $color-error-background;
+
+        border: 2px solid $color-error;
+
+        .message {
+            color: $color-error;
+        }
+
+        .icon {
+            color: $color-error;
+        }
+
+        .progress-bar {
+            background-color: $color-error;
+        }
+    }
+
+    .notification.info {
+        background-color: $color-info-background;
+
+        border: 2px solid $color-info;
+
+        .message {
+            color: $color-info;
+        }
+
+        .icon {
+            color: $color-info;
+        }
+
+        .progress-bar {
+            background-color: $color-info;
+        }
+    }
+
+    @media (max-width: 520px) {
+        width: calc(100% - 20px);
+        font-size: 0.8em;
+    }
+}
+
+#container-small {
+    position: fixed;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    left: 10px;
+    bottom: 20px;
+
+    z-index: 100000000;
+
+    width: 500px;
+    max-height: 100vh;
+
+    .notification {
+        position: relative;
+
+        border-radius: 9px;
+        overflow: hidden;
+
+        flex-shrink: 0;
+
+        transform: translateY(200%);
+        animation:
+            slideInBottom 0.2s ease-out forwards,
+            slideOutLeft 0.5s forwards 4s;
+
+        background-color: var(--color-background-130);
+        color: var(--color-background-30);
+        font-size: 1.05em;
+
+        width: fit-content;
+
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        .message {
+            padding: 15px 30px;
+        }
+
+        .close {
+            padding: 10px;
+            font-size: 1.2em;
+
+            &:hover {
+                cursor: pointer;
+                color: var(--color-background-20);
+            }
+        }
+    }
+
+    @media (max-width: 520px) {
+        width: calc(100% - 20px);
+        font-size: 0.8em;
+    }
+}

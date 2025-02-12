@@ -11,6 +11,7 @@ import { NgClass } from '@angular/common';
 import { Response } from '../../../../../../../model/response/Response';
 import { Post } from '../../../../../../../model/Post';
 import { debounceTime, Observable, Subject, switchMap, takeUntil, tap } from 'rxjs';
+import { ToastService, ToastType } from '../../../../../../../service/toast.service';
 
 class ListElement {
   list!: UserMemeList;
@@ -47,6 +48,7 @@ export class SaveMemePopupComponent implements AfterViewInit, OnDestroy {
     private parent: PopupComponent,
     private apiService: ApiService,
     private userService: UserService,
+    private toastService: ToastService,
     private cdr: ChangeDetectorRef
   ) {
     this.requestSubject.pipe(
@@ -95,6 +97,8 @@ export class SaveMemePopupComponent implements AfterViewInit, OnDestroy {
           this.user!.ownedMemeLists.push(response.object);
           this.userService.saveUser();
 
+          this.toastService.show(response.message, ToastType.SUCCESS);
+
           this.listName = "";
           this.accessibility = "PUBLIC";
         },
@@ -115,9 +119,13 @@ export class SaveMemePopupComponent implements AfterViewInit, OnDestroy {
       .pipe(tap(() => {
         if (element.isSelected) {
           this.post.user.postListIds.push(element.list.id);
+
+          this.toastService.show("Dodano post do listy " + element.list.name);
         }
         else {
           this.post.user.postListIds = this.post.user.postListIds.filter(id => id != element.list.id);
+
+          this.toastService.show("Usunięto post z listy " + element.list.name);
         }
       })
       );
