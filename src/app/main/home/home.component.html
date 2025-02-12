@@ -1,6 +1,37 @@
 <div id="container">
     <div id="content">
-        <div id="create-post" routerLink="/create">Dodaj post</div>
+        <div id="create-post-container" class="panel" routerLink="/create">
+            <div id="header">
+                <div id="user-picture">
+                    <img
+                        src="https://e7.pngegg.com/pngimages/312/283/png-clipart-man-s-face-avatar-computer-icons-user-profile-business-user-avatar-blue-face-thumbnail.png" />
+                </div>
+                <div>
+                    <div id="user-name">
+                        DreaMPL
+                    </div>
+                    <div id="publication-date">
+                        25.10.2024 14:42
+                    </div>
+                </div>
+            </div>
+            <div id="create-post-content">
+                Masz coś śmiesznego? Podziel się!
+            </div>
+            <div id="footer">
+                <div id="icon-container">
+                    <i class="fa-solid fa-image"></i>
+                    <i class="fa-brands fa-tiktok"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+
+                <div id="create-post-button">
+                    Stwórz post
+                </div>
+            </div>
+        </div>
         <app-post-container />
     </div>
     <div id="aside-menu">
