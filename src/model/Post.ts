@@ -9,6 +9,8 @@ export interface Post {
     rating: number;
     createdAt: Date;
 
+    commentAmount: number;
+
     user: User;
 }
 

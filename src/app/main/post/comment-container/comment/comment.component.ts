@@ -1,16 +1,19 @@
-import { Component, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { Comment } from '../../../../../model/Comment';
 import { CreateCommentComponent } from "../create-comment/create-comment.component";
-import { NgClass } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
+import { ApiService } from '../../../../../service/api.service';
+import { ObjectResponse } from '../../../../../model/response/ObjectResponse';
+import { PageResponse } from '../../../../../model/response/PageResponse';
 
 @Component({
   selector: 'app-comment',
   standalone: true,
-  imports: [CreateCommentComponent, NgClass],
+  imports: [CreateCommentComponent, NgClass, DatePipe],
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.scss'
 })
-export class CommentComponent implements OnInit {
+export class CommentComponent implements AfterViewInit {
   @ViewChild('repliesContainer', { read: ViewContainerRef, static: true }) container!: ViewContainerRef;
 
   public comment!: Comment;
@@ -19,10 +22,23 @@ export class CommentComponent implements OnInit {
   isFormActive: boolean = false;
   isRepliesExpanded: boolean = true;
 
-  ngOnInit(): void {
-    if (this.comment.replies) {
-      this.comment.replies.forEach(r => this.addCommentComponent(r));
-    }
+  constructor(
+    private apiService: ApiService
+  ) { }
+
+  ngAfterViewInit(): void {
+    this.comment.reply.replies.forEach(reply => this.addCommentComponent(reply));
+  }
+
+  loadReplies() {
+    this.apiService.get<PageResponse<Comment>>(`/comment/parent/${this.comment.id}/${this.comment.reply.currentPage}`, { withCredentials: true }).subscribe({
+      next: (response) => {
+        response.content.forEach(reply => this.comment.reply.replies.push(reply));
+        response.content.forEach(reply => this.addCommentComponent(reply));
+
+        this.comment.reply.currentPage++;
+      }
+    })
   }
 
   addCommentComponent(comment: Comment) {
@@ -34,15 +50,19 @@ export class CommentComponent implements OnInit {
   addNewComment(comment: Comment) {
     this.isFormActive = false;
 
-    if (!this.comment.replies) {
-      this.comment.replies = [];
+    if (this.comment.reply.totalReplies == this.comment.reply.replies.length) {
+      this.comment.reply.totalReplies++;
+      this.comment.reply.replies.push(comment);
+      this.addCommentComponent(comment);
+    }
+    else {
+      this.comment.reply.totalReplies++;
     }
 
-    this.comment.replies.push(comment);
-    this.addCommentComponent(comment);
   }
 
   reply() {
+    this.isRepliesExpanded = true;
     this.isFormActive = true;
   }
 }

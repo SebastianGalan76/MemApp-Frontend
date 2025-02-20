@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ApiService } from '../../../../service/api.service';
 import { PostPageComponent } from '../post.component';
 import { PageResponse } from '../../../../model/response/PageResponse';
@@ -19,7 +19,7 @@ export class CommentContainerComponent implements OnInit {
 
   constructor(
     public parent: PostPageComponent,
-    private apiService: ApiService
+    private apiService: ApiService,
   ) { }
 
   ngOnInit(): void {
@@ -37,5 +37,11 @@ export class CommentContainerComponent implements OnInit {
   addCommentComponent(comment: Comment) {
     const componentRef = this.container.createComponent(CommentComponent);
     componentRef.instance.comment = comment;
+  }
+
+  addNewComment(comment: Comment) {
+    this.parent.post.commentAmount++;
+
+    this.addCommentComponent(comment);
   }
 }

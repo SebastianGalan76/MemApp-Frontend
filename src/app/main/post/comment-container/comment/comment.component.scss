@@ -178,11 +178,11 @@
 
         #replies-wrapper {
             width: 100%;
-            max-height: 0;
+            height: 0;
             overflow: hidden;
 
             &.expanded {
-                max-height: 1000px;
+                height: auto;
                 overflow: visible;
             }
         }

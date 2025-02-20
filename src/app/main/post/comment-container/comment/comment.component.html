@@ -17,7 +17,7 @@
                         {{comment.author.login}}
                     </div>
                     <div id="publication-date">
-                        10.12.2024 14:32
+                        {{comment.createdAt | date:'dd.MM.yyyy HH:mm'}}
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
             {{comment.content}}
         </div>
         <div id="footer">
-            @if (comment.replies && comment.replies.length > 0) {
+            @if (comment.reply.totalReplies > 0) {
             <div class="replies" (click)="isRepliesExpanded = !isRepliesExpanded">
                 @if (!isRepliesExpanded) {
                 <i class="icon fa-solid fa-circle-chevron-down" title="Pokaż odpowiedzi"></i>
@@ -67,12 +67,18 @@
             <div id="replies-container" #repliesContainer>
 
             </div>
-            @if (comment.replies && comment.replies.length >= 3) {
-            <div id="load-more-button">
+            @if (comment.reply.totalReplies > comment.reply.replies.length) { <div id="load-more-button"
+                (click)="loadReplies()">
                 <div id="line">
                     <div id="circle"></div>
                 </div>
-                <i class="fa-solid fa-chevron-down"></i> 3 odpowiedzi
+                <i class="fa-solid fa-chevron-down"></i> {{comment.reply.totalReplies - comment.reply.replies.length}}
+                @if (comment.reply.totalReplies - comment.reply.replies.length > 1) {
+                odpowiedzi
+                }
+                @else {
+                odpowiedź
+                }
             </div>
             }
         </div>
