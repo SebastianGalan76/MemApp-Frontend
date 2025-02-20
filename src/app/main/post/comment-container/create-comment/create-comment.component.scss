@@ -1,0 +1,124 @@
+#container {
+    #form-section {
+        display: flex;
+        gap: 10px;
+        padding: 15px 10px;
+
+        #user-picture {
+            width: 36px;
+            height: 36px;
+            border-radius: 100%;
+            overflow: hidden;
+
+            float: left;
+
+            flex-shrink: 0;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+
+                width: auto;
+                height: auto;
+
+                object-fit: cover;
+                display: block;
+            }
+        }
+
+        #text {
+            width: 100%;
+        }
+    }
+
+    #error-response {
+        margin-top: -5px;
+
+        font-size: 0.9em;
+        color: var(--color-text-red);
+    }
+
+    #footer {
+        display: flex;
+        gap: 10px;
+
+        justify-content: end;
+
+        max-height: 0;
+        overflow: hidden;
+
+        transition: max-height 0.2s ease;
+
+        .button {
+            width: fit-content;
+            padding: 3px 20px;
+            border-radius: 20px;
+            user-select: none;
+
+            &.comment {
+                color: var(--color-background-30);
+                background-color: var(--color-background-130);
+                opacity: 0.2;
+
+                &.active {
+                    opacity: 1;
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: var(--color-background-120);
+                    }
+                }
+            }
+
+            &.cancel {
+                color: var(--color-background-130);
+                opacity: 0.4;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: var(--color-background-90);
+                }
+            }
+        }
+
+        &.active {
+            max-height: 50px;
+        }
+    }
+}
+
+textarea {
+    background-color: transparent;
+
+    border: none;
+    border-bottom: 2px solid var(--color-background-60);
+    padding: 5px;
+
+    max-height: 300px;
+    min-height: 36px;
+    height: 36px;
+
+    width: 100%;
+
+    font: inherit;
+    color: inherit;
+
+    resize: none;
+    outline: none;
+
+    display: block;
+
+    font-size: 0.98em;
+
+    &:focus {
+        border-bottom: 2px solid var(--color-background-80);
+    }
+
+    &:not(:placeholder-shown) {
+        border-bottom: 2px solid var(--color-background-80);
+    }
+
+    &:hover {
+        border-bottom: 2px solid var(--color-background-80);
+    }
+}

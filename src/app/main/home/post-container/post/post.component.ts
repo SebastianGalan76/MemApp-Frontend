@@ -8,9 +8,10 @@ import { Post } from '../../../../../model/Post';
 import { AppService } from '../../../../../service/app.service';
 import { Utils } from '../../../../../service/utils.service';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-post',
+  selector: 'post',
   standalone: true,
   imports: [MenuComponent, RatingSectionComponent, PostContentComponent, DatePipe],
   templateUrl: './post.component.html',
@@ -23,6 +24,7 @@ export class PostComponent implements OnInit {
 
   constructor(
     private popupService: PopupService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -48,10 +50,14 @@ export class PostComponent implements OnInit {
     }
   }
 
-  save(): void {
+  save(event: MouseEvent) {
+    event.stopPropagation();
     this.popupService.showPopup(SaveMemePopupComponent, [
       { name: 'post', value: this.post }
     ]);
   }
 
+  select() {
+    this.router.navigate(['post', this.post.id]);
+  }
 }

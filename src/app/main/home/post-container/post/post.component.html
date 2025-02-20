@@ -1,4 +1,4 @@
-<div id="container">
+<div id="container" (click)="select()">
     <div id="header">
         <div id="basic-information">
             <div id="user-picture">
@@ -33,7 +33,7 @@
         </div>
         <div id="menu">
             <i class="fa-solid fa-share-nodes" title="Udostępnij post"></i>
-            <i class="fa-solid fa-bookmark" (click)="save()" title="Zapisz post"></i>
+            <i class="fa-solid fa-bookmark" (click)="save($event)" title="Zapisz post"></i>
         </div>
     </div>
 </div>

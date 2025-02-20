@@ -1,5 +1,6 @@
 export interface Post {
     id: number;
+    uuid: string;
     owner: Owner;
     type: ContentType;
     text: string | null;

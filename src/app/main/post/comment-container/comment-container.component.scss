@@ -1,0 +1,25 @@
+#container {
+    #header {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        padding: 10px;
+        border-radius: 10px;
+        background-color: var(--color-background-50);
+
+        i {
+            font-size: 1.8em;
+        }
+
+        #amount {
+            margin-left: auto;
+        }
+    }
+
+    #wrapper {
+        margin-top: 10px;
+        padding: 0 10px;
+    }
+}

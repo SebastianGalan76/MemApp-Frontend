@@ -28,7 +28,9 @@ export class RatingSectionComponent implements OnDestroy {
     ).subscribe();
   }
 
-  rate(rating: -1 | 0 | 1) {
+  rate(rating: -1 | 0 | 1, event: MouseEvent) {
+    event.stopPropagation();
+
     if (rating == this.parent.post.user.rating) {
       rating = 0;
     }

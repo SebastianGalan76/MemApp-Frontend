@@ -1,0 +1,80 @@
+<div id="container">
+    <div id="content">
+        <div id="header">
+            @if (isReply) {
+            <div id="line">
+                <div id="circle"></div>
+            </div>
+            }
+
+            <div id="basic-information">
+                <div id="user-picture">
+                    <img
+                        src="https://e7.pngegg.com/pngimages/312/283/png-clipart-man-s-face-avatar-computer-icons-user-profile-business-user-avatar-blue-face-thumbnail.png" />
+                </div>
+                <div>
+                    <div id="user-name">
+                        {{comment.author.login}}
+                    </div>
+                    <div id="publication-date">
+                        10.12.2024 14:32
+                    </div>
+                </div>
+            </div>
+            <i id="button" class="fa-solid fa-ellipsis"></i>
+        </div>
+        <div id="text">
+            {{comment.content}}
+        </div>
+        <div id="footer">
+            @if (comment.replies && comment.replies.length > 0) {
+            <div class="replies" (click)="isRepliesExpanded = !isRepliesExpanded">
+                @if (!isRepliesExpanded) {
+                <i class="icon fa-solid fa-circle-chevron-down" title="Pokaż odpowiedzi"></i>
+                }
+                @else {
+                <i class="icon fa-solid fa-circle-chevron-up" title="Schowaj odpowiedzi"></i>
+                }
+            </div>
+            }
+            <div id="menu">
+                <div class="rating section">
+                    <div class="rating-button">
+                        <i class="icon fa-solid fa-square-caret-up"></i>
+                        <div class="value">30</div>
+                    </div>
+                    <div class="rating-button">
+                        <i class="icon fa-solid fa-square-caret-down"></i>
+                        <div class="value">3</div>
+                    </div>
+                </div>
+                <div class="comment section" (click)="reply()">
+                    <i class="icon fa-solid fa-comment"></i>
+                    <div class="value">Odpowiedz</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="replies">
+        <div id="vertical-line">
+
+        </div>
+        <div id="replies-wrapper" [ngClass]="{'expanded': isRepliesExpanded}">
+            @if (isFormActive) {
+            <app-create-comment [id]="comment.id" [type]="'COMMENT'" (onSuccess)="addNewComment($event)"
+                (onCancel)="isFormActive = false" />
+            }
+            <div id="replies-container" #repliesContainer>
+
+            </div>
+            @if (comment.replies && comment.replies.length >= 3) {
+            <div id="load-more-button">
+                <div id="line">
+                    <div id="circle"></div>
+                </div>
+                <i class="fa-solid fa-chevron-down"></i> 3 odpowiedzi
+            </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+#container #form-section {
+  display: flex;
+  gap: 10px;
+  padding: 15px 10px;
+}
+#container #form-section #user-picture {
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  overflow: hidden;
+  float: left;
+  flex-shrink: 0;
+}
+#container #form-section #user-picture img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+#container #form-section #text {
+  width: 100%;
+}
+#container #error-response {
+  margin-top: -5px;
+  font-size: 0.9em;
+  color: var(--color-text-red);
+}
+#container #footer {
+  display: flex;
+  gap: 10px;
+  justify-content: end;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+}
+#container #footer .button {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 3px 20px;
+  border-radius: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+#container #footer .button.comment {
+  color: var(--color-background-30);
+  background-color: var(--color-background-130);
+  opacity: 0.2;
+}
+#container #footer .button.comment.active {
+  opacity: 1;
+}
+#container #footer .button.comment.active:hover {
+  cursor: pointer;
+  background-color: var(--color-background-120);
+}
+#container #footer .button.cancel {
+  color: var(--color-background-130);
+  opacity: 0.4;
+}
+#container #footer .button.cancel:hover {
+  cursor: pointer;
+  background-color: var(--color-background-90);
+}
+#container #footer.active {
+  max-height: 50px;
+}
+
+textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--color-background-60);
+  padding: 5px;
+  max-height: 300px;
+  min-height: 36px;
+  height: 36px;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  resize: none;
+  outline: none;
+  display: block;
+  font-size: 0.98em;
+}
+textarea:focus {
+  border-bottom: 2px solid var(--color-background-80);
+}
+textarea:not(:-moz-placeholder-shown) {
+  border-bottom: 2px solid var(--color-background-80);
+}
+textarea:not(:placeholder-shown) {
+  border-bottom: 2px solid var(--color-background-80);
+}
+textarea:hover {
+  border-bottom: 2px solid var(--color-background-80);
+}/*# sourceMappingURL=create-comment.component.css.map */

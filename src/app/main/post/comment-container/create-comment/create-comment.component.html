@@ -1,0 +1,20 @@
+<div id="container">
+    <div id="form-section">
+        <div id="user-picture">
+            <img
+                src="https://e7.pngegg.com/pngimages/312/283/png-clipart-man-s-face-avatar-computer-icons-user-profile-business-user-avatar-blue-face-thumbnail.png" />
+        </div>
+
+        <div id="text">
+            <textarea autoTextareaResize #textarea placeholder="Dodaj komentarz" (focus)="isFooterShown = true"
+                (blur)="blur()" [(ngModel)]="content"></textarea>
+        </div>
+    </div>
+    @if (error.length != 0) {
+    <div id="error-response">{{error}}</div>
+    }
+    <div id="footer" [ngClass]="{'active': isFooterShown}">
+        <div class="button cancel" (click)="cancel()">Anuluj</div>
+        <div class="button comment" [ngClass]="{'active': content.length != 0}" (click)="comment()">Skomentuj</div>
+    </div>
+</div>

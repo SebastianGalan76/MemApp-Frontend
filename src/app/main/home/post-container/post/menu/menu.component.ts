@@ -24,6 +24,8 @@ export class MenuComponent implements OnDestroy {
   ) { }
 
   toggleMenu(event: MouseEvent): void {
+    event.stopPropagation();
+
     this.isActive = !this.isActive;
 
     if (this.isActive) {

@@ -1,0 +1,185 @@
+#container {
+  width: 100%;
+  margin-top: 10px;
+}
+#container #content #header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  position: relative;
+}
+#container #content #header #line {
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  left: -10px;
+  background-color: var(--color-background-50);
+}
+#container #content #header #circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  position: absolute;
+  top: -4px;
+  left: -6px;
+  background-color: var(--color-background-50);
+}
+#container #content #header #basic-information {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  z-index: 10;
+}
+#container #content #header #basic-information #user-picture {
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  overflow: hidden;
+  float: left;
+}
+#container #content #header #basic-information #user-picture img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+#container #content #header #basic-information #user-name {
+  font-weight: 500;
+  line-height: 16px;
+}
+#container #content #header #basic-information #publication-date {
+  color: var(--color-text-white-light);
+  font-size: 0.76em;
+}
+#container #content #header #button {
+  border-radius: 100%;
+  color: var(--color-text-white-light);
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 32px;
+  height: 32px;
+  width: 32px;
+}
+#container #content #header #button:hover {
+  color: var(--color-text-white);
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+#container #content #text {
+  font-size: 0.95em;
+}
+#container #content #footer {
+  display: flex;
+  gap: 10px;
+  color: var(--color-text-white-light);
+}
+#container #content #footer #menu {
+  display: flex;
+  gap: 30px;
+}
+#container #content #footer .replies {
+  z-index: 1;
+  color: var(--color-background-70);
+  padding: 0 10px 0 0;
+}
+#container #content #footer .replies .icon {
+  margin-top: 6px !important;
+}
+#container #content #footer .replies:hover {
+  cursor: pointer;
+  color: var(--color-background-90);
+}
+#container #content #footer .rating {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+#container #content #footer .rating .rating-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#container #content #footer .rating .rating-button:hover {
+  color: var(--color-background-120);
+  cursor: pointer;
+}
+#container #content #footer .comment {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#container #content #footer .comment:hover {
+  color: var(--color-background-120);
+  cursor: pointer;
+}
+#container #content #footer .icon {
+  font-size: 1.2em;
+  margin-top: 1px;
+}
+#container #content #footer .icon:hover {
+  cursor: pointer;
+}
+#container #replies {
+  display: flex;
+  gap: 10px;
+  position: relative;
+  padding: 0 0 5px 8px;
+}
+#container #replies #vertical-line {
+  width: 2px;
+  background-color: var(--color-background-50);
+  flex-shrink: 0;
+}
+#container #replies #replies-wrapper {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+}
+#container #replies #replies-wrapper.expanded {
+  max-height: 1000px;
+  overflow: visible;
+}
+#container #replies #load-more-button {
+  border-radius: 20px;
+  padding: 3px 20px;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  background-color: var(--color-background-50);
+}
+#container #replies #load-more-button:hover {
+  cursor: pointer;
+  background-color: var(--color-background-70);
+}
+#container #replies #load-more-button:hover #line {
+  background-color: var(--color-background-70);
+}
+#container #replies #load-more-button:hover #circle {
+  background-color: var(--color-background-70);
+}
+#container #replies #load-more-button i {
+  margin-right: 10px;
+}
+#container #replies #load-more-button #line {
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  left: -10px;
+  top: 14px;
+  background-color: var(--color-background-50);
+}
+#container #replies #load-more-button #circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  position: absolute;
+  top: -4px;
+  left: -6px;
+  background-color: var(--color-background-50);
+}/*# sourceMappingURL=comment.component.css.map */

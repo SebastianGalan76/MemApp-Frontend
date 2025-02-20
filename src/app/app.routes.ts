@@ -8,6 +8,7 @@ import { ActiveAccountComponent } from './auth/active-account/active-account.com
 import { MainComponent } from './main/main.component';
 import { HomeComponent } from './main/home/home.component';
 import { CreatePostComponent } from './main/create-post/create-post.component';
+import { PostPageComponent } from './main/post/post.component';
 
 export const routes: Routes = [
     {
@@ -40,6 +41,9 @@ export const routes: Routes = [
         path: "",
         component: MainComponent,
         children: [{
+            path: "post/:id",
+            component: PostPageComponent
+        }, {
             path: "create",
             component: CreatePostComponent
         }, {
@@ -48,3 +52,4 @@ export const routes: Routes = [
         }]
     }
 ];
+

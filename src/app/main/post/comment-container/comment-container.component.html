@@ -1,0 +1,16 @@
+<div id="container">
+    <div id="header">
+        <i class="fa-solid fa-comment"></i>Komentarze
+        <span id="amount">(32)</span>
+    </div>
+
+    @if (parent.post) {
+    <app-create-comment [id]="parent.post.id" [type]="'POST'" (onSuccess)="addCommentComponent($event)" />
+    }
+
+    <div id="wrapper">
+        <div #container>
+
+        </div>
+    </div>
+</div>
