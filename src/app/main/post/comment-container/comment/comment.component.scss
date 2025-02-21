@@ -121,25 +121,6 @@
                 }
             }
 
-            .rating {
-                display: flex;
-                align-items: center;
-
-                gap: 15px;
-
-                .rating-button {
-                    display: flex;
-                    align-items: center;
-
-                    gap: 5px;
-
-                    &:hover {
-                        color: var(--color-background-120);
-                        cursor: pointer;
-                    }
-                }
-            }
-
             .comment {
                 display: flex;
                 align-items: center;

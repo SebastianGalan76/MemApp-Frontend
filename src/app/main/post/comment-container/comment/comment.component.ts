@@ -5,11 +5,12 @@ import { DatePipe, NgClass } from '@angular/common';
 import { ApiService } from '../../../../../service/api.service';
 import { ObjectResponse } from '../../../../../model/response/ObjectResponse';
 import { PageResponse } from '../../../../../model/response/PageResponse';
+import { RatingSectionComponent } from "./rating-section/rating-section.component";
 
 @Component({
   selector: 'app-comment',
   standalone: true,
-  imports: [CreateCommentComponent, NgClass, DatePipe],
+  imports: [CreateCommentComponent, NgClass, DatePipe, RatingSectionComponent],
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.scss'
 })

@@ -95,20 +95,6 @@
   cursor: pointer;
   color: var(--color-background-90);
 }
-#container #content #footer .rating {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-#container #content #footer .rating .rating-button {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-#container #content #footer .rating .rating-button:hover {
-  color: var(--color-background-120);
-  cursor: pointer;
-}
 #container #content #footer .comment {
   display: flex;
   align-items: center;

@@ -4,6 +4,10 @@ export interface Comment {
     content: string;
     reply: ReplyDto;
     createdAt: Date;
+
+    userRating: number;
+    likeAmount: number;
+    dislikeAmount: number;
 }
 
 export interface Author {

@@ -1,0 +1,35 @@
+#container {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    .rating-button {
+        display: flex;
+        align-items: center;
+
+        gap: 5px;
+
+        &:hover {
+            color: var(--color-background-120);
+            cursor: pointer;
+        }
+
+        &.selected {
+            color: var(--color-background-130);
+        }
+    }
+
+    #value {
+        min-width: 60px;
+    }
+
+    .icon {
+        font-size: 1.2em;
+        margin-top: 1px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

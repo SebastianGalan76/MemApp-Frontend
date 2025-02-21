@@ -1,0 +1,27 @@
+#container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+#container .rating-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#container .rating-button:hover {
+  color: var(--color-background-120);
+  cursor: pointer;
+}
+#container .rating-button.selected {
+  color: var(--color-background-130);
+}
+#container #value {
+  min-width: 60px;
+}
+#container .icon {
+  font-size: 1.2em;
+  margin-top: 1px;
+}
+#container .icon:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=rating-section.component.css.map */

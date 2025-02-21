@@ -1,0 +1,11 @@
+<div id="container">
+    <div class="rating-button" [ngClass]="{'selected' : this.parent.comment.userRating == 1}" (click)="rate(1, $event)">
+        <i class="icon fa-solid fa-square-caret-up"></i>
+        <div class="value">{{parent.comment.likeAmount}}</div>
+    </div>
+    <div class="rating-button" [ngClass]="{'selected' : this.parent.comment.userRating == -1}"
+        (click)="rate(-1, $event)">
+        <i class="icon fa-solid fa-square-caret-down"></i>
+        <div class="value">{{parent.comment.dislikeAmount}}</div>
+    </div>
+</div>
