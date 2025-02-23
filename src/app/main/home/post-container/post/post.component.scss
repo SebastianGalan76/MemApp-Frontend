@@ -52,6 +52,10 @@
         }
     }
 
+    #text {
+        white-space: pre-line;
+    }
+
     #content-wrapper {
         position: relative;
         overflow: hidden;

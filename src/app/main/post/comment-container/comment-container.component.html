@@ -7,7 +7,7 @@
     </div>
 
     @if (parent.post) {
-    <app-create-comment [id]="parent.post.id" [type]="'POST'" (onSuccess)="addNewComment($event)" />
+    <app-create-comment [id]="parent.post.id" (onSuccess)="addNewComment($event)" />
     }
 
     <div id="wrapper">

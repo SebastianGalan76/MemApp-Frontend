@@ -42,6 +42,7 @@ export class CommentContainerComponent implements OnInit {
   addNewComment(comment: Comment) {
     this.parent.post.commentAmount++;
 
-    this.addCommentComponent(comment);
+    const componentRef = this.container.createComponent(CommentComponent, { index: 0 });
+    componentRef.instance.comment = comment;
   }
 }

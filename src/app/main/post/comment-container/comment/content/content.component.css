@@ -1,0 +1,28 @@
+#container.expanded #content {
+  max-height: none;
+}
+#container.expanded #expand-button {
+  display: none !important;
+}
+#container.expandable #expand-button {
+  display: block;
+}
+#container #content {
+  font-size: 0.95em;
+  max-height: 80px;
+  line-height: 20px;
+  overflow: hidden;
+  padding: 5px 0;
+}
+#container #expand-button {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  display: none;
+  color: var(--color-background-110);
+  font-weight: 500;
+}
+#container #expand-button:hover {
+  color: var(--color-background-120);
+  cursor: pointer;
+}/*# sourceMappingURL=content.component.css.map */

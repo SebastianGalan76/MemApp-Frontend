@@ -14,8 +14,20 @@ export class AutoTextareaResizeDirective {
     this.resize();
   }
 
+  @HostListener('change') onChange(): void {
+    this.resize();
+  }
+
   private resize(): void {
     const textArea = this.element.nativeElement as HTMLTextAreaElement;
+
+    textArea.style.height = '34px';
     textArea.style.height = (textArea.scrollHeight + 2) + 'px';
+  }
+
+  public clear() {
+    const textArea = this.element.nativeElement as HTMLTextAreaElement;
+
+    textArea.style.height = '34px';
   }
 }

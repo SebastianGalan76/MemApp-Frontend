@@ -3,13 +3,29 @@
   gap: 10px;
   padding: 15px 10px;
 }
+#container #form-section #line {
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  left: 10px;
+  top: 22px;
+  background-color: var(--color-background-60);
+}
+#container #form-section #line #circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  position: absolute;
+  top: -4px;
+  left: -6px;
+  background-color: var(--color-background-60);
+}
 #container #form-section #user-picture {
+  flex-shrink: 0;
   width: 36px;
   height: 36px;
-  border-radius: 100%;
+  border-radius: 3px;
   overflow: hidden;
-  float: left;
-  flex-shrink: 0;
 }
 #container #form-section #user-picture img {
   max-width: 100%;
@@ -35,6 +51,7 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease;
+  background-color: var(--color-background-30);
 }
 #container #footer .button {
   width: -moz-fit-content;
@@ -68,6 +85,9 @@
 #container #footer.active {
   max-height: 50px;
 }
+#container.reply #form-section {
+  padding: 5px 0;
+}
 
 textarea {
   background-color: transparent;
@@ -80,6 +100,7 @@ textarea {
   width: 100%;
   font: inherit;
   color: inherit;
+  line-height: 1.5;
   resize: none;
   outline: none;
   display: block;

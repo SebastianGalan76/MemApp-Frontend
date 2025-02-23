@@ -23,17 +23,17 @@
             </div>
             <i id="button" class="fa-solid fa-ellipsis"></i>
         </div>
-        <div id="text">
-            {{comment.content}}
-        </div>
+
+        <comment-content [content]="comment.content"></comment-content>
+
         <div id="footer">
-            @if (comment.reply.totalReplies > 0) {
+            @if (comment.reply.totalReplies > 0 || isFormActive) {
             <div class="replies" (click)="isRepliesExpanded = !isRepliesExpanded">
                 @if (!isRepliesExpanded) {
-                <i class="icon fa-solid fa-circle-chevron-down" title="Pokaż odpowiedzi"></i>
+                <i class="icon fa-solid fa-angle-down" title="Pokaż odpowiedzi"></i>
                 }
                 @else {
-                <i class="icon fa-solid fa-circle-chevron-up" title="Schowaj odpowiedzi"></i>
+                <i class="icon fa-solid fa-angle-up" title="Schowaj odpowiedzi"></i>
                 }
             </div>
             }
@@ -51,9 +51,9 @@
         <div id="vertical-line">
 
         </div>
-        <div id="replies-wrapper" [ngClass]="{'expanded': isRepliesExpanded}">
+        <div id="replies-wrapper" [ngClass]="{'expanded': isRepliesExpanded, 'scrollable': !isReply}">
             @if (isFormActive) {
-            <app-create-comment [id]="comment.id" [type]="'COMMENT'" (onSuccess)="addNewComment($event)"
+            <app-create-comment [id]="comment.id" [isReply]="true" (onSuccess)="addNewComment($event)"
                 (onCancel)="isFormActive = false" />
             }
             <div id="replies-container" #repliesContainer>

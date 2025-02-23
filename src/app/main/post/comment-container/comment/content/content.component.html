@@ -1,0 +1,6 @@
+<div id="container" [ngClass]="{'expanded': isExpanded, 'expandable': isExpandable}">
+    <div id="content" class="wrapable-text" #contentElement>
+        {{content}}
+    </div>
+    <div id="expand-button" (click)="expand()">Czytaj dalej...</div>
+</div>

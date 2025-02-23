@@ -16,9 +16,10 @@ import { ObjectResponse } from '../../../../../model/response/ObjectResponse';
 })
 export class CreateCommentComponent implements AfterViewInit {
   @ViewChild('textarea') textarea!: ElementRef<HTMLTextAreaElement>;
+  @ViewChild(AutoTextareaResizeDirective) autoTextarea!: AutoTextareaResizeDirective;
 
-  @Input({ required: true }) type!: string;
   @Input({ required: true }) id!: number;
+  @Input() isReply: boolean = false;
 
   @Output() onSuccess: EventEmitter<Comment> = new EventEmitter();
   @Output() onCancel: EventEmitter<void> = new EventEmitter();
@@ -35,7 +36,7 @@ export class CreateCommentComponent implements AfterViewInit {
   ) { }
 
   ngAfterViewInit(): void {
-    if (this.type == 'COMMENT') {
+    if (this.isReply) {
       this.textarea.nativeElement.focus();
       this.cdr.detectChanges();
     }
@@ -48,7 +49,7 @@ export class CreateCommentComponent implements AfterViewInit {
 
     this.apiService.post<ObjectResponse<Comment>>('/comment', {
       content: this.content,
-      type: this.type,
+      type: this.isReply ? 'COMMENT' : 'POST',
       id: this.id
     }, { withCredentials: true }).subscribe({
       next: (response) => {
@@ -57,6 +58,7 @@ export class CreateCommentComponent implements AfterViewInit {
 
         this.isFooterShown = false;
         this.content = "";
+        this.autoTextarea.clear();
       },
       error: (response) => {
         if (response.error) {
@@ -72,6 +74,8 @@ export class CreateCommentComponent implements AfterViewInit {
 
     this.error = "";
     this.onCancel.next();
+
+    this.autoTextarea.clear();
   }
 
   blur() {

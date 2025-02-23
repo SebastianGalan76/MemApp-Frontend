@@ -17,6 +17,12 @@ a {
     color: inherit;
 }
 
+.wrapable-text {
+    white-space: pre-line;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
 }

@@ -3,16 +3,16 @@
   align-items: center;
   gap: 15px;
 }
-#container .rating-button {
+#container .button {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-#container .rating-button:hover {
+#container .button:hover {
   color: var(--color-background-120);
   cursor: pointer;
 }
-#container .rating-button.selected {
+#container .button.selected {
   color: var(--color-background-130);
 }
 #container #value {

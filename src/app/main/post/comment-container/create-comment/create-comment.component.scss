@@ -4,15 +4,36 @@
         gap: 10px;
         padding: 15px 10px;
 
+        #line {
+            position: absolute;
+            width: 10px;
+            height: 2px;
+
+            left: 10px;
+            top: 22px;
+
+            background-color: var(--color-background-60);
+
+            #circle {
+                width: 10px;
+                height: 10px;
+
+                border-radius: 100%;
+                position: absolute;
+                top: -4px;
+                left: -6px;
+
+                background-color: var(--color-background-60);
+            }
+        }
+
         #user-picture {
+            flex-shrink: 0;
+
             width: 36px;
             height: 36px;
-            border-radius: 100%;
+            border-radius: 3px;
             overflow: hidden;
-
-            float: left;
-
-            flex-shrink: 0;
 
             img {
                 max-width: 100%;
@@ -48,6 +69,7 @@
         overflow: hidden;
 
         transition: max-height 0.2s ease;
+        background-color: var(--color-background-30);
 
         .button {
             width: fit-content;
@@ -85,6 +107,12 @@
             max-height: 50px;
         }
     }
+
+    &.reply {
+        #form-section {
+            padding: 5px 0;
+        }
+    }
 }
 
 textarea {
@@ -102,6 +130,8 @@ textarea {
 
     font: inherit;
     color: inherit;
+
+    line-height: 1.5;
 
     resize: none;
     outline: none;

@@ -16,4 +16,6 @@
 #container #wrapper {
   margin-top: 10px;
   padding: 0 10px;
+  position: relative;
+  overflow: hidden;
 }/*# sourceMappingURL=comment-container.component.css.map */

@@ -1,0 +1,40 @@
+#container {
+    &.expanded {
+        #content {
+            max-height: none;
+        }
+
+        #expand-button {
+            display: none !important;
+        }
+    }
+
+    &.expandable {
+        #expand-button {
+            display: block;
+        }
+    }
+
+    #content {
+        font-size: 0.95em;
+
+        max-height: 80px;
+        line-height: 20px;
+
+        overflow: hidden;
+        padding: 5px 0;
+    }
+
+    #expand-button {
+        user-select: none;
+        display: none;
+
+        color: var(--color-background-110);
+        font-weight: 500;
+
+        &:hover {
+            color: var(--color-background-120);
+            cursor: pointer;
+        }
+    }
+}

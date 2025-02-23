@@ -6,11 +6,12 @@ import { ApiService } from '../../../../../service/api.service';
 import { ObjectResponse } from '../../../../../model/response/ObjectResponse';
 import { PageResponse } from '../../../../../model/response/PageResponse';
 import { RatingSectionComponent } from "./rating-section/rating-section.component";
+import { ContentComponent } from "./content/content.component";
 
 @Component({
   selector: 'app-comment',
   standalone: true,
-  imports: [CreateCommentComponent, NgClass, DatePipe, RatingSectionComponent],
+  imports: [CreateCommentComponent, NgClass, DatePipe, RatingSectionComponent, ContentComponent],
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.scss'
 })

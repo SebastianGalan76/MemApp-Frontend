@@ -1,6 +1,6 @@
 #container {
-  width: 100%;
   margin-top: 10px;
+  min-width: max(700px, 100%);
 }
 #container #content #header {
   display: flex;
@@ -16,29 +16,28 @@
   width: 20px;
   height: 2px;
   left: -10px;
-  background-color: var(--color-background-50);
+  background-color: var(--color-background-60);
 }
-#container #content #header #circle {
+#container #content #header #line #circle {
   width: 10px;
   height: 10px;
   border-radius: 100%;
   position: absolute;
   top: -4px;
   left: -6px;
-  background-color: var(--color-background-50);
+  background-color: var(--color-background-60);
 }
 #container #content #header #basic-information {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
   z-index: 10;
 }
 #container #content #header #basic-information #user-picture {
   width: 36px;
   height: 36px;
-  border-radius: 100%;
+  border-radius: 3px;
   overflow: hidden;
-  float: left;
 }
 #container #content #header #basic-information #user-picture img {
   max-width: 100%;
@@ -71,12 +70,12 @@
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.1);
 }
-#container #content #text {
-  font-size: 0.95em;
-}
 #container #content #footer {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   display: flex;
-  gap: 10px;
+  gap: 0px;
   color: var(--color-text-white-light);
 }
 #container #content #footer #menu {
@@ -85,15 +84,14 @@
 }
 #container #content #footer .replies {
   z-index: 1;
-  color: var(--color-background-70);
-  padding: 0 10px 0 0;
+  padding: 0 15px 0 0;
 }
 #container #content #footer .replies .icon {
-  margin-top: 6px !important;
+  margin-top: 3px !important;
 }
 #container #content #footer .replies:hover {
   cursor: pointer;
-  color: var(--color-background-90);
+  color: var(--color-background-120);
 }
 #container #content #footer .comment {
   display: flex;
@@ -115,11 +113,12 @@
   display: flex;
   gap: 10px;
   position: relative;
-  padding: 0 0 5px 8px;
+  padding: 0 0 0 8px;
+  width: 100%;
 }
 #container #replies #vertical-line {
   width: 2px;
-  background-color: var(--color-background-50);
+  background-color: var(--color-background-60);
   flex-shrink: 0;
 }
 #container #replies #replies-wrapper {
@@ -131,13 +130,16 @@
   height: auto;
   overflow: visible;
 }
+#container #replies #replies-wrapper.expanded.scrollable {
+  overflow-x: auto;
+}
 #container #replies #load-more-button {
-  border-radius: 20px;
-  padding: 3px 20px;
+  border-radius: 10px;
+  padding: 3px 10px;
   width: -moz-fit-content;
   width: fit-content;
   position: relative;
-  background-color: var(--color-background-50);
+  background-color: var(--color-background-60);
 }
 #container #replies #load-more-button:hover {
   cursor: pointer;
@@ -158,7 +160,7 @@
   height: 2px;
   left: -10px;
   top: 14px;
-  background-color: var(--color-background-50);
+  background-color: var(--color-background-60);
 }
 #container #replies #load-more-button #circle {
   width: 10px;
@@ -167,5 +169,5 @@
   position: absolute;
   top: -4px;
   left: -6px;
-  background-color: var(--color-background-50);
+  background-color: var(--color-background-60);
 }/*# sourceMappingURL=comment.component.css.map */
