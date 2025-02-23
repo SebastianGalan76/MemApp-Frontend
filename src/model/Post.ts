@@ -1,7 +1,9 @@
+import { UserBasic } from "../service/user.service";
+
 export interface Post {
     id: number;
     uuid: string;
-    owner: Owner;
+    author: UserBasic;
     type: ContentType;
     text: string | null;
     content: string;
@@ -21,10 +23,4 @@ export enum ContentType {
 export interface User {
     rating: number;
     postListIds: number[];
-}
-
-export interface Owner {
-    id: number;
-    login: string;
-    profilePictureUrl: string | null;
 }

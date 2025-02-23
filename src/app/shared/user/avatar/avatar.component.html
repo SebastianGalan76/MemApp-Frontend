@@ -1,0 +1,10 @@
+<div id="container">
+    @if (showImage) {
+    <img [src]="iconUrl" (error)="hideImage()" />
+    }
+    @else {
+    <div id="letter" [style]="{'background-color': color}">
+        {{letter}}
+    </div>
+    }
+</div>

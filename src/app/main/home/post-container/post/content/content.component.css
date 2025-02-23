@@ -2,7 +2,6 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  border: 2px solid var(--color-background-60);
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;

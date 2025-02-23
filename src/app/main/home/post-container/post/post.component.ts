@@ -9,11 +9,12 @@ import { AppService } from '../../../../../service/app.service';
 import { Utils } from '../../../../../service/utils.service';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { UserAvatarComponent } from "../../../../shared/user/avatar/avatar.component";
 
 @Component({
   selector: 'post',
   standalone: true,
-  imports: [MenuComponent, RatingSectionComponent, PostContentComponent, DatePipe],
+  imports: [MenuComponent, RatingSectionComponent, PostContentComponent, DatePipe, UserAvatarComponent],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss'
 })

@@ -66,23 +66,6 @@
   align-items: center;
   gap: 20px;
 }
-#container #user-section #user-picture {
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.3647058824);
-  cursor: pointer;
-}
-#container #user-section #user-picture img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
-  display: block;
-}
 #container #user-section #notification-button {
   width: 36px;
   height: 36px;

@@ -3,15 +3,15 @@ import { Comment } from '../../../../../model/Comment';
 import { CreateCommentComponent } from "../create-comment/create-comment.component";
 import { DatePipe, NgClass } from '@angular/common';
 import { ApiService } from '../../../../../service/api.service';
-import { ObjectResponse } from '../../../../../model/response/ObjectResponse';
 import { PageResponse } from '../../../../../model/response/PageResponse';
 import { RatingSectionComponent } from "./rating-section/rating-section.component";
 import { ContentComponent } from "./content/content.component";
+import { UserAvatarComponent } from "../../../../shared/user/avatar/avatar.component";
 
 @Component({
   selector: 'app-comment',
   standalone: true,
-  imports: [CreateCommentComponent, NgClass, DatePipe, RatingSectionComponent, ContentComponent],
+  imports: [CreateCommentComponent, NgClass, DatePipe, RatingSectionComponent, ContentComponent, UserAvatarComponent],
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.scss'
 })

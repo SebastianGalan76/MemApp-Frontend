@@ -40,24 +40,6 @@
                 align-items: center;
                 z-index: 10;
 
-                #user-picture {
-                    width: 36px;
-                    height: 36px;
-                    border-radius: 3px;
-                    overflow: hidden;
-
-                    img {
-                        max-width: 100%;
-                        max-height: 100%;
-
-                        width: auto;
-                        height: auto;
-
-                        object-fit: cover;
-                        display: block;
-                    }
-                }
-
                 #user-name {
                     font-weight: 500;
                     line-height: 16px;

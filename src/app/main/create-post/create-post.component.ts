@@ -7,6 +7,10 @@ import { ContentType } from '../../../model/Post';
 import { ToastService, ToastType } from '../../../service/toast.service';
 import { Response } from '../../../model/response/Response';
 import { Router } from '@angular/router';
+import { UserAvatarComponent } from "../../shared/user/avatar/avatar.component";
+import { Observable } from 'rxjs';
+import { User, UserService } from '../../../service/user.service';
+import { CommonModule } from '@angular/common';
 
 interface NewPostDto {
   text: string;
@@ -18,11 +22,13 @@ interface NewPostDto {
 @Component({
   selector: 'app-create-post',
   standalone: true,
-  imports: [AutoTextareaResizeDirective, FormsModule, PostContentComponent],
+  imports: [AutoTextareaResizeDirective, FormsModule, PostContentComponent, UserAvatarComponent, CommonModule],
   templateUrl: './create-post.component.html',
   styleUrl: './create-post.component.scss'
 })
 export class CreatePostComponent {
+  user$: Observable<User | null>;
+
   fileUrl: string = "";
   text: string = "";
 
@@ -37,10 +43,13 @@ export class CreatePostComponent {
   private imageExtensions = ['png', 'jpeg', 'jpg', 'webp'];
 
   constructor(
+    private userService: UserService,
     private apiService: ApiService,
     private toastService: ToastService,
     private router: Router
-  ) { }
+  ) {
+    this.user$ = userService.getUser();
+  }
 
   onFileUrlChange() {
     if (this.isImageLink(this.fileUrl)) {

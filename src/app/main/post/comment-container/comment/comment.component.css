@@ -33,21 +33,6 @@
   align-items: center;
   z-index: 10;
 }
-#container #content #header #basic-information #user-picture {
-  width: 36px;
-  height: 36px;
-  border-radius: 3px;
-  overflow: hidden;
-}
-#container #content #header #basic-information #user-picture img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
-  display: block;
-}
 #container #content #header #basic-information #user-name {
   font-weight: 500;
   line-height: 16px;

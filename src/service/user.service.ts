@@ -6,9 +6,13 @@ import { catchError, map } from 'rxjs/operators';
 import { CookieService } from './cookie.service';
 import { UserMemeList } from '../model/UserMemeList';
 
-export interface User {
+export interface UserBasic {
   id: number;
   login: string;
+  avatar: string;
+}
+
+export interface User extends UserBasic {
   email: string;
   role: string;
   ownedMemeLists: UserMemeList[];

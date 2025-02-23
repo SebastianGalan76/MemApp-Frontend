@@ -27,26 +27,6 @@
             }
         }
 
-        #user-picture {
-            flex-shrink: 0;
-
-            width: 36px;
-            height: 36px;
-            border-radius: 3px;
-            overflow: hidden;
-
-            img {
-                max-width: 100%;
-                max-height: 100%;
-
-                width: auto;
-                height: auto;
-
-                object-fit: cover;
-                display: block;
-            }
-        }
-
         #text {
             width: 100%;
         }

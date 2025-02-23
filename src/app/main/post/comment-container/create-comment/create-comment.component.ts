@@ -1,16 +1,19 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { AutoTextareaResizeDirective } from '../../../../directive/auto-textarea-resize.directive';
-import { NgClass } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../../../service/api.service';
 import { ToastService } from '../../../../../service/toast.service';
 import { Comment } from '../../../../../model/Comment';
 import { ObjectResponse } from '../../../../../model/response/ObjectResponse';
+import { UserAvatarComponent } from "../../../../shared/user/avatar/avatar.component";
+import { User, UserService } from '../../../../../service/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-create-comment',
   standalone: true,
-  imports: [AutoTextareaResizeDirective, NgClass, FormsModule],
+  imports: [AutoTextareaResizeDirective, NgClass, FormsModule, UserAvatarComponent, CommonModule],
   templateUrl: './create-comment.component.html',
   styleUrl: './create-comment.component.scss'
 })
@@ -24,16 +27,21 @@ export class CreateCommentComponent implements AfterViewInit {
   @Output() onSuccess: EventEmitter<Comment> = new EventEmitter();
   @Output() onCancel: EventEmitter<void> = new EventEmitter();
 
+  user$: Observable<User | null>;
+
   isFooterShown: boolean = false;
 
   content: string = "";
   error: string = "";
 
   constructor(
+    private userService: UserService,
     private apiService: ApiService,
     private toastService: ToastService,
     private cdr: ChangeDetectorRef
-  ) { }
+  ) {
+    this.user$ = userService.getUser();
+  }
 
   ngAfterViewInit(): void {
     if (this.isReply) {

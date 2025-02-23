@@ -1,13 +1,10 @@
 <div id="container" (click)="select()">
     <div id="header">
         <div id="basic-information">
-            <div id="user-picture">
-                <img
-                    src="https://e7.pngegg.com/pngimages/312/283/png-clipart-man-s-face-avatar-computer-icons-user-profile-business-user-avatar-blue-face-thumbnail.png" />
-            </div>
+            <user-avatar [user]="post.author" />
             <div>
                 <div id="user-name">
-                    {{post.owner.login}}
+                    {{post.author.login}}
                 </div>
                 <div id="publication-date">
                     {{post.createdAt | date:'dd.MM.yyyy HH:mm'}}

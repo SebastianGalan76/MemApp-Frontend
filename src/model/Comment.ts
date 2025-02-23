@@ -1,6 +1,8 @@
+import { UserBasic } from "../service/user.service";
+
 export interface Comment {
     id: number;
-    author: Author;
+    author: UserBasic;
     content: string;
     reply: ReplyDto;
     createdAt: Date;
@@ -8,12 +10,6 @@ export interface Comment {
     userRating: number;
     likeAmount: number;
     dislikeAmount: number;
-}
-
-export interface Author {
-    id: number;
-    login: string;
-    profilePictureUrl: string | null;
 }
 
 export interface ReplyDto {

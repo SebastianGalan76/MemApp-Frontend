@@ -16,10 +16,7 @@
             <div id="counter">3</div>
         </div>
 
-        <div id="user-picture">
-            <img
-                src="https://e7.pngegg.com/pngimages/312/283/png-clipart-man-s-face-avatar-computer-icons-user-profile-business-user-avatar-blue-face-thumbnail.png" />
-        </div>
+        <user-avatar [user]="parent.user" />
         }
         @else {
         <div id="signIn-button" routerLink="/auth/signIn">Logowanie</div>
