@@ -1,6 +1,6 @@
 #container {
   margin-top: 10px;
-  min-width: max(700px, 100%);
+  min-width: max(400px, 100%);
 }
 #container #content #header {
   display: flex;

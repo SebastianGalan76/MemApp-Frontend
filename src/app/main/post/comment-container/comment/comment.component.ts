@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ComponentRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { Comment } from '../../../../../model/Comment';
 import { CreateCommentComponent } from "../create-comment/create-comment.component";
 import { DatePipe, NgClass } from '@angular/common';
@@ -10,7 +10,7 @@ import { UserAvatarComponent } from "../../../../shared/user/avatar/avatar.compo
 import { MenuComponent } from "./menu/menu.component";
 import { ToastService, ToastType } from '../../../../../service/toast.service';
 import { Response } from '../../../../../model/response/Response';
-import { CommentContainerComponent } from '../comment-container.component';
+import { CommentContainerComponent, CommentElement } from '../comment-container.component';
 
 @Component({
   selector: 'app-comment',
@@ -24,9 +24,12 @@ export class CommentComponent implements AfterViewInit {
 
   public comment!: Comment;
   public isReply: boolean = false;
+  public parentComment: CommentComponent | null = null;
 
   isFormActive: boolean = false;
   isRepliesExpanded: boolean = true;
+
+  comments: CommentElement[] = [];
 
   constructor(
     private parent: CommentContainerComponent,
@@ -53,6 +56,12 @@ export class CommentComponent implements AfterViewInit {
     const componentRef = this.repliesContainer.createComponent(CommentComponent);
     componentRef.instance.comment = comment;
     componentRef.instance.isReply = true;
+    componentRef.instance.parentComment = this;
+
+    this.comments.push({
+      id: comment.id,
+      componentRef: componentRef
+    })
   }
 
   addNewComment(comment: Comment) {
@@ -75,6 +84,34 @@ export class CommentComponent implements AfterViewInit {
   }
 
   delete() {
-    this.parent.delete(this.comment.id);
+    if (!this.isReply) {
+      this.parent.delete(this.comment.id);
+    }
+    else {
+      if (this.parentComment) {
+        this.parentComment.deleteReply(this.comment.id);
+      }
+    }
+  }
+
+  deleteReply(id: number) {
+    this.apiService.delete<Response>(`/comment/${id}`, { withCredentials: true })
+      .subscribe({
+        next: (response) => {
+          const index = this.comments.findIndex(comment => comment.id === id);
+
+          if (index !== -1) {
+            this.comments[index].componentRef.destroy();
+            this.comments.splice(index, 1);
+          }
+
+          this.toastService.show(response.message);
+        },
+        error: (response) => {
+          if (response.error) {
+            this.toastService.show(response.error.message, ToastType.ERROR);
+          }
+        }
+      })
   }
 }
