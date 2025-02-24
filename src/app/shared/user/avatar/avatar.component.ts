@@ -41,12 +41,12 @@ export class UserAvatarComponent implements OnInit {
   }
 
   private setImageForUser(fileName: string) {
-    this.iconUrl = AppService.getBackendDomain() + "/uploads/user/profile/" + fileName;
+    this.iconUrl = AppService.getBackendDomain() + "/uploads/user/avatar/" + fileName;
     this.showImage = true;
   }
 
   private setAvatarForGuest() {
-    this.iconUrl = AppService.getBackendDomain() + "/uploads/user/profile/incognito.png";
+    this.iconUrl = AppService.getBackendDomain() + "/uploads/user/avatar/incognito.png";
     this.showImage = true;
   }
 

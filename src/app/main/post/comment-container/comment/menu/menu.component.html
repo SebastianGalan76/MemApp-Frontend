@@ -1,0 +1,20 @@
+<div id="container">
+    <i id="button" class="fa-solid fa-ellipsis" (click)="toggleMenu($event)"></i>
+
+    <div id="menu-container" [ngClass]="{'active': isActive}" [style]="{'top': yPos+'px', 'right': xPos+'px'}">
+        <div class="section red">
+            @if (isAuthor) {
+            <div class="button">
+                <span class="text">Usuń</span>
+                <i class="fa-solid fa-trash"></i>
+            </div>
+            }
+            @else {
+            <div class="button">
+                <span class="text">Zgłoś</span>
+                <i class="fa-solid fa-flag"></i>
+            </div>
+            }
+        </div>
+    </div>
+</div>

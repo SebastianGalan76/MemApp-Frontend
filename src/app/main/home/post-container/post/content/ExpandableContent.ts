@@ -9,7 +9,8 @@ export class ExpandableContent {
 
     containerHeight: number = 0;
 
-    toggleExpandedItem() {
+    toggleExpandedItem(event: MouseEvent) {
+        event.stopPropagation();
         this.isExpanded = !this.isExpanded;
     }
 

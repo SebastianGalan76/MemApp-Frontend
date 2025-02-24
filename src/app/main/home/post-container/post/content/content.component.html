@@ -6,7 +6,7 @@
         [ngStyle]="{'max-height': isExpanded ? containerHeight + 'px' : (isInitialized ? '1000px' : 'auto')}">
 
         @if (containerHeight >= 1000 && !isExpanded) {
-        <div id="expand-button" (click)="toggleExpandedItem()">Rozwiń</div>
+        <div id="expand-button" (click)="toggleExpandedItem($event)">Rozwiń</div>
         }
 
         <div id="background">
