@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ComponentRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { Comment } from '../../../../../model/Comment';
 import { CreateCommentComponent } from "../create-comment/create-comment.component";
 import { DatePipe, NgClass } from '@angular/common';
@@ -8,6 +8,9 @@ import { RatingSectionComponent } from "./rating-section/rating-section.componen
 import { ContentComponent } from "./content/content.component";
 import { UserAvatarComponent } from "../../../../shared/user/avatar/avatar.component";
 import { MenuComponent } from "./menu/menu.component";
+import { ToastService, ToastType } from '../../../../../service/toast.service';
+import { Response } from '../../../../../model/response/Response';
+import { CommentContainerComponent } from '../comment-container.component';
 
 @Component({
   selector: 'app-comment',
@@ -17,7 +20,7 @@ import { MenuComponent } from "./menu/menu.component";
   styleUrl: './comment.component.scss'
 })
 export class CommentComponent implements AfterViewInit {
-  @ViewChild('repliesContainer', { read: ViewContainerRef, static: true }) container!: ViewContainerRef;
+  @ViewChild('repliesContainer', { read: ViewContainerRef, static: true }) repliesContainer!: ViewContainerRef;
 
   public comment!: Comment;
   public isReply: boolean = false;
@@ -26,7 +29,9 @@ export class CommentComponent implements AfterViewInit {
   isRepliesExpanded: boolean = true;
 
   constructor(
-    private apiService: ApiService
+    private parent: CommentContainerComponent,
+    private apiService: ApiService,
+    private toastService: ToastService
   ) { }
 
   ngAfterViewInit(): void {
@@ -45,7 +50,7 @@ export class CommentComponent implements AfterViewInit {
   }
 
   addCommentComponent(comment: Comment) {
-    const componentRef = this.container.createComponent(CommentComponent);
+    const componentRef = this.repliesContainer.createComponent(CommentComponent);
     componentRef.instance.comment = comment;
     componentRef.instance.isReply = true;
   }
@@ -67,5 +72,9 @@ export class CommentComponent implements AfterViewInit {
   reply() {
     this.isRepliesExpanded = true;
     this.isFormActive = true;
+  }
+
+  delete() {
+    this.parent.delete(this.comment.id);
   }
 }
