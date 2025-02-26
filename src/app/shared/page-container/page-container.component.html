@@ -2,7 +2,7 @@
 
 <ng-template #pageTemplate let-page let-isSelected="isSelected">
     <div [ngClass]="{'page': true, 'selected': isSelected}" (click)="changePage(page)">
-        {{ page + 1 }}
+        {{ page }}
     </div>
 </ng-template>
 

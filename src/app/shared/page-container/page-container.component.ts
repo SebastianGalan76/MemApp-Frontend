@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, Output, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, OnDestroy, Output, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { PageResponse } from '../../../model/response/PageResponse';
 import { Subscription } from 'rxjs';
 import { NgClass } from '@angular/common';
@@ -14,6 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PageContainerComponent implements OnDestroy {
   @ViewChild('pageContainer', { read: ViewContainerRef }) pageContainer!: ViewContainerRef;
+  @ViewChild('pageContainer', { read: ElementRef }) pageContainerRef!: ElementRef;
+
   @ViewChild('pageTemplate', { read: TemplateRef }) pageTemplate!: TemplateRef<any>;
   @ViewChild('dividerTemplate', { read: TemplateRef }) dividerTemplate!: TemplateRef<any>;
 
@@ -23,6 +25,8 @@ export class PageContainerComponent implements OnDestroy {
   currentPage: number = 1;
 
   subscription: Subscription | null = null;
+
+  length: number = 10;
 
   constructor(
     postContainerService: PostContainerService,
@@ -40,12 +44,46 @@ export class PageContainerComponent implements OnDestroy {
 
   initialize(pageResponse: PageResponse<any> | null) {
     this.pageResponse = pageResponse;
-    this.currentPage = pageResponse!.number;
+    this.currentPage = pageResponse!.number + 1;
+
+    if (this.pageContainerRef?.nativeElement) {
+      const containerWidth = this.pageContainerRef.nativeElement.parentElement.clientWidth - 50;
+      this.length = Math.floor(containerWidth / 46);
+    }
 
     this.generatePages();
   }
 
-  generatePages(): void {
+  changePage(pageNumber: number): void {
+    if (this.currentPage != pageNumber) {
+      this.currentPage = pageNumber;
+
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: { page: pageNumber },
+        queryParamsHandling: 'merge'
+      })
+
+      this.onChangePage.emit(this.currentPage);
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    const containerWidth = this.pageContainerRef.nativeElement.parentElement.clientWidth - 50;
+    const length = Math.floor(containerWidth / 46);
+
+    if (this.length != length) {
+      this.length = length;
+      this.generatePages();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
+
+  private generatePages(): void {
     if (!this.pageContainer) {
       return;
     }
@@ -56,35 +94,68 @@ export class PageContainerComponent implements OnDestroy {
       return;
     }
 
-    const totalPages = this.pageResponse.totalPages - 1;
-    if (totalPages < 1) {
+    const totalPages = this.pageResponse.totalPages;
+
+    if (totalPages <= 1) {
       return;
     }
 
-    if (totalPages <= 5) {
-      for (var i = 0; i <= totalPages; i++) {
+    if (totalPages < this.length) {
+      for (var i = 0; i < totalPages; i++) {
         this.createPageElement(i);
       }
     } else {
-      if (this.currentPage >= 5) {
-        this.createPageElement(0);
-        this.createDividerElement();
-      }
+      const map = this.generatePageMap(this.currentPage, this.length, totalPages);
 
-      for (var i = this.currentPage - 4; i <= this.currentPage + 2; i++) {
-        if (i >= 0 && i <= totalPages) {
-          this.createPageElement(i);
+      map.forEach(v => {
+        if (v == "X") {
+          this.createDividerElement();
         }
-      }
-
-      if (this.currentPage <= totalPages - 3) {
-        this.createDividerElement();
-        this.createPageElement(totalPages);
-      }
+        else {
+          this.createPageElement(parseInt(v) - 1);
+        }
+      })
     }
   }
 
-  createPageElement(pageNumber: number): void {
+  private generatePageMap(currentPage: number, amount: number, totalElements: number): string[] {
+    amount = Math.min(amount, totalElements);
+
+    var result: string[] = new Array(amount);
+
+    var left = currentPage;
+    var right = currentPage + 1;
+    var index = 0;
+
+    while (index < amount) {
+      if (left >= 1) {
+        result[index++] = left.toString();
+        left--;
+      }
+      if (index < amount && right <= totalElements) {
+        result[index++] = right.toString();
+        right++;
+      }
+    }
+
+    result.sort((a, b) => Number(a) - Number(b));
+
+    result[0] = "1";
+    result[amount - 1] = totalElements.toString();
+
+    if (result[1] !== "2") {
+      result[1] = "X";
+    }
+    if (result[amount - 2] !== (totalElements - 1).toString()) {
+      result[amount - 2] = "X";
+    }
+
+    return result;
+  }
+
+  private createPageElement(pageNumber: number): void {
+    pageNumber++;
+
     const context = {
       $implicit: pageNumber,
       isSelected: pageNumber === this.currentPage
@@ -93,27 +164,7 @@ export class PageContainerComponent implements OnDestroy {
     this.pageContainer.createEmbeddedView(this.pageTemplate, context);
   }
 
-  createDividerElement(): void {
+  private createDividerElement(): void {
     this.pageContainer.createEmbeddedView(this.dividerTemplate);
   }
-
-  changePage(pageNumber: number): void {
-    if (this.currentPage != pageNumber) {
-      this.currentPage = pageNumber;
-      this.generatePages();
-
-      this.router.navigate([], {
-        relativeTo: this.route,
-        queryParams: { page: pageNumber + 1 },
-        queryParamsHandling: 'merge'
-      })
-
-      this.onChangePage.emit(this.currentPage);
-    }
-  }
-
-  ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
-  }
 }
-
