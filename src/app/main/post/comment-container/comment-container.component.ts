@@ -25,6 +25,8 @@ export class CommentContainerComponent implements OnInit {
   @ViewChild('container', { read: ViewContainerRef, static: true }) container!: ViewContainerRef;
 
   comments: CommentElement[] = [];
+  page: number = 0;
+  hasNextPage: boolean = false;
 
   constructor(
     public parent: PostPageComponent,
@@ -36,12 +38,12 @@ export class CommentContainerComponent implements OnInit {
     this.parent.isInitialized.pipe(
       take(1)
     ).subscribe(() => {
-      this.apiService.get<PageResponse<Comment>>(`/comment/post/${this.parent.post.id}/0`, { withCredentials: true }).subscribe({
-        next: (response) => {
-          response.content.forEach(c => this.addCommentComponent(c));
-        }
-      })
+      this.load();
     })
+  }
+
+  loadMore() {
+    this.load();
   }
 
   addCommentComponent(comment: Comment) {
@@ -87,5 +89,15 @@ export class CommentContainerComponent implements OnInit {
           }
         }
       })
+  }
+
+  load() {
+    this.apiService.get<PageResponse<Comment>>(`/comment/post/${this.parent.post.id}/${this.page}`, { withCredentials: true }).subscribe({
+      next: (response) => {
+        response.content.forEach(c => this.addCommentComponent(c));
+        this.hasNextPage = !response.last;
+        this.page++;
+      }
+    })
   }
 }

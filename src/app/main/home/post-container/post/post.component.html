@@ -3,9 +3,7 @@
         <div id="basic-information">
             <user-avatar [user]="post.author" />
             <div>
-                <div id="user-name">
-                    {{post.author.login}}
-                </div>
+                <user-nick [user]="post.author" />
                 <div id="publication-date">
                     {{post.createdAt | date:'dd.MM.yyyy HH:mm'}}
                 </div>

@@ -17,4 +17,18 @@
   position: relative;
   overflow: hidden;
   padding: 10px 10px 100px 10px;
+}
+
+#load-more-button {
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 30px;
+  border: 2px solid var(--color-background-100);
+  background-color: var(--color-background-60);
+}
+#load-more-button:hover {
+  cursor: pointer;
+  border: 2px solid var(--color-background-120);
+  background-color: var(--color-background-80);
 }/*# sourceMappingURL=comment-container.component.css.map */

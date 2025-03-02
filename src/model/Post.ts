@@ -1,9 +1,9 @@
-import { UserBasic } from "../service/user.service";
+import { User } from "../service/user.service";
 
 export interface Post {
     id: number;
     uuid: string;
-    author: UserBasic;
+    author: User;
     type: ContentType;
     text: string | null;
     content: string;
@@ -13,14 +13,14 @@ export interface Post {
 
     commentAmount: number;
 
-    user: User;
+    user: LoggedUser;
 }
 
 export enum ContentType {
     IMAGE = "IMAGE", TIKTOK = "TIKTOK"
 }
 
-export interface User {
+export interface LoggedUser {
     rating: number;
     postListIds: number[];
 }

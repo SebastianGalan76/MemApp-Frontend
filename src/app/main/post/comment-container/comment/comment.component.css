@@ -33,10 +33,6 @@
   align-items: center;
   z-index: 10;
 }
-#container #content #header #basic-information #user-name {
-  font-weight: 500;
-  line-height: 16px;
-}
 #container #content #header #basic-information #publication-date {
   color: var(--color-text-white-light);
   font-size: 0.76em;

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppService } from '../../../../service/app.service';
-import { UserBasic } from '../../../../service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'user-avatar',
@@ -10,13 +10,19 @@ import { UserBasic } from '../../../../service/user.service';
   styleUrl: './avatar.component.scss'
 })
 export class UserAvatarComponent implements OnInit {
-  @Input() user: UserBasic | null = null;
+  @Input() user: {
+    id: number,
+    login: string,
+    avatar: string
+  } | null = null;
 
   iconUrl: string = "";
   showImage: boolean = false;
 
   letter: string = "";
   color: string = "";
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     if (this.user) {
@@ -30,6 +36,14 @@ export class UserAvatarComponent implements OnInit {
     }
     else {
       this.setAvatarForGuest();
+    }
+  }
+
+  select(event: MouseEvent) {
+    event.stopPropagation();
+
+    if (this.user) {
+      this.router.navigate(['user', '@' + this.user.login]);
     }
   }
 

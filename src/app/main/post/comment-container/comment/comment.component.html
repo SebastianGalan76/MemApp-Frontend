@@ -10,9 +10,7 @@
             <div id="basic-information">
                 <user-avatar [user]="comment.author" />
                 <div>
-                    <div id="user-name">
-                        {{comment.author.login}}
-                    </div>
+                    <user-nick [user]="comment.author" />
                     <div id="publication-date">
                         {{comment.createdAt | date:'dd.MM.yyyy HH:mm'}}
                     </div>
@@ -56,8 +54,8 @@
             <div id="replies-container" #repliesContainer>
 
             </div>
-            @if (comment.reply.totalReplies > comment.reply.replies.length) { <div id="load-more-button"
-                (click)="loadReplies()">
+            @if (comment.reply.totalReplies > comment.reply.replies.length) {
+            <div id="load-more-button" (click)="loadReplies()">
                 <div id="line">
                     <div id="circle"></div>
                 </div>

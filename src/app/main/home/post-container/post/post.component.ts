@@ -10,11 +10,12 @@ import { Utils } from '../../../../../service/utils.service';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { UserAvatarComponent } from "../../../../shared/user/avatar/avatar.component";
+import { NickComponent } from "../../../../shared/user/nick/nick.component";
 
 @Component({
   selector: 'post',
   standalone: true,
-  imports: [MenuComponent, RatingSectionComponent, PostContentComponent, DatePipe, UserAvatarComponent],
+  imports: [MenuComponent, RatingSectionComponent, PostContentComponent, DatePipe, UserAvatarComponent, NickComponent],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss'
 })

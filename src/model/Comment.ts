@@ -1,8 +1,8 @@
-import { UserBasic } from "../service/user.service";
+import { User } from "../service/user.service";
 
 export interface Comment {
     id: number;
-    author: UserBasic;
+    author: User;
     content: string;
     reply: ReplyDto;
     createdAt: Date;

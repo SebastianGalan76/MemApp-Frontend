@@ -17,12 +17,8 @@
 }
 #container #header #basic-information {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
-}
-#container #header #basic-information #user-name {
-  font-weight: 500;
-  line-height: 16px;
 }
 #container #header #basic-information #publication-date {
   color: var(--color-text-white-light);

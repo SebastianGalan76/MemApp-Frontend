@@ -11,11 +11,12 @@ import { MenuComponent } from "./menu/menu.component";
 import { ToastService, ToastType } from '../../../../../service/toast.service';
 import { Response } from '../../../../../model/response/Response';
 import { CommentContainerComponent, CommentElement } from '../comment-container.component';
+import { NickComponent } from "../../../../shared/user/nick/nick.component";
 
 @Component({
   selector: 'app-comment',
   standalone: true,
-  imports: [CreateCommentComponent, NgClass, DatePipe, RatingSectionComponent, ContentComponent, UserAvatarComponent, MenuComponent],
+  imports: [CreateCommentComponent, NgClass, DatePipe, RatingSectionComponent, ContentComponent, UserAvatarComponent, MenuComponent, NickComponent],
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.scss'
 })

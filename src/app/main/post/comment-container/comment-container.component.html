@@ -14,5 +14,11 @@
         <div #container>
 
         </div>
+
+        @if (hasNextPage) {
+        <div id="load-more-button" (click)="loadMore()">
+            Załaduj następne odpowiedzi
+        </div>
+        }
     </div>
 </div>

@@ -16,14 +16,9 @@
 
         #basic-information {
             display: flex;
-            gap: 10px;
+            gap: 5px;
 
             align-items: center;
-
-            #user-name {
-                font-weight: 500;
-                line-height: 16px;
-            }
 
             #publication-date {
                 color: var(--color-text-white-light);

@@ -3,4 +3,6 @@ export interface PageResponse<T> {
     number: number;
     totalPages: number;
     totalElements: number;
+    first: boolean;
+    last: boolean;
 }
