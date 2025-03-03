@@ -42,7 +42,7 @@ export class PostContainerComponent implements AfterViewInit {
   }
 
   private loadPage(page: number) {
-    this.apiService.get<PageResponse<Post>>(`/post/all/${page}`, { withCredentials: true }).subscribe({
+    this.apiService.get<PageResponse<Post>>(`/post/home/${page}`, { withCredentials: true }).subscribe({
       next: (response) => {
         window.scrollTo({ top: 0 });
 

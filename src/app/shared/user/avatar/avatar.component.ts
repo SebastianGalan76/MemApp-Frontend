@@ -29,6 +29,7 @@ export class UserAvatarComponent implements OnInit {
       if (this.isHexColor(this.user.avatar)) {
         this.letter = this.user.login.substring(0, 1).toUpperCase();
         this.color = this.user.avatar;
+        this.hideImage();
       }
       else {
         this.setImageForUser(this.user.avatar);
@@ -43,7 +44,7 @@ export class UserAvatarComponent implements OnInit {
     event.stopPropagation();
 
     if (this.user) {
-      this.router.navigate(['user', '@' + this.user.login]);
+      this.router.navigate(['user', this.user.login]);
     }
   }
 

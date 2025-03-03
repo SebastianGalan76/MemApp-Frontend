@@ -20,7 +20,7 @@ export class NickComponent {
     event.stopPropagation();
 
     if (this.user) {
-      this.router.navigate(['user', '@' + this.user.login]);
+      this.router.navigate(['user', this.user.login]);
     }
   }
 }

@@ -20,6 +20,10 @@
   gap: 5px;
   align-items: center;
 }
+#container #header #basic-information #user-avatar {
+  width: 36px;
+  height: 36px;
+}
 #container #header #basic-information #publication-date {
   color: var(--color-text-white-light);
   font-size: 0.76em;

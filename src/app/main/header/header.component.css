@@ -66,6 +66,10 @@
   align-items: center;
   gap: 20px;
 }
+#container #user-section #user-avatar {
+  width: 36px;
+  height: 36px;
+}
 #container #user-section #notification-button {
   width: 36px;
   height: 36px;

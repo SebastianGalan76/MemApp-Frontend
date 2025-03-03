@@ -1,0 +1,70 @@
+<div id="banner">
+
+</div>
+
+<div id="container">
+    <div id="content">
+        <div class="panel" id="hero">
+            <div id="up-panel">
+                @if (user) {
+                <div class="section" id="left-section">
+                    <user-avatar [user]="user" id="user-avatar" />
+
+                    <user-nick [user]="user" id="user-nick" />
+                </div>
+                }
+
+                <div class="section" id="right-section">
+                    <div id="follow-button">
+                        Obserwuj
+                    </div>
+                    <div id="menu-button">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+            </div>
+            <div id="description">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                scrambled it to make a type specimen book.
+            </div>
+
+            <div id="social-links">
+                <div class="social"></div>
+                <div class="social"></div>
+                <div class="social"></div>
+                <div class="social"></div>
+                <div class="social"></div>
+            </div>
+            <div id="button-section">
+                <div class="button">
+                    Posty
+                </div>
+                <div class="button">
+                    Listy
+                </div>
+                <div class="button">
+                    Społeczności
+                </div>
+                <div class="button">
+                    Statystyki
+                </div>
+            </div>
+        </div>
+
+        <div id="section">
+            <router-outlet />
+        </div>
+    </div>
+    <div id="aside-menu">
+        <div class="panel" style="min-height: 250px;">
+
+        </div>
+        <div class="panel" style="min-height: 600px;">
+
+        </div>
+        <div class="panel" style="min-height:  300px;">
+
+        </div>
+    </div>
+</div>

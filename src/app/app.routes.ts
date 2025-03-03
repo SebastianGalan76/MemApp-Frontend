@@ -9,6 +9,8 @@ import { MainComponent } from './main/main.component';
 import { HomeComponent } from './main/home/home.component';
 import { CreatePostComponent } from './main/create-post/create-post.component';
 import { PostPageComponent } from './main/post/post.component';
+import { UserPageComponent } from './main/user/user.component';
+import { UserPostListComponent } from './main/user/post-list/post-list.component';
 
 export const routes: Routes = [
     {
@@ -43,6 +45,13 @@ export const routes: Routes = [
         children: [{
             path: "post/:id",
             component: PostPageComponent
+        }, {
+            path: "user/:login",
+            component: UserPageComponent,
+            children: [{
+                path: "",
+                component: UserPostListComponent
+            }]
         }, {
             path: "create",
             component: CreatePostComponent
