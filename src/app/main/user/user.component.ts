@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { BehaviorSubject, switchMap } from 'rxjs';
 import { ApiService } from '../../../service/api.service';
 import { UserAvatarComponent } from "../../shared/user/avatar/avatar.component";
 import { UserProfile } from '../../../model/UserProfile';
@@ -16,6 +16,7 @@ import { NickComponent } from "../../shared/user/nick/nick.component";
 })
 export class UserPageComponent implements OnInit {
   user: UserProfile | null = null;
+  isInitialized$ = new BehaviorSubject<boolean>(false);
 
   constructor(
     private apiService: ApiService,
@@ -29,6 +30,7 @@ export class UserPageComponent implements OnInit {
     ).subscribe({
       next: (response) => {
         this.user = response.object;
+        this.isInitialized$.next(true);
       }
     })
   }

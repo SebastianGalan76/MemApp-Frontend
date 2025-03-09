@@ -37,6 +37,10 @@
   color: var(--color-text-white-light);
   font-size: 0.76em;
 }
+#container #content #header #basic-information #user-avatar {
+  width: 36px;
+  height: 36px;
+}
 #container #content #header #button {
   border-radius: 100%;
   color: var(--color-text-white-light);

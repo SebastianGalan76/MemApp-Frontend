@@ -3,4 +3,12 @@ export interface UserProfile {
     login: string;
     avatar: string;
     role: string;
+
+    userList: PostListDto[];
+}
+
+export interface PostListDto {
+    id: number;
+    name: string;
+    postAmount: number;
 }
