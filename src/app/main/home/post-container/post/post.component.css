@@ -20,6 +20,9 @@
   gap: 5px;
   align-items: center;
 }
+#container #header #basic-information #wrapper #user-nick {
+  line-height: 16px;
+}
 #container #header #basic-information #user-avatar {
   width: 36px;
   height: 36px;

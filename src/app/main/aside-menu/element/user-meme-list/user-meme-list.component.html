@@ -7,7 +7,7 @@
     <div id="container" #container (click)="$event.stopPropagation()" [ngClass]="{'not-initialized': !isInitialized}"
         [ngStyle]="{'max-height': isExpanded ? containerHeight + 'px' : (isInitialized ? '0px' : 'auto')}">
         <ul>
-            <li *ngFor="let list of parent.user?.ownedMemeLists">{{list.name}}</li>
+            <li *ngFor="let list of parent.user?.ownedMemeLists" (click)="selectList(list.uuid)">{{list.name}}</li>
         </ul>
         <div id="create-list-button">
             <i class="fa-regular fa-square-plus"></i> Stwórz listę

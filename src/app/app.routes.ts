@@ -11,6 +11,7 @@ import { CreatePostComponent } from './main/create-post/create-post.component';
 import { PostPageComponent } from './main/post/post.component';
 import { UserPageComponent } from './main/user/user.component';
 import { UserPostListComponent } from './main/user/post-list/post-list.component';
+import { UserListComponent } from './main/list/list.component';
 
 export const routes: Routes = [
     {
@@ -52,6 +53,9 @@ export const routes: Routes = [
                 path: "",
                 component: UserPostListComponent
             }]
+        }, {
+            path: "list/:uuid",
+            component: UserListComponent
         }, {
             path: "create",
             component: CreatePostComponent

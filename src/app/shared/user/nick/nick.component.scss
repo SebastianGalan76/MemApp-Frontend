@@ -1,3 +1,9 @@
 #container {
     font-weight: 500;
+    width: fit-content;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.7;
+    }
 }
