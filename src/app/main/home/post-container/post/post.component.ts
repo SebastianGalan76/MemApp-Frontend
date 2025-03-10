@@ -11,6 +11,9 @@ import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { UserAvatarComponent } from "../../../../shared/user/avatar/avatar.component";
 import { NickComponent } from "../../../../shared/user/nick/nick.component";
+import { ApiService } from '../../../../../service/api.service';
+import { Response } from '../../../../../model/response/Response';
+import { ToastService, ToastType } from '../../../../../service/toast.service';
 
 @Component({
   selector: 'post',
@@ -26,6 +29,8 @@ export class PostComponent implements OnInit {
 
   constructor(
     private popupService: PopupService,
+    private apiService: ApiService,
+    private toastService: ToastService,
     private router: Router
   ) { }
 
@@ -57,6 +62,22 @@ export class PostComponent implements OnInit {
     this.popupService.showPopup(SaveMemePopupComponent, [
       { name: 'post', value: this.post }
     ]);
+  }
+
+  delete(event: MouseEvent) {
+    event.stopPropagation();
+
+    this.apiService.delete<Response>(`/post/${this.post.id}`, { withCredentials: true }).subscribe({
+      next: (response) => {
+        this.toastService.show(response.message, ToastType.SUCCESS);
+      },
+      error: (response) => {
+        if (response.error) {
+          this.toastService.show(response.error.message, ToastType.ERROR);
+        }
+
+      }
+    })
   }
 
   select() {

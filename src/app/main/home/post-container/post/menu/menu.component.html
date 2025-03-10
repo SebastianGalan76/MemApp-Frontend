@@ -29,6 +29,13 @@
                 <span class="text">Zgłoś</span>
                 <i class="fa-solid fa-flag"></i>
             </div>
+
+            @if (hasPermission('DELETE')) {
+            <div class="button" (click)="parent.delete($event)">
+                <span class="text">Usuń</span>
+                <i class="fa-solid fa-trash"></i>
+            </div>
+            }
         </div>
     </div>
 </div>
