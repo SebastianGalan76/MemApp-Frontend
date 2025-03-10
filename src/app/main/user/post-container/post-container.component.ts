@@ -12,8 +12,8 @@ import { filter, take } from 'rxjs';
   selector: 'user-post-list',
   standalone: true,
   imports: [PostContainerComponent],
-  templateUrl: './post-list.component.html',
-  styleUrl: './post-list.component.scss'
+  templateUrl: './post-container.component.html',
+  styleUrl: './post-container.component.scss'
 })
 export class UserPostListComponent {
   page: number = 0;
@@ -46,7 +46,7 @@ export class UserPostListComponent {
   loadPage(page: number) {
     this.apiService.get<PageResponse<Post>>(`/profile/${this.parent.user!.login}/post/${page}`, { withCredentials: true }).subscribe({
       next: (response) => {
-        window.scrollTo({ top: 0 });
+        //window.scrollTo({ top: 0 });
 
         this.postContainerService.load(response);
       },

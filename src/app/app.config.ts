@@ -11,9 +11,9 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes,
-      withInMemoryScrolling({
-        scrollPositionRestoration: 'enabled',
-      })
+      //      withInMemoryScrolling({
+      //        scrollPositionRestoration: 'enabled',
+      //      })
     ), provideHttpClient(),
     provideLottieOptions({
       player: () => player,

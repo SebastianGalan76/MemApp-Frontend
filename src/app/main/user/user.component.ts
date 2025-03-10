@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { ApiService } from '../../../service/api.service';
 import { UserAvatarComponent } from "../../shared/user/avatar/avatar.component";
@@ -20,11 +20,13 @@ export class UserPageComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private route: ActivatedRoute) {
-
+    private route: ActivatedRoute,
+    private router: Router) {
   }
 
   ngOnInit(): void {
+    window.scrollTo({ top: 0 });
+
     this.route.params.pipe(
       switchMap(params => this.apiService.get<ObjectResponse<UserProfile>>(`/profile/${params['login']}`, { withCredentials: true }))
     ).subscribe({
@@ -33,5 +35,14 @@ export class UserPageComponent implements OnInit {
         this.isInitialized$.next(true);
       }
     })
+  }
+
+  selectSection(path: string | null) {
+    if (path) {
+      this.router.navigate(['/user', this.user?.login, path]);
+    }
+    else {
+      this.router.navigate(['/user', this.user?.login]);
+    }
   }
 }

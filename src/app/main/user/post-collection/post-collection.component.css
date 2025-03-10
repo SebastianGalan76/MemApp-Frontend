@@ -1,0 +1,27 @@
+#container {
+  padding: 20px;
+  margin-top: 10px;
+}
+#container #list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+#container #list-container .item {
+  padding: 20px 30px;
+  font-size: 1.5em;
+  background-color: var(--color-background-40);
+  border: 2px dashed var(--color-background-60);
+  border-radius: 10px;
+}
+#container #list-container .item:hover {
+  cursor: pointer;
+  background-color: var(--color-background-30);
+}
+
+.panel {
+  background-color: var(--color-background-50);
+  border: 2px solid var(--color-background-60);
+  border-radius: 10px;
+}/*# sourceMappingURL=post-collection.component.css.map */

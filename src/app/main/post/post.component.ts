@@ -23,6 +23,8 @@ export class PostPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    window.scrollTo({ top: 0 });
+
     this.route.params.pipe(
       switchMap(params => this.apiService.get<Post>(`/post/${params['id']}`, { withCredentials: true }))
     ).subscribe({

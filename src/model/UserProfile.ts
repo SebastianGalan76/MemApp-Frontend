@@ -9,6 +9,7 @@ export interface UserProfile {
 
 export interface PostListDto {
     id: number;
+    uuid: string;
     name: string;
     postAmount: number;
 }
