@@ -14,6 +14,9 @@ import { NickComponent } from "../../../../shared/user/nick/nick.component";
 import { ApiService } from '../../../../../service/api.service';
 import { Response } from '../../../../../model/response/Response';
 import { ToastService, ToastType } from '../../../../../service/toast.service';
+import { PostContainerComponent } from '../post-container.component';
+import { ConfirmActionPopupComponent } from '../../../../shared/popup-container/popup/confirm-action/confirm-action.component';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'post',
@@ -28,6 +31,7 @@ export class PostComponent implements OnInit {
   content: PostContent | null = null;
 
   constructor(
+    private parent: PostContainerComponent,
     private popupService: PopupService,
     private apiService: ApiService,
     private toastService: ToastService,
@@ -67,17 +71,37 @@ export class PostComponent implements OnInit {
   delete(event: MouseEvent) {
     event.stopPropagation();
 
-    this.apiService.delete<Response>(`/post/${this.post.id}`, { withCredentials: true }).subscribe({
-      next: (response) => {
-        this.toastService.show(response.message, ToastType.SUCCESS);
-      },
-      error: (response) => {
-        if (response.error) {
-          this.toastService.show(response.error.message, ToastType.ERROR);
-        }
+    this.popupService.showConfirmPopup()
+      .pipe(
+        take(1)
+      ).subscribe(response => {
+        if (response.event == 'confirm') {
+          this.apiService.delete<Response>(`/post/${this.post.id}`, { withCredentials: true }).subscribe({
+            next: (response) => {
+              this.parent.deletePost(this.post.id);
+              this.toastService.show(response.message, ToastType.SUCCESS);
+            },
+            error: (response) => {
+              if (response.error) {
+                this.toastService.show(response.error.message, ToastType.ERROR);
+              }
 
-      }
-    })
+            }
+          })
+        }
+      });
+  }
+
+  copyLink(event: MouseEvent) {
+    event.stopPropagation();
+
+    const link = 'https://xmem.pl/post/' + this.post.id;
+
+    navigator.clipboard.writeText(link).then(() => {
+      this.toastService.show('Skopiowano link do schowka');
+    }).catch(err => {
+      console.error('Błąd kopiowania: ', err);
+    });
   }
 
   select() {

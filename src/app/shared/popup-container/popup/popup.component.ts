@@ -2,6 +2,7 @@ import { Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { Popup } from '../popup-container.component';
 import { PopupService } from '../../../../service/popup.service';
 import { NgClass } from '@angular/common';
+import { ConfirmActionPopupComponent } from './confirm-action/confirm-action.component';
 
 @Component({
   selector: 'app-popup',
@@ -27,6 +28,19 @@ export class PopupComponent {
   setContent(component: any) {
     this.popupContainer.clear();
     const componentRef = this.popupContainer.createComponent(component);
+
+    if (this.popup.data) {
+      this.popup.data.forEach((element: { name: string; value: unknown; }) => {
+        componentRef.setInput(element.name, element.value);
+      });
+    }
+
+    this.popup.componentRef = componentRef;
+  }
+
+  setConfirmContent() {
+    this.popupContainer.clear();
+    const componentRef = this.popupContainer.createComponent(ConfirmActionPopupComponent);
 
     if (this.popup.data) {
       this.popup.data.forEach((element: { name: string; value: unknown; }) => {

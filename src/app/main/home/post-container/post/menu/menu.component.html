@@ -3,7 +3,7 @@
 
     <div id="menu-container" [ngClass]="{'active': isActive}" [style]="{'top': yPos+'px', 'right': xPos+'px'}">
         <div class="section">
-            <div class="button">
+            <div class="button" (click)="parent.copyLink($event)">
                 <span class="text">Kopiuj link</span>
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
             </div>
@@ -13,7 +13,7 @@
                 <i class="fa-solid fa-share-nodes"></i>
             </div>
 
-            <div class="button" (click)="parent.save($event); isActive = false">
+            <div class="button" (click)="parent.save($event); toggleMenu($event)">
                 <span class="text">Zapisz</span>
                 <i class="fa-solid fa-bookmark"></i>
             </div>
@@ -31,7 +31,7 @@
             </div>
 
             @if (hasPermission('DELETE')) {
-            <div class="button" (click)="parent.delete($event)">
+            <div class="button" (click)="parent.delete($event); toggleMenu($event)">
                 <span class="text">Usuń</span>
                 <i class="fa-solid fa-trash"></i>
             </div>

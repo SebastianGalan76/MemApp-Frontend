@@ -1,0 +1,58 @@
+#container {
+  background-color: var(--color-background-50);
+  border: 2px solid var(--color-background-70);
+  border-radius: 15px;
+  overflow: hidden;
+  width: 600px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  padding: 10px 20px 20px 20px;
+}
+#container #close-button {
+  font-size: 1.5em;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+  opacity: 0.6;
+}
+#container #close-button:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+#container #text {
+  font-weight: 600;
+  font-size: 1.1em;
+}
+#container #description {
+  opacity: 0.6;
+}
+#container #button-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: end;
+  gap: 16px;
+}
+#container #button-container .button {
+  padding: 6px 30px;
+  border-radius: 8px;
+}
+#container #button-container .button#confirm {
+  background-color: var(--color-theme);
+  border: 2px solid var(--color-theme);
+}
+#container #button-container .button#confirm:hover {
+  background-color: var(--color-theme-accent);
+  border: 2px solid var(--color-theme-accent);
+}
+#container #button-container .button#cancel {
+  border: 2px solid var(--color-background-80);
+  opacity: 0.6;
+}
+#container #button-container .button#cancel:hover {
+  background-color: var(--color-background-40);
+  opacity: 1;
+}
+#container #button-container .button:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=confirm-action.component.css.map */

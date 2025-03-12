@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, ComponentRef, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { PopupService } from '../../../service/popup.service';
 import { PopupComponent } from './popup/popup.component';
+import { Observable, Subject } from 'rxjs';
+import { ConfirmActionPopupComponent } from './popup/confirm-action/confirm-action.component';
 
 export class Popup {
   id!: number;
@@ -49,6 +51,43 @@ export class PopupContainerComponent {
       componentRef.setInput('popup', popup);
       popupComponent.setContent(component);
     }
+  }
+
+  showConfirmPopup(data?: any[], options?: any[]): Observable<any> {
+    const popup = new Popup(this.popups.length, null, ConfirmActionPopupComponent, data);
+
+    this.popups.push(popup);
+    this.cdr.detectChanges();
+
+    if (this.popupContainer) {
+      const componentRef = this.popupContainer.createComponent(PopupComponent);
+
+      if (options) {
+        options.forEach((element: { name: string; value: unknown; }) => {
+          componentRef.setInput(element.name, element.value);
+        });
+      }
+
+      const popupComponent = componentRef.instance;
+      componentRef.setInput('popup', popup);
+      popupComponent.setContent(ConfirmActionPopupComponent);
+
+      if (popup.componentRef) {
+        const instance = popup.componentRef.instance as ConfirmActionPopupComponent;
+        const resultSubject = new Subject<any>();
+
+        instance.onConfirm.subscribe(() => {
+          resultSubject.next({ event: 'confirm' });
+        });
+        instance.onCancel.subscribe(() => {
+          resultSubject.next({ event: 'cancel' });
+        });
+
+        return resultSubject.asObservable();
+      }
+    }
+
+    return new Observable<any>();
   }
 
   closePopup(id: number): void {

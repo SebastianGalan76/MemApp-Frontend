@@ -48,7 +48,6 @@ export class UserListComponent implements OnInit {
         this.userList = response.object;
 
         this.postContainerService.load(response.object.content);
-        console.log(response);
       },
     })
   }
