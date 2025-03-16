@@ -2,11 +2,9 @@
     <div id="content">
         <div id="create-post-container" class="panel" routerLink="/create">
             <div id="header">
-                <user-avatar />
+                <user-avatar id="user-avatar" [user]="user$ | async" />
                 <div>
-                    <div id="user-name">
-                        DreaMPL
-                    </div>
+                    <user-nick [user]="user$ | async" />
                     <div id="publication-date">
                         25.10.2024 14:42
                     </div>

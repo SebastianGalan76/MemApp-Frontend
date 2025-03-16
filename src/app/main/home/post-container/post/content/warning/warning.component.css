@@ -12,7 +12,7 @@
   align-items: center;
   gap: 20px;
 }
-#container #header {
+#container .flag {
   text-align: center;
   font-size: 1.4em;
 }

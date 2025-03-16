@@ -91,7 +91,7 @@ export class SignInComponent {
       password: this.passwordInput.value
     }, {}).subscribe({
       next: (response) => {
-        CookieService.setCookie('jwt_token', response.token, 30);
+        CookieService.setCookie('jwt_token', response.token, 30 * 24 * 60 * 60 * 1000);
         this.router.navigate(['/']);
         this.userService.setUser(response.user);
       },

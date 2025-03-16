@@ -36,9 +36,9 @@
   gap: 10px;
   align-items: center;
 }
-#create-post-container #header #user-name {
-  font-weight: 500;
-  line-height: 16px;
+#create-post-container #header #user-avatar {
+  width: 36px;
+  height: 36px;
 }
 #create-post-container #header #publication-date {
   color: var(--color-text-white-light);

@@ -1,8 +1,11 @@
-import { ChangeDetectorRef, Directive, ElementRef, ViewChild } from "@angular/core";
+import { ChangeDetectorRef, Directive, ElementRef, Input, ViewChild } from "@angular/core";
 
 @Directive()
 export class ExpandableItem {
+    @Input('saveStatus') saveStatus: boolean = false;
+
     @ViewChild('container') container!: ElementRef;
+
     expandableItemId: number;
     isExpanded: boolean;
 
@@ -24,14 +27,16 @@ export class ExpandableItem {
         setTimeout(() => {
             this.isInitialized = true;
 
-            const expandableItemStatus = localStorage.getItem("expandableItem-" + this.expandableItemId);
-            if (!expandableItemStatus) {
-                this.isExpanded = this.isExpanded;
-            }
-            else if (expandableItemStatus == "1") {
-                this.isExpanded = true;
-            } else {
-                this.isExpanded = false;
+            if (this.saveStatus) {
+                const expandableItemStatus = localStorage.getItem("expandableItem-" + this.expandableItemId);
+                if (!expandableItemStatus) {
+                    this.isExpanded = this.isExpanded;
+                }
+                else if (expandableItemStatus == "1") {
+                    this.isExpanded = true;
+                } else {
+                    this.isExpanded = false;
+                }
             }
         });
     }
@@ -43,7 +48,9 @@ export class ExpandableItem {
     toggleExpandedItem() {
         this.isExpanded = !this.isExpanded;
 
-        localStorage.setItem("expandableItem-" + this.expandableItemId, this.isExpanded ? "1" : "0");
+        if (this.saveStatus) {
+            localStorage.setItem("expandableItem-" + this.expandableItemId, this.isExpanded ? "1" : "0");
+        }
     }
 
     private updateContainerHeight() {

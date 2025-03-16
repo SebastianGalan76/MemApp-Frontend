@@ -6,8 +6,10 @@ import { ExpandableContent } from './ExpandableContent';
 import { PostContentWarningComponent } from "./warning/warning.component";
 
 export interface PostContent {
+  id: number;
   type: ContentType;
   content: string;
+  flags: PostFlag[] | null;
 }
 
 @Component({
@@ -19,7 +21,6 @@ export interface PostContent {
 })
 export class PostContentComponent extends ExpandableContent {
   @Input({ required: true }) content!: PostContent | null;
-  @Input() flags!: PostFlag[] | null;
 
   PostType = ContentType;
 

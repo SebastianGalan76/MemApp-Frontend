@@ -1,6 +1,6 @@
 @if (content) {
 <div id="container">
-    <post-content-warning [flags]="flags" />
+    <post-content-warning [flags]="content.flags" [id]="content.id" />
 
     @if (content.type == PostType.IMAGE) {
     <div id="image-type"

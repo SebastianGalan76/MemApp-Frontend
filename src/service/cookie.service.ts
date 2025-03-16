@@ -5,11 +5,12 @@ import { AppService } from './app.service';
   providedIn: 'root'
 })
 export class CookieService {
-  static setCookie(name: string, value: string, days: number) {
+  //duration - in milliseconds
+  static setCookie(name: string, value: string, duration: number) {
     let expires = "";
-    if (days) {
+    if (duration) {
       const date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      date.setTime(date.getTime() + duration);
       expires = `expires=${date.toUTCString()};`;
     }
 

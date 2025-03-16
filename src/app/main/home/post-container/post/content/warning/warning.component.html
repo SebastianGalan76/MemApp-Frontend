@@ -1,5 +1,11 @@
 <div id="container" [ngClass]="{'active': isShown}">
-    <div id="header">Spoiler</div>
+    <div id="flag-container">
+        @for (flag of flags; track $index) {
+        <div class="flag">
+            {{getText(flag.type)}}
+        </div>
+        }
+    </div>
 
     <div id="show-content" (click)="showContent($event)">Pokaż zawartość</div>
 </div>

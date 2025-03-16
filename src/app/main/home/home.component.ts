@@ -6,22 +6,28 @@ import { ApiService } from '../../../service/api.service';
 import { PostContainerService } from '../../../service/post-container.service';
 import { PageResponse } from '../../../model/response/PageResponse';
 import { Post } from '../../../model/Post';
+import { User, UserService } from '../../../service/user.service';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+import { NickComponent } from "../../shared/user/nick/nick.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, PostContainerComponent, UserAvatarComponent],
+  imports: [RouterLink, PostContainerComponent, UserAvatarComponent, AsyncPipe, NickComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
+  user$: Observable<User | null>;
 
   constructor(
+    private userService: UserService,
     private apiService: ApiService,
     private postContainerService: PostContainerService,
     private route: ActivatedRoute
   ) {
-
+    this.user$ = userService.getUser();
   }
 
   ngOnInit(): void {

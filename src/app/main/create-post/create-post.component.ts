@@ -66,8 +66,10 @@ export class CreatePostComponent {
       this.showPreview = true;
 
       this.postContent = {
+        id: 0,
         type: ContentType.IMAGE,
-        content: this.fileUrl
+        content: this.fileUrl,
+        flags: null
       };
     }
     else if (this.isTiktokUrl(this.fileUrl)) {
@@ -76,8 +78,10 @@ export class CreatePostComponent {
       if (tiktokId) {
         this.showPreview = true;
         this.postContent = {
+          id: 0,
           type: ContentType.TIKTOK,
-          content: tiktokId
+          content: tiktokId,
+          flags: null
         }
       }
     }
@@ -216,8 +220,10 @@ export class CreatePostComponent {
     const reader = new FileReader();
     reader.onload = () => {
       this.postContent = {
+        id: 0,
         type: ContentType.IMAGE,
-        content: reader.result as string
+        content: reader.result as string,
+        flags: null
       };
     };
     reader.readAsDataURL(file);
