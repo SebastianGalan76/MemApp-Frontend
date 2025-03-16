@@ -1,9 +1,9 @@
-<div id="container">
+<div id="container" (click)="$event.stopPropagation()">
     <i id="button" class="fa-solid fa-ellipsis" (click)="toggleMenu($event)"></i>
 
     <div id="menu-container" [ngClass]="{'active': isActive}" [style]="{'top': yPos+'px', 'right': xPos+'px'}">
         <div class="section">
-            <div class="button" (click)="parent.copyLink($event)">
+            <div class="button" (click)="parent.copyLink($event); toggleMenu($event)">
                 <span class="text">Kopiuj link</span>
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
             </div>

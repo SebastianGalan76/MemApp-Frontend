@@ -1,0 +1,28 @@
+<div id="expandable-item" [ngClass]="{'expanded': isExpanded}">
+    <div id="header" (click)="toggleExpandedItem()">
+        <div class="title"><i class="fa-solid fa-flag"></i> Flagi</div>
+        <div class="icon"><i class="fa-solid fa-chevron-down"></i></div>
+    </div>
+
+    <div id="container" #container (click)="$event.stopPropagation()" [ngClass]="{'not-initialized': !isInitialized}"
+        [ngStyle]="{'max-height': isExpanded ? containerHeight + 'px' : (isInitialized ? '0px' : 'auto')}">
+
+        <div id="flag-container">
+            @for (flag of flags; track $index) {
+            <div class="flag">
+                <div class="icon">
+                    <i [ngClass]="flag.icon"></i>
+                </div>
+                <div class="info">
+                    <div class="name">{{flag.name}}</div>
+                    <div class="description">{{flag.description}}</div>
+                </div>
+                <div class="toggle-button">
+                    <input type="checkbox" [id]="'checkbox-'+flag.enum" [(ngModel)]="flag.isSelected">
+                    <label [for]="'checkbox-'+flag.enum" class="button"></label>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

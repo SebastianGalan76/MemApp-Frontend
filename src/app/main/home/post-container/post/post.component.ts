@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Optional } from '@angular/core';
 import { MenuComponent } from './menu/menu.component';
 import { PopupService } from '../../../../../service/popup.service';
 import { SaveMemePopupComponent } from './popup/save-popup/save-popup.component';
@@ -31,7 +31,7 @@ export class PostComponent implements OnInit {
   content: PostContent | null = null;
 
   constructor(
-    private parent: PostContainerComponent,
+    @Optional() private parent: PostContainerComponent | null,
     private popupService: PopupService,
     private apiService: ApiService,
     private toastService: ToastService,
@@ -78,7 +78,12 @@ export class PostComponent implements OnInit {
         if (response.event == 'confirm') {
           this.apiService.delete<Response>(`/post/${this.post.id}`, { withCredentials: true }).subscribe({
             next: (response) => {
-              this.parent.deletePost(this.post.id);
+              if (this.parent) {
+                this.parent.deletePost(this.post.id);
+              }
+              else {
+                this.router.navigate(['/']);
+              }
               this.toastService.show(response.message, ToastType.SUCCESS);
             },
             error: (response) => {

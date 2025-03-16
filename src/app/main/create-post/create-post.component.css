@@ -59,6 +59,10 @@
   gap: 10px;
   align-items: center;
 }
+#container #content #post-container #header #basic-information #user-avatar {
+  width: 36px;
+  height: 36px;
+}
 #container #content #post-container #header #basic-information #user-name {
   font-weight: 500;
   line-height: 16px;
@@ -242,6 +246,13 @@
 #container #content #post-container #footer #menu i:hover {
   cursor: pointer;
   color: var(--color-text-white);
+}
+#container #content #settings {
+  margin-top: 20px;
+}
+#container #content #settings #header {
+  opacity: 0.7;
+  margin-left: 20px;
 }
 #container #content #create-post-button {
   background-color: var(--color-theme);

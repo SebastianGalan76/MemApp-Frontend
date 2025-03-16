@@ -4,7 +4,7 @@
     <div id="menu-container" [ngClass]="{'active': isActive}" [style]="{'top': yPos+'px', 'right': xPos+'px'}">
         <div class="section red">
             @if (isAuthor) {
-            <div class="button" (click)="parent.delete()">
+            <div class="button" (click)="parent.delete(); toggleMenu($event)">
                 <span class="text">Usuń</span>
                 <i class="fa-solid fa-trash"></i>
             </div>

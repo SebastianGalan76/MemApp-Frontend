@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { ContentType } from '../../../../../../model/Post';
+import { ContentType, PostFlag } from '../../../../../../model/Post';
 import { NgStyle } from '@angular/common';
 import { ExpandableContent } from './ExpandableContent';
+import { PostContentWarningComponent } from "./warning/warning.component";
 
 export interface PostContent {
   type: ContentType;
@@ -12,12 +13,13 @@ export interface PostContent {
 @Component({
   selector: 'post-content',
   standalone: true,
-  imports: [NgStyle],
+  imports: [NgStyle, PostContentWarningComponent],
   templateUrl: './content.component.html',
   styleUrl: './content.component.scss'
 })
 export class PostContentComponent extends ExpandableContent {
   @Input({ required: true }) content!: PostContent | null;
+  @Input() flags!: PostFlag[] | null;
 
   PostType = ContentType;
 

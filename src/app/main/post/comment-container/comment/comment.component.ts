@@ -12,6 +12,8 @@ import { ToastService, ToastType } from '../../../../../service/toast.service';
 import { Response } from '../../../../../model/response/Response';
 import { CommentContainerComponent, CommentElement } from '../comment-container.component';
 import { NickComponent } from "../../../../shared/user/nick/nick.component";
+import { PopupService } from '../../../../../service/popup.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-comment',
@@ -35,6 +37,7 @@ export class CommentComponent implements AfterViewInit {
   constructor(
     private parent: CommentContainerComponent,
     private apiService: ApiService,
+    private popupService: PopupService,
     private toastService: ToastService
   ) { }
 
@@ -85,14 +88,21 @@ export class CommentComponent implements AfterViewInit {
   }
 
   delete() {
-    if (!this.isReply) {
-      this.parent.delete(this.comment.id);
-    }
-    else {
-      if (this.parentComment) {
-        this.parentComment.deleteReply(this.comment.id);
-      }
-    }
+    this.popupService.showConfirmPopup()
+      .pipe(
+        take(1)
+      ).subscribe(response => {
+        if (response.event == 'confirm') {
+          if (!this.isReply) {
+            this.parent.delete(this.comment.id);
+          }
+          else {
+            if (this.parentComment) {
+              this.parentComment.deleteReply(this.comment.id);
+            }
+          }
+        }
+      });
   }
 
   deleteReply(id: number) {

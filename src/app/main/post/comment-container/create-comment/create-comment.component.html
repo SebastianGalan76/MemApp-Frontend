@@ -6,7 +6,7 @@
         </div>
         }
 
-        <user-avatar [user]="user$ | async" />
+        <user-avatar id="user-avatar" [user]="user$ | async" />
 
         <div id="text">
             <textarea autoTextareaResize #textarea placeholder="Dodaj komentarz" (focus)="isFooterShown = true"

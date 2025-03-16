@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AutoTextareaResizeDirective } from '../../directive/auto-textarea-resize.directive';
 import { FormsModule } from '@angular/forms';
 import { PostContent, PostContentComponent } from '../home/post-container/post/content/content.component';
@@ -11,23 +11,28 @@ import { UserAvatarComponent } from "../../shared/user/avatar/avatar.component";
 import { Observable } from 'rxjs';
 import { User, UserService } from '../../../service/user.service';
 import { CommonModule } from '@angular/common';
+import { NickComponent } from "../../shared/user/nick/nick.component";
+import { FlagSettingsComponent } from "./flag-settings/flag-settings.component";
 
 interface NewPostDto {
   text: string;
   content: string;
   type: string;
   visibility: string;
+  flags: string[];
 }
 
 @Component({
   selector: 'app-create-post',
   standalone: true,
-  imports: [AutoTextareaResizeDirective, FormsModule, PostContentComponent, UserAvatarComponent, CommonModule],
+  imports: [AutoTextareaResizeDirective, FormsModule, PostContentComponent, UserAvatarComponent, CommonModule, NickComponent, FlagSettingsComponent],
   templateUrl: './create-post.component.html',
   styleUrl: './create-post.component.scss'
 })
 export class CreatePostComponent {
   user$: Observable<User | null>;
+
+  @ViewChild('flagSettings') flagSettings!: FlagSettingsComponent;
 
   fileUrl: string = "";
   text: string = "";
@@ -39,6 +44,11 @@ export class CreatePostComponent {
 
   postContent: PostContent | null = null;
   errorMessage: string = "";
+
+  //Flags
+  nsfwFlag: boolean = false;
+  spoilerFlag: boolean = false;
+  racistFlag: boolean = false;
 
   private imageExtensions = ['png', 'jpeg', 'jpg', 'webp'];
 
@@ -81,10 +91,10 @@ export class CreatePostComponent {
       if (this.selectedFile) {
         switch (this.checkFile(this.selectedFile)) {
           case 1:
-            //this.notificationService.showNotification("Akceptujemy jedynie rozszerzenia jpeg, png, gif i webp", NotificationType.ERROR);
+            this.toastService.show("Akceptujemy jedynie rozszerzenia jpeg, png, gif i webp", ToastType.ERROR);
             return;
           case 2:
-            //this.notificationService.showNotification("Rozmiar pliku jest za duży", NotificationType.ERROR);
+            this.toastService.show("Rozmiar pliku jest za duży", ToastType.ERROR);
             return;
         }
 
@@ -120,6 +130,7 @@ export class CreatePostComponent {
       content: this.postContent!.content,
       type: this.postContent!.type,
       visibility: 'PUBLIC',
+      flags: this.flagSettings.getSelectedFlags(),
     }
 
     formData.append('newPostDto', JSON.stringify(newPostDto));

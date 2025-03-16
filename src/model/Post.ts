@@ -13,6 +13,8 @@ export interface Post {
 
     commentAmount: number;
 
+    flags: PostFlag[];
+
     user: LoggedUser;
 }
 
@@ -23,4 +25,10 @@ export enum ContentType {
 export interface LoggedUser {
     rating: number;
     postListIds: number[];
+}
+
+export interface PostFlag {
+    id: number;
+    type: string;
+    staffFlag: boolean;
 }

@@ -54,7 +54,7 @@ export class MenuComponent implements OnDestroy, OnInit {
 
   hasPermission(action: string): boolean {
     if (action == 'DELETE') {
-      if (this.user && (PermissionChecker.hasPermission(this.user.role, 1000) || this.parent.post.author.id == this.user.id)) {
+      if (this.user && (PermissionChecker.hasPermission(this.user.role, 1000) || (this.parent.post.author && this.parent.post.author.id == this.user.id))) {
         return true;
       }
     }

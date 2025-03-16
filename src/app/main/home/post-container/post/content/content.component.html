@@ -1,7 +1,8 @@
 @if (content) {
 <div id="container">
-    @if (content.type == PostType.IMAGE) {
+    <post-content-warning [flags]="flags" />
 
+    @if (content.type == PostType.IMAGE) {
     <div id="image-type"
         [ngStyle]="{'max-height': isExpanded ? containerHeight + 'px' : (isInitialized ? '1000px' : 'auto')}">
 

@@ -23,6 +23,10 @@
 #container #form-section #text {
   width: 100%;
 }
+#container #form-section #user-avatar {
+  width: 38px;
+  height: 38px;
+}
 #container #error-response {
   margin-top: -5px;
   font-size: 0.9em;

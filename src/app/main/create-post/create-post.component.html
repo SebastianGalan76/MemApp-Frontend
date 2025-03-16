@@ -11,12 +11,10 @@
         <div id="post-container">
             <div id="header">
                 <div id="basic-information">
-                    <user-avatar [user]="user$ | async" />
+                    <user-avatar id="user-avatar" [user]="user$ | async" />
 
                     <div>
-                        <div id="user-name">
-                            DreaMPL
-                        </div>
+                        <user-nick [user]="user$ | async" />
                         <div id="publication-date">
                             24.10.2024 15:32
                         </div>
@@ -85,6 +83,12 @@
                     <i class="fa-solid fa-bookmark" title="Zapisz post"></i>
                 </div>
             </div>
+        </div>
+
+        <div id="settings">
+            <div id="header">USTAWIENIA</div>
+
+            <create-post-flag-settings #flagSettings />
         </div>
 
         <div id="error-message">{{errorMessage}}</div>
