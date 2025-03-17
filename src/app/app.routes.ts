@@ -13,6 +13,7 @@ import { UserPageComponent } from './main/user/user.component';
 import { UserPostListComponent } from './main/user/post-container/post-container.component';
 import { UserListComponent } from './main/list/list.component';
 import { UserPostCollectionComponent } from './main/user/post-collection/post-collection.component';
+import { WaitingRoomComponent } from './main/waiting-room/waiting-room.component';
 
 export const routes: Routes = [
     {
@@ -63,6 +64,9 @@ export const routes: Routes = [
         }, {
             path: "create",
             component: CreatePostComponent
+        }, {
+            path: "poczekalnia",
+            component: WaitingRoomComponent
         }, {
             path: "",
             component: HomeComponent
