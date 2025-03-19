@@ -3,9 +3,6 @@
 
     padding: 10px;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
     border: 2px solid var(--color-background-60);
 
     #header {
@@ -39,15 +36,20 @@
     }
 
     #text {
+        margin-top: 5px;
         white-space: pre-line;
     }
 
     #content-wrapper {
+        margin-top: 5px;
+
         position: relative;
         overflow: hidden;
     }
 
     #footer {
+        margin-top: 5px;
+
         padding: 0 5px;
         display: flex;
         color: var(--color-text-white-light);
@@ -60,22 +62,19 @@
             }
         }
 
-        .section {
+        #section-container {
             display: flex;
-            align-items: center;
-            gap: 6px;
+            justify-content: space-around;
+            flex-grow: 1;
 
-            .value {
-                min-width: 60px;
-            }
+            .section {
+                display: flex;
+                align-items: center;
+                gap: 6px;
 
-            .vote-button:hover {
-                cursor: pointer;
-                color: var(--color-text-white);
-            }
-
-            &.comment {
-                margin-left: 20%;
+                .value {
+                    min-width: 60px;
+                }
 
                 &:hover {
                     color: var(--color-text-white);

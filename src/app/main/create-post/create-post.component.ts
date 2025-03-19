@@ -13,6 +13,7 @@ import { User, UserService } from '../../../service/user.service';
 import { CommonModule } from '@angular/common';
 import { NickComponent } from "../../shared/user/nick/nick.component";
 import { FlagSettingsComponent } from "./flag-settings/flag-settings.component";
+import { HashtagSettingsComponent } from "./hashtag-settings/hashtag-settings.component";
 
 interface NewPostDto {
   text: string;
@@ -20,12 +21,13 @@ interface NewPostDto {
   type: string;
   visibility: string;
   flags: string[];
+  hashtags: string[];
 }
 
 @Component({
   selector: 'app-create-post',
   standalone: true,
-  imports: [AutoTextareaResizeDirective, FormsModule, PostContentComponent, UserAvatarComponent, CommonModule, NickComponent, FlagSettingsComponent],
+  imports: [AutoTextareaResizeDirective, FormsModule, PostContentComponent, UserAvatarComponent, CommonModule, NickComponent, FlagSettingsComponent, HashtagSettingsComponent],
   templateUrl: './create-post.component.html',
   styleUrl: './create-post.component.scss'
 })
@@ -33,6 +35,7 @@ export class CreatePostComponent {
   user$: Observable<User | null>;
 
   @ViewChild('flagSettings') flagSettings!: FlagSettingsComponent;
+  @ViewChild('hashtagSettings') hashtagSettings!: HashtagSettingsComponent;
 
   fileUrl: string = "";
   text: string = "";
@@ -135,6 +138,7 @@ export class CreatePostComponent {
       type: this.postContent!.type,
       visibility: 'PUBLIC',
       flags: this.flagSettings.getSelectedFlags(),
+      hashtags: this.hashtagSettings.getHashtags(),
     }
 
     formData.append('newPostDto', JSON.stringify(newPostDto));

@@ -1,0 +1,11 @@
+<div id="container" [ngClass]="{'active': isShown}">
+    <div id="title">
+        Hashtagi:
+    </div>
+
+    @for (hashtag of hashtags; track $index) {
+    <div class="hashtag" (click)="selectHashtag(hashtag, $event)">
+        {{hashtag.tag}}
+    </div>
+    }
+</div>

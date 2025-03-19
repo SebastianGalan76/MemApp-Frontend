@@ -1,0 +1,28 @@
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 5px;
+}
+#container #title {
+  opacity: 0.5;
+  font-size: 0.8em;
+}
+#container .hashtag {
+  padding: 0 10px;
+  border-radius: 200px;
+  background-color: var(--color-background-30);
+  color: var(--color-background-100);
+}
+#container .hashtag:hover {
+  cursor: pointer;
+  background-color: var(--color-background-20);
+  color: var(--color-background-110);
+}
+#container.active {
+  margin-top: 5px;
+  max-height: 200px;
+}/*# sourceMappingURL=hashtag.component.css.map */

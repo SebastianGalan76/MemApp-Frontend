@@ -1,4 +1,5 @@
 import { User } from "../service/user.service";
+import { Hashtag } from "./Hashtag";
 
 export interface Post {
     id: number;
@@ -14,6 +15,7 @@ export interface Post {
     commentAmount: number;
 
     flags: PostFlag[];
+    hashtags: Hashtag[];
 
     user: LoggedUser;
 }

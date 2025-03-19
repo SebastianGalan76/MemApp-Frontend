@@ -1,0 +1,41 @@
+<div id="expandable-item" [ngClass]="{'expanded': isExpanded}">
+    <div id="header" (click)="toggleExpandedItem()">
+        <div class="title"><i class="fa-solid fa-hashtag"></i> Hashtagi
+
+            @if (hashtags.length>0) {
+            [{{hashtags.length}}]
+            }
+
+        </div>
+        <div class="icon"><i class="fa-solid fa-chevron-down"></i></div>
+    </div>
+
+    <div id="container" #container (click)="$event.stopPropagation()" [ngClass]="{'not-initialized': !isInitialized}"
+        [ngStyle]="{'max-height': isExpanded ? containerHeight + 'px' : (isInitialized ? '0px' : 'auto')}">
+
+        <div id="content">
+            <div class="input-wrapper">
+                <div class="input-area">
+                    <input type="text" maxlength="100" placeholder="Wpisz tag" (keydown.enter)="createNewTag()"
+                        [(ngModel)]="inputValue">
+                    <div class="icon">
+                        <i class="fa-solid fa-hashtag"></i>
+                    </div>
+                </div>
+                <div id="info">Wpisz hashtag i wciśnij klawisz ENTER, aby go dodać.</div>
+                <span id="error"></span>
+            </div>
+
+            <div id="hashtag-container">
+                @for (hashtag of hashtags; track $index) {
+                <div class="hashtag">
+                    <div class="value">{{hashtag}}</div>
+                    <div class="remove-button" (click)="removeHashtag(hashtag)" title="Usuń hashtag">
+                        <i class="fa-solid fa-trash"></i>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

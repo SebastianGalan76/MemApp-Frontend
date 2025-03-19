@@ -19,16 +19,30 @@
     <div id="content-wrapper">
         <post-content [content]="content" />
     </div>
+
     <div id="footer">
         <meme-rating-section />
-        <div class="section comment">
-            <i class="fa-solid fa-comment"></i>
+        <div id="section-container">
+            <div class="section">
+                <i class="fa-solid fa-comment"></i>
 
-            <div class="value">{{post.commentAmount}}</div>
+                <div class="value">{{post.commentAmount}}</div>
+            </div>
+            @if (post.hashtags.length > 0) {
+            <div class="section" (click)="hashtagContainer?.toggleComponent($event)">
+                <i class="fa-solid fa-hashtag"></i>
+
+                <div class="value">{{post.hashtags.length}}</div>
+            </div>
+            }
         </div>
         <div id="menu">
             <i class="fa-solid fa-share-nodes" title="Udostępnij post"></i>
             <i class="fa-solid fa-bookmark" (click)="save($event)" title="Zapisz post"></i>
         </div>
     </div>
+
+    @if (post.hashtags && post.hashtags.length > 0) {
+    <post-hashtag-container #hashtagContainer [hashtags]="post.hashtags" />
+    }
 </div>

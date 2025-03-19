@@ -1,0 +1,19 @@
+<div id="container">
+    <div id="header">
+        Popularne tagi
+    </div>
+
+    @if (response) {
+    <div id="hashtag-container">
+        @for (hashtag of response.hashtags; track $index) {
+        <div class="hashtag">
+            <div class="tag">#{{hashtag.hashtag.tag}}</div>
+            <div class="popularity">{{getAmount(hashtag.popularity)}}</div>
+        </div>
+        }
+    </div>
+    <div id="info">
+        Odświeżono: {{response.refreshedAt| date:'dd.MM.yyyy HH:mm'}}
+    </div>
+    }
+</div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Optional } from '@angular/core';
+import { Component, Input, OnInit, Optional, ViewChild } from '@angular/core';
 import { MenuComponent } from './menu/menu.component';
 import { PopupService } from '../../../../../service/popup.service';
 import { SaveMemePopupComponent } from './popup/save-popup/save-popup.component';
@@ -15,18 +15,20 @@ import { ApiService } from '../../../../../service/api.service';
 import { Response } from '../../../../../model/response/Response';
 import { ToastService, ToastType } from '../../../../../service/toast.service';
 import { PostContainerComponent } from '../post-container.component';
-import { ConfirmActionPopupComponent } from '../../../../shared/popup-container/popup/confirm-action/confirm-action.component';
 import { take } from 'rxjs';
+import { HashtagComponent } from "./hashtag/hashtag.component";
 
 @Component({
   selector: 'post',
   standalone: true,
-  imports: [MenuComponent, RatingSectionComponent, PostContentComponent, DatePipe, UserAvatarComponent, NickComponent],
+  imports: [MenuComponent, RatingSectionComponent, PostContentComponent, DatePipe, UserAvatarComponent, NickComponent, HashtagComponent],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss'
 })
 export class PostComponent implements OnInit {
   @Input({ required: true }) post!: Post;
+
+  @ViewChild('hashtagContainer') hashtagContainer: HashtagComponent | null = null;
 
   content: PostContent | null = null;
 

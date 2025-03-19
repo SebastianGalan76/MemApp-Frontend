@@ -2,9 +2,6 @@
   background-color: var(--color-background-50);
   padding: 10px;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
   border: 2px solid var(--color-background-60);
 }
 #container #header {
@@ -32,13 +29,16 @@
   font-size: 0.76em;
 }
 #container #text {
+  margin-top: 5px;
   white-space: pre-line;
 }
 #container #content-wrapper {
+  margin-top: 5px;
   position: relative;
   overflow: hidden;
 }
 #container #footer {
+  margin-top: 5px;
   padding: 0 5px;
   display: flex;
   color: var(--color-text-white-light);
@@ -49,22 +49,20 @@
 #container #footer i:hover {
   cursor: pointer;
 }
-#container #footer .section {
+#container #footer #section-container {
+  display: flex;
+  justify-content: space-around;
+  flex-grow: 1;
+}
+#container #footer #section-container .section {
   display: flex;
   align-items: center;
   gap: 6px;
 }
-#container #footer .section .value {
+#container #footer #section-container .section .value {
   min-width: 60px;
 }
-#container #footer .section .vote-button:hover {
-  cursor: pointer;
-  color: var(--color-text-white);
-}
-#container #footer .section.comment {
-  margin-left: 20%;
-}
-#container #footer .section.comment:hover {
+#container #footer #section-container .section:hover {
   color: var(--color-text-white);
   cursor: pointer;
 }

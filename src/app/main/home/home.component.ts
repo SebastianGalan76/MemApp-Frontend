@@ -10,11 +10,12 @@ import { User, UserService } from '../../../service/user.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { NickComponent } from "../../shared/user/nick/nick.component";
+import { PopularHashtagComponent } from "./popular-hashtag/popular-hashtag.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, PostContainerComponent, UserAvatarComponent, AsyncPipe, NickComponent],
+  imports: [RouterLink, PostContainerComponent, UserAvatarComponent, AsyncPipe, NickComponent, PopularHashtagComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
