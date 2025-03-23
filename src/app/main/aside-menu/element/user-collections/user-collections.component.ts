@@ -5,13 +5,13 @@ import { ExpandableItem } from '../ExpandableItem';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-meme-list-aside-menu',
+  selector: 'app-user-collections-aside-menu',
   standalone: true,
   imports: [NgClass, NgStyle, NgFor],
-  templateUrl: './user-meme-list.component.html',
-  styleUrl: './user-meme-list.component.scss'
+  templateUrl: './user-collections.component.html',
+  styleUrl: './user-collections.component.scss'
 })
-export class UserMemeListAsideMenuElementComponent extends ExpandableItem {
+export class UserCollectionsAsideMenuElementComponent extends ExpandableItem {
 
   constructor(
     public parent: MainComponent,
@@ -22,6 +22,6 @@ export class UserMemeListAsideMenuElementComponent extends ExpandableItem {
   }
 
   selectList(uuid: string) {
-    this.router.navigate(['list', uuid]);
+    this.router.navigate(['collection', uuid]);
   }
 }

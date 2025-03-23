@@ -1,16 +1,16 @@
 <div id="container">
     <div id="content">
-        @if (userList) {
+        @if (collection) {
         <div id="header">
             <div id="owner">
                 <div id="user-avatar">
-                    <user-avatar [user]="userList.author" />
+                    <user-avatar [user]="collection.author" />
                 </div>
 
-                <user-nick [user]="userList.author" />
+                <user-nick [user]="collection.author" />
             </div>
             <div id="list-name">
-                {{userList.name}}
+                {{collection.name}}
             </div>
         </div>
         }

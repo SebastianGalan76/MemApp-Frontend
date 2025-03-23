@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostContainerComponent } from "../home/post-container/post-container.component";
-import { User, UserService } from '../../../service/user.service';
 import { ApiService } from '../../../service/api.service';
 import { PostContainerService } from '../../../service/post-container.service';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { PageResponse } from '../../../model/response/PageResponse';
 import { Post } from '../../../model/Post';
 import { PopularHashtagComponent } from "../home/popular-hashtag/popular-hashtag.component";
@@ -17,15 +15,13 @@ import { PopularHashtagComponent } from "../home/popular-hashtag/popular-hashtag
   styleUrl: './waiting-room.component.scss'
 })
 export class WaitingRoomComponent implements OnInit {
-  user$: Observable<User | null>;
 
   constructor(
-    private userService: UserService,
     private apiService: ApiService,
     private postContainerService: PostContainerService,
     private route: ActivatedRoute
   ) {
-    this.user$ = userService.getUser();
+
   }
 
   ngOnInit(): void {

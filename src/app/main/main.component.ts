@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { AsideMenuComponent } from "./aside-menu/aside-menu.component";
 import { HeaderComponent } from "./header/header.component";
 import { RouterOutlet } from '@angular/router';
-import { User, UserService } from '../../service/user.service';
+import { UserService } from '../../service/user.service';
+import { User } from '../../model/User';
 
 @Component({
   selector: 'app-main',

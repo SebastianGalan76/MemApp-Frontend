@@ -4,18 +4,8 @@ import { ApiService } from './api.service';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { CookieService } from './cookie.service';
-import { UserMemeList } from '../model/UserMemeList';
+import { User } from '../model/User';
 
-
-export interface User {
-  id: number;
-  login: string;
-  avatar: string;
-
-  email: string;
-  role: string;
-  ownedMemeLists: UserMemeList[];
-}
 
 @Injectable({
   providedIn: 'root'

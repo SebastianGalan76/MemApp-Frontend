@@ -1,5 +1,5 @@
-import { User } from "../service/user.service";
 import { Hashtag } from "./Hashtag";
+import { User } from "./User";
 
 export interface Post {
     id: number;

@@ -9,11 +9,12 @@ import { Response } from '../../../model/response/Response';
 import { Router } from '@angular/router';
 import { UserAvatarComponent } from "../../shared/user/avatar/avatar.component";
 import { Observable } from 'rxjs';
-import { User, UserService } from '../../../service/user.service';
+import { UserService } from '../../../service/user.service';
 import { CommonModule } from '@angular/common';
 import { NickComponent } from "../../shared/user/nick/nick.component";
 import { FlagSettingsComponent } from "./flag-settings/flag-settings.component";
 import { HashtagSettingsComponent } from "./hashtag-settings/hashtag-settings.component";
+import { User } from '../../../model/User';
 
 interface NewPostDto {
   text: string;

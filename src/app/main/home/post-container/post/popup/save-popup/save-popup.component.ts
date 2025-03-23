@@ -3,8 +3,7 @@ import { PopupComponent } from '../../../../../../shared/popup-container/popup/p
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../../../../../../service/api.service';
 import { ObjectResponse } from '../../../../../../../model/response/ObjectResponse';
-import { UserMemeList } from '../../../../../../../model/UserMemeList';
-import { User, UserService } from '../../../../../../../service/user.service';
+import { UserService } from '../../../../../../../service/user.service';
 import { HttpParams } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
@@ -12,9 +11,10 @@ import { Response } from '../../../../../../../model/response/Response';
 import { Post } from '../../../../../../../model/Post';
 import { debounceTime, Observable, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { ToastService, ToastType } from '../../../../../../../service/toast.service';
+import { User, UserCollection } from '../../../../../../../model/User';
 
 class ListElement {
-  list!: UserMemeList;
+  list!: UserCollection;
   isSelected!: boolean;
 }
 
@@ -36,7 +36,7 @@ export class SaveMemePopupComponent implements AfterViewInit, OnDestroy {
   formErrorMessage: string | null = null;
   isFormVisible: boolean = false;
 
-  listName: string = '';
+  collectionName: string = '';
   accessibility: string = 'PUBLIC';
 
   user: User | null = null;
@@ -77,29 +77,29 @@ export class SaveMemePopupComponent implements AfterViewInit, OnDestroy {
       return;
     }
 
-    if (this.listName.length == 0) {
+    if (this.collectionName.length == 0) {
       this.formErrorMessage = 'Wprowadź nazwę listy';
       return;
     }
     this.formErrorMessage = null;
 
     const params = new HttpParams()
-      .set('name', this.listName.trim())
+      .set('name', this.collectionName.trim())
       .set('accessibility', this.accessibility);
 
-    this.apiService.post<ObjectResponse<UserMemeList>>(
-      "/user-post-list/create", null, { withCredentials: true, params: params })
+    this.apiService.post<ObjectResponse<UserCollection>>(
+      "/collection/create", null, { withCredentials: true, params: params })
       .subscribe({
         next: (response) => {
           this.isFormVisible = false;
-          this.createListElement(response.object);
+          this.createCollectionElement(response.object);
 
-          this.user!.ownedMemeLists.push(response.object);
+          this.user!.ownedCollections.push(response.object);
           this.userService.saveUser();
 
           this.toastService.show(response.message, ToastType.SUCCESS);
 
-          this.listName = "";
+          this.collectionName = "";
           this.accessibility = "PUBLIC";
         },
         error: (response) => {
@@ -115,17 +115,17 @@ export class SaveMemePopupComponent implements AfterViewInit, OnDestroy {
   }
 
   private sendRequest(element: ListElement): Observable<Response> {
-    return this.apiService.post<Response>("/user-post-list/save/" + this.post.id + "/" + element.list.id, null, { withCredentials: true })
+    return this.apiService.post<Response>("/collection/save/" + this.post.id + "/" + element.list.id, null, { withCredentials: true })
       .pipe(tap(() => {
         if (element.isSelected) {
           this.post.user.postListIds.push(element.list.id);
 
-          this.toastService.show("Dodano post do listy " + element.list.name);
+          this.toastService.show("Dodano post do kolekcji " + element.list.name);
         }
         else {
           this.post.user.postListIds = this.post.user.postListIds.filter(id => id != element.list.id);
 
-          this.toastService.show("Usunięto post z listy " + element.list.name);
+          this.toastService.show("Usunięto post z kolekcji " + element.list.name);
         }
       })
       );
@@ -135,16 +135,16 @@ export class SaveMemePopupComponent implements AfterViewInit, OnDestroy {
     if (this.listContainer && this.user) {
       this.listContainer.clear();
 
-      this.user.ownedMemeLists.forEach(list => {
-        this.createListElement(list);
+      this.user.ownedCollections.forEach(list => {
+        this.createCollectionElement(list);
       });
     }
   }
 
-  private createListElement(list: UserMemeList): void {
+  private createCollectionElement(collection: UserCollection): void {
     const element = {
-      list: list,
-      isSelected: this.post.user.postListIds.includes(list.id)
+      list: collection,
+      isSelected: this.post.user.postListIds.includes(collection.id)
     }
 
     this.listElements.push(element);

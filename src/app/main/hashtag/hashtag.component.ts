@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostContainerComponent } from "../home/post-container/post-container.component";
 import { PopularHashtagComponent } from "../home/popular-hashtag/popular-hashtag.component";
-import { User, UserService } from '../../../service/user.service';
-import { Observable } from 'rxjs';
 import { ApiService } from '../../../service/api.service';
 import { PostContainerService } from '../../../service/post-container.service';
 import { ActivatedRoute } from '@angular/router';

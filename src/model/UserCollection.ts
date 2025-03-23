@@ -1,8 +1,8 @@
-import { User } from "../service/user.service";
 import { Post } from "./Post";
 import { PageResponse } from "./response/PageResponse";
+import { User } from "./User";
 
-export interface UserList {
+export interface UserCollection {
     id: number;
     uuid: string;
 

@@ -7,8 +7,9 @@ import { ToastService } from '../../../../../service/toast.service';
 import { Comment } from '../../../../../model/Comment';
 import { ObjectResponse } from '../../../../../model/response/ObjectResponse';
 import { UserAvatarComponent } from "../../../../shared/user/avatar/avatar.component";
-import { User, UserService } from '../../../../../service/user.service';
+import { UserService } from '../../../../../service/user.service';
 import { Observable } from 'rxjs';
+import { User } from '../../../../../model/User';
 
 @Component({
   selector: 'app-create-comment',

@@ -1,8 +1,9 @@
 import { NgClass } from '@angular/common';
 import { Component, ElementRef, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { PostComponent } from '../post.component';
-import { User, UserService } from '../../../../../../service/user.service';
+import { UserService } from '../../../../../../service/user.service';
 import { PermissionChecker } from '../../../../../../util/PermissionChecker';
+import { User } from '../../../../../../model/User';
 
 @Component({
   selector: 'meme-dropdown-menu',

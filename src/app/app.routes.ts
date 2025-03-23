@@ -11,7 +11,7 @@ import { CreatePostComponent } from './main/create-post/create-post.component';
 import { PostPageComponent } from './main/post/post.component';
 import { UserPageComponent } from './main/user/user.component';
 import { UserPostListComponent } from './main/user/post-container/post-container.component';
-import { UserListComponent } from './main/list/list.component';
+import { UserCollectionComponent } from './main/collection/collection.component';
 import { UserPostCollectionComponent } from './main/user/post-collection/post-collection.component';
 import { WaitingRoomComponent } from './main/waiting-room/waiting-room.component';
 import { HashtagPageComponent } from './main/hashtag/hashtag.component';
@@ -60,8 +60,8 @@ export const routes: Routes = [
                 component: UserPostCollectionComponent
             }]
         }, {
-            path: "list/:uuid",
-            component: UserListComponent
+            path: "collection/:uuid",
+            component: UserCollectionComponent
         }, {
             path: "create",
             component: CreatePostComponent

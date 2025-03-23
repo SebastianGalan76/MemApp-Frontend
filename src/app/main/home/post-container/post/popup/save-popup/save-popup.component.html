@@ -1,6 +1,6 @@
 <div id="container">
     <div id="header">
-        <span class="text">Zapisz na liście</span>
+        <span class="text">Zapisz post</span>
 
         <i class="fa-solid fa-xmark" (click)="close()"></i>
     </div>
@@ -13,13 +13,13 @@
             @if (!isFormVisible) {
             <div id="button" (click)="isFormVisible = true">
                 <i class="fa-regular fa-square-plus"></i>
-                <span class="text">Dodaj listę</span>
+                <span class="text">Dodaj kolekcję</span>
             </div>
             }
             @else {
             <div id="form">
                 <div class="input-area">
-                    <input type="text" placeholder="Nazwa" [(ngModel)]="listName">
+                    <input type="text" placeholder="Nazwa" [(ngModel)]="collectionName">
                 </div>
 
                 <div class="select-value-area">

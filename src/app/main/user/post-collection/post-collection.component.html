@@ -1,12 +1,13 @@
 <div id="container" class="panel">
     <div id="header">
-        Publiczne listy użytkownika
+        Publiczne kolekcje użytkownika
     </div>
 
-    <div id="list-container" *ngIf="parent.isInitialized$ | async">
+    <div id="collection-container" *ngIf="parent.isInitialized$ | async">
         @for (item of parent.user?.userList; track $index) {
-        <div class="item" (click)="selectList(item.uuid)">
+        <div class="collection" (click)="selectCollection(item.uuid)">
             <div class="name">{{item.name}}</div>
+            <div class="post-amount">{{getAmount(item.postAmount)}}</div>
         </div>
         }
     </div>

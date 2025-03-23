@@ -19,7 +19,17 @@ export class UserPostCollectionComponent {
 
   }
 
-  selectList(uuid: string) {
-    this.router.navigate(['list', uuid]);
+  selectCollection(uuid: string) {
+    this.router.navigate(['collection', uuid]);
+  }
+
+  getAmount(amount: number): string {
+    if (amount == 1) {
+      return "1 Post";
+    }
+    if (amount > 1 && amount < 5) {
+      return amount + " Posty";
+    }
+    return amount + " Postów";
   }
 }
