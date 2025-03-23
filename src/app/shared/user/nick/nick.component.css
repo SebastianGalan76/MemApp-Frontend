@@ -2,6 +2,7 @@
   font-weight: 500;
   width: -moz-fit-content;
   width: fit-content;
+  line-height: 16px;
 }
 #container:hover {
   cursor: pointer;

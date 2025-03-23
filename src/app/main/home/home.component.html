@@ -1,32 +1,6 @@
 <div id="container">
     <div id="content">
-        <div id="create-post-container" class="panel" routerLink="/create">
-            <div id="header">
-                <user-avatar id="user-avatar" [user]="user$ | async" />
-                <div>
-                    <user-nick [user]="user$ | async" />
-                    <div id="publication-date">
-                        25.10.2024 14:42
-                    </div>
-                </div>
-            </div>
-            <div id="create-post-content">
-                Masz coś śmiesznego? Podziel się!
-            </div>
-            <div id="footer">
-                <div id="icon-container">
-                    <i class="fa-solid fa-image"></i>
-                    <i class="fa-brands fa-tiktok"></i>
-                    <i class="fa-brands fa-x-twitter"></i>
-                    <i class="fa-brands fa-facebook-f"></i>
-                    <i class="fa-brands fa-youtube"></i>
-                </div>
-
-                <div id="create-post-button">
-                    Stwórz post
-                </div>
-            </div>
-        </div>
+        <app-create-post-form />
         <app-post-container />
     </div>
     <div id="aside-menu">

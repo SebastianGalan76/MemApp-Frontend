@@ -1,22 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PostContainerComponent } from "./post-container/post-container.component";
-import { UserAvatarComponent } from "../../shared/user/avatar/avatar.component";
 import { ApiService } from '../../../service/api.service';
 import { PostContainerService } from '../../../service/post-container.service';
 import { PageResponse } from '../../../model/response/PageResponse';
 import { Post } from '../../../model/Post';
 import { UserService } from '../../../service/user.service';
 import { Observable } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
-import { NickComponent } from "../../shared/user/nick/nick.component";
 import { PopularHashtagComponent } from "./popular-hashtag/popular-hashtag.component";
 import { User } from '../../../model/User';
+import { CreatePostFormComponent } from "../../shared/create-post-form/create-post-form.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, PostContainerComponent, UserAvatarComponent, AsyncPipe, NickComponent, PopularHashtagComponent],
+  imports: [PostContainerComponent, PopularHashtagComponent, CreatePostFormComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

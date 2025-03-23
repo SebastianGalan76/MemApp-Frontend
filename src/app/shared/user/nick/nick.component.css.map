@@ -1,1 +1,1 @@
-{"version":3,"sources":["nick.component.scss","nick.component.css"],"names":[],"mappings":"AAAA;EACI,gBAAA;EACA,uBAAA;EAAA,kBAAA;ACCJ;ADCI;EACI,eAAA;EACA,YAAA;ACCR","file":"nick.component.css"}
+{"version":3,"sources":["nick.component.scss","nick.component.css"],"names":[],"mappings":"AAAA;EACI,gBAAA;EACA,uBAAA;EAAA,kBAAA;EAEA,iBAAA;ACAJ;ADEI;EACI,eAAA;EACA,YAAA;ACAR","file":"nick.component.css"}

@@ -1,0 +1,27 @@
+<div id="create-post-container" class="panel">
+    <div id="header">
+        <user-avatar id="user-avatar" [user]="user$ | async" />
+        <div>
+            <user-nick [user]="user$ | async" />
+            <div id="publication-date">
+                {{date | date:'dd.MM.yyyy HH:mm'}}
+            </div>
+        </div>
+    </div>
+    <div id="create-post-content" (click)="create()">
+        Masz coś śmiesznego? Podziel się!
+    </div>
+    <div id="footer">
+        <div id="icon-container">
+            <i class="fa-solid fa-image" (click)="create()"></i>
+            <i class="fa-brands fa-tiktok" (click)="create('tiktok')"></i>
+            <i class="fa-brands fa-x-twitter" (click)="create('x')"></i>
+            <i class="fa-brands fa-facebook-f" (click)="create('facebook')"></i>
+            <i class="fa-brands fa-youtube" (click)="create('youtube')"></i>
+        </div>
+
+        <div id="create-post-button" (click)="create()">
+            Stwórz
+        </div>
+    </div>
+</div>

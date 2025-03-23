@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AppService } from '../../../../service/app.service';
 import { Router } from '@angular/router';
 
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './avatar.component.html',
   styleUrl: './avatar.component.scss'
 })
-export class UserAvatarComponent implements OnInit {
+export class UserAvatarComponent implements OnChanges {
   @Input() user: {
     id: number,
     login: string,
@@ -24,7 +24,7 @@ export class UserAvatarComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.user) {
       if (this.isHexColor(this.user.avatar)) {
         this.letter = this.user.login.substring(0, 1).toUpperCase();
