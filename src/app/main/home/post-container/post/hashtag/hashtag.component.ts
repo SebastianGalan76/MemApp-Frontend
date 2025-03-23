@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Hashtag } from '../../../../../../model/Hashtag';
 import { NgClass } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'post-hashtag-container',
@@ -14,10 +15,16 @@ export class HashtagComponent {
 
   isShown: boolean = false;
 
+  constructor(
+    private router: Router
+  ) {
+
+  }
+
   selectHashtag(hashtag: Hashtag, event: MouseEvent) {
     event?.stopPropagation();
 
-
+    this.router.navigate(['/tag'], { queryParams: { v: hashtag.tag } });
   }
 
   toggleComponent(event: MouseEvent) {

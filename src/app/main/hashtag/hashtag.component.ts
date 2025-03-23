@@ -1,31 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { PostContainerComponent } from "../home/post-container/post-container.component";
+import { PopularHashtagComponent } from "../home/popular-hashtag/popular-hashtag.component";
 import { User, UserService } from '../../../service/user.service';
+import { Observable } from 'rxjs';
 import { ApiService } from '../../../service/api.service';
 import { PostContainerService } from '../../../service/post-container.service';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { PageResponse } from '../../../model/response/PageResponse';
 import { Post } from '../../../model/Post';
-import { PopularHashtagComponent } from "../home/popular-hashtag/popular-hashtag.component";
 
 @Component({
-  selector: 'app-waiting-room',
+  selector: 'app-hashtag-page',
   standalone: true,
   imports: [PostContainerComponent, PopularHashtagComponent],
-  templateUrl: './waiting-room.component.html',
-  styleUrl: './waiting-room.component.scss'
+  templateUrl: './hashtag.component.html',
+  styleUrl: './hashtag.component.scss'
 })
-export class WaitingRoomComponent implements OnInit {
-  user$: Observable<User | null>;
+export class HashtagPageComponent implements OnInit {
+  tag: string | null = null;
 
   constructor(
-    private userService: UserService,
     private apiService: ApiService,
     private postContainerService: PostContainerService,
     private route: ActivatedRoute
   ) {
-    this.user$ = userService.getUser();
+
   }
 
   ngOnInit(): void {
@@ -35,12 +34,20 @@ export class WaitingRoomComponent implements OnInit {
         page = +params['page'];
       }
 
+      if ('v' in params) {
+        this.tag = params['v'];
+      }
+
       this.loadPage(page - 1);
     });
   }
 
   loadPage(page: number) {
-    this.apiService.get<PageResponse<Post>>(`/post/waiting/${page}`, { withCredentials: true }).subscribe({
+    if (!this.tag) {
+      return;
+    }
+
+    this.apiService.get<PageResponse<Post>>(`/post/tag/${this.tag}/${page}`, { withCredentials: true }).subscribe({
       next: (response) => {
         window.scrollTo({ top: 0 });
 

@@ -14,6 +14,9 @@
 #container #hashtag-container .hashtag {
   padding: 10px;
   border-radius: 8px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 #container #hashtag-container .hashtag .tag {
   font-weight: 500;

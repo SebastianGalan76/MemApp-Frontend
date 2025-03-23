@@ -3,6 +3,7 @@ import { ApiService } from '../../../../service/api.service';
 import { ObjectResponse } from '../../../../model/response/ObjectResponse';
 import { Hashtag } from '../../../../model/Hashtag';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 export interface HashtagDto {
   hashtag: Hashtag;
@@ -26,7 +27,8 @@ export class PopularHashtagComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router,
   ) {
 
   }
@@ -42,6 +44,10 @@ export class PopularHashtagComponent implements OnInit {
         this.cdr.detectChanges();
       }
     })
+  }
+
+  selectHashtag(hashtag: string) {
+    this.router.navigate(['/tag'], { queryParams: { v: hashtag } });
   }
 
   getAmount(amount: number): string {

@@ -6,7 +6,7 @@
     @if (response) {
     <div id="hashtag-container">
         @for (hashtag of response.hashtags; track $index) {
-        <div class="hashtag">
+        <div class="hashtag" (click)="selectHashtag(hashtag.hashtag.tag)">
             <div class="tag">#{{hashtag.hashtag.tag}}</div>
             <div class="popularity">{{getAmount(hashtag.popularity)}}</div>
         </div>

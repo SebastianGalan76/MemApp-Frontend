@@ -14,6 +14,7 @@ import { UserPostListComponent } from './main/user/post-container/post-container
 import { UserListComponent } from './main/list/list.component';
 import { UserPostCollectionComponent } from './main/user/post-collection/post-collection.component';
 import { WaitingRoomComponent } from './main/waiting-room/waiting-room.component';
+import { HashtagPageComponent } from './main/hashtag/hashtag.component';
 
 export const routes: Routes = [
     {
@@ -67,6 +68,9 @@ export const routes: Routes = [
         }, {
             path: "poczekalnia",
             component: WaitingRoomComponent
+        }, {
+            path: "tag",
+            component: HashtagPageComponent
         }, {
             path: "",
             component: HomeComponent
