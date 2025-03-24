@@ -1,0 +1,142 @@
+#container {
+  background-color: var(--color-background-50);
+  border: 2px solid var(--color-background-70);
+  border-radius: 15px;
+  overflow: hidden;
+  width: 600px;
+  overflow: hidden;
+}
+#container #header {
+  padding: 20px 20px 10px 20px;
+  position: relative;
+  border-bottom: 1px solid var(--color-background-70);
+}
+#container #header .text {
+  font-size: 1.2em;
+}
+#container #header i {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.4em;
+  color: var(--color-background-90);
+  background-color: var(--color-background-70);
+  border-radius: 0 0 0 10px;
+  padding: 7px 12px;
+}
+#container #header i:hover {
+  cursor: pointer;
+  color: var(--color-background-140);
+}
+#container .section {
+  padding: 10px;
+}
+#container .section .info {
+  opacity: 0.7;
+}
+#container #premade-reason-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 10px 0;
+}
+#container #premade-reason-container .reason {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: var(--color-background-40);
+}
+#container #premade-reason-container .reason .label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+#container #premade-reason-container .reason .checkbox {
+  flex-shrink: 0;
+}
+#container #premade-reason-container .reason input[type=checkbox] {
+  display: none;
+}
+#container #premade-reason-container .reason .checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+#container #premade-reason-container .reason input[type=checkbox]:checked + .checkbox {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+#container #premade-reason-container .reason .checkbox::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+#container #premade-reason-container .reason input[type=checkbox]:checked + .checkbox::after {
+  opacity: 1;
+}
+#container #premade-reason-container .reason:hover {
+  cursor: pointer;
+  background-color: var(--color-background-30);
+}
+#container #footer {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  padding: 0 10px 10px 10px;
+}
+#container #footer .button {
+  padding: 10px 35px;
+  border-radius: 10px;
+  font-size: 1.1em;
+}
+#container #footer .button#send {
+  background-color: #ff6666;
+  border: 2px solid #ff6666;
+}
+#container #footer .button#send:hover {
+  background-color: #ed5353;
+  border: 2px solid #ed5353;
+}
+#container #footer .button#cancel {
+  border: 2px solid white;
+  opacity: 0.7;
+}
+#container #footer .button#cancel:hover {
+  opacity: 1;
+}
+#container #footer .button:hover {
+  cursor: pointer;
+}
+
+textarea {
+  border: 2px solid var(--color-background-60);
+  background-color: var(--color-background-30);
+  padding: 5px;
+  border-radius: 10px;
+  max-height: 300px;
+  min-height: 40px;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  resize: none;
+  outline: none;
+  display: block;
+}/*# sourceMappingURL=report-popup.component.css.map */

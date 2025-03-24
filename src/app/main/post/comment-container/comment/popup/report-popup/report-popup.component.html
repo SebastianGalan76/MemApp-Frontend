@@ -1,0 +1,31 @@
+<div id="container">
+    <div id="header">
+        <span class="text">Zgłoś komentarz</span>
+
+        <i class="fa-solid fa-xmark" (click)="close()"></i>
+    </div>
+
+    <div class="section">
+        <div class="info">Wybierz powód</div>
+        <div id="premade-reason-container">
+            @for (reason of premadeReasons; track $index) {
+            <div class="reason" (click)="selectReason(reason)">
+                <input type="checkbox" [checked]="reason.isSelected">
+                <span class="checkbox"></span>
+                <span class="label">{{reason.value}}</span>
+            </div>
+            }
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="info">Lub napisz własny</div>
+
+        <textarea placeholder="Twój powód..." rows="6" [(ngModel)]="ownReason"></textarea>
+    </div>
+
+    <div id="footer">
+        <div id="cancel" class="button" (click)="close()">Anuluj</div>
+        <div id="send" class="button" (click)="sendReport()">Zgłoś</div>
+    </div>
+</div>

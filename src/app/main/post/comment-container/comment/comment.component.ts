@@ -14,6 +14,7 @@ import { CommentContainerComponent, CommentElement } from '../comment-container.
 import { NickComponent } from "../../../../shared/user/nick/nick.component";
 import { PopupService } from '../../../../../service/popup.service';
 import { take } from 'rxjs';
+import { ReportCommentPopupComponent } from './popup/report-popup/report-popup.component';
 
 @Component({
   selector: 'app-comment',
@@ -85,6 +86,12 @@ export class CommentComponent implements AfterViewInit {
   reply() {
     this.isRepliesExpanded = true;
     this.isFormActive = true;
+  }
+
+  report() {
+    this.popupService.showPopup(ReportCommentPopupComponent, [
+      { name: 'comment', value: this.comment }
+    ]);
   }
 
   delete() {
