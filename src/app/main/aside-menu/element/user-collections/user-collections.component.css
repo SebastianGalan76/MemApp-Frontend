@@ -1,0 +1,59 @@
+#expandable-item {
+  padding: 5px 10px;
+}
+#expandable-item #header {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 15px;
+  border-radius: 10px;
+}
+#expandable-item #header:hover {
+  background-color: rgba(0, 0, 0, 0.3568627451);
+  cursor: pointer;
+}
+#expandable-item #header .icon {
+  transition: rotate 0.3s ease;
+}
+#expandable-item #container {
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+}
+#expandable-item #container ul {
+  list-style-type: none;
+}
+#expandable-item #container ul li {
+  padding: 5px 10px;
+}
+#expandable-item #container ul li i {
+  width: 20px;
+  text-align: center;
+  margin-right: 8px;
+}
+#expandable-item #container ul li:hover {
+  cursor: pointer;
+  background-color: var(--color-background-30);
+  border-radius: 5px;
+}
+#expandable-item #container.not-initialized {
+  position: absolute;
+  opacity: 0;
+}
+#expandable-item #container #create-list-button {
+  margin-top: 10px;
+  text-align: center;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: var(--color-background-60);
+  color: var(--color-background-100);
+}
+#expandable-item #container #create-list-button:hover {
+  cursor: pointer;
+  background-color: var(--color-background-80);
+  color: var(--color-background-120);
+}
+#expandable-item.expanded #header .icon {
+  rotate: 180deg;
+}/*# sourceMappingURL=user-collections.component.css.map */

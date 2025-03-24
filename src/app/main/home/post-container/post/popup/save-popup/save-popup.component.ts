@@ -25,7 +25,7 @@ class ListElement {
   templateUrl: './save-popup.component.html',
   styleUrl: './save-popup.component.scss'
 })
-export class SaveMemePopupComponent implements AfterViewInit, OnDestroy {
+export class SavePostPopupComponent implements AfterViewInit, OnDestroy {
   @ViewChild('listContainer', { read: ViewContainerRef }) listContainer!: ViewContainerRef;
   @ViewChild('listTemplate', { read: TemplateRef }) listTemplate!: TemplateRef<any>;
 

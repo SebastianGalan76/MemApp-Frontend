@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Optional, ViewChild } from '@angular/core';
 import { MenuComponent } from './menu/menu.component';
 import { PopupService } from '../../../../../service/popup.service';
-import { SaveMemePopupComponent } from './popup/save-popup/save-popup.component';
+import { SavePostPopupComponent } from './popup/save-popup/save-popup.component';
 import { RatingSectionComponent } from "./rating-section/rating-section.component";
 import { PostContent, PostContentComponent } from "./content/content.component";
 import { Post } from '../../../../../model/Post';
@@ -17,6 +17,7 @@ import { ToastService, ToastType } from '../../../../../service/toast.service';
 import { PostContainerComponent } from '../post-container.component';
 import { take } from 'rxjs';
 import { HashtagComponent } from "./hashtag/hashtag.component";
+import { ReportPostPopupComponent } from './popup/report-popup/report-popup.component';
 
 @Component({
   selector: 'post',
@@ -69,7 +70,7 @@ export class PostComponent implements OnInit {
 
   save(event: MouseEvent) {
     event.stopPropagation();
-    this.popupService.showPopup(SaveMemePopupComponent, [
+    this.popupService.showPopup(SavePostPopupComponent, [
       { name: 'post', value: this.post }
     ]);
   }
@@ -101,6 +102,14 @@ export class PostComponent implements OnInit {
           })
         }
       });
+  }
+
+  report(event: MouseEvent) {
+    event.stopPropagation();
+
+    this.popupService.showPopup(ReportPostPopupComponent, [
+      { name: 'post', value: this.post }
+    ]);
   }
 
   copyLink(event: MouseEvent) {
