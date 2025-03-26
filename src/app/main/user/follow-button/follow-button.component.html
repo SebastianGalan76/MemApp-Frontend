@@ -1,0 +1,8 @@
+<div id="container" [ngClass]="{'following': following}" (click)="follow()">
+    @if (following) {
+    Obserwujesz
+    }
+    @else {
+    Obserwuj
+    }
+</div>

@@ -44,7 +44,7 @@ export class UserPostListComponent {
   }
 
   loadPage(page: number) {
-    this.apiService.get<PageResponse<Post>>(`/profile/${this.parent.user!.login}/post/${page}`, { withCredentials: true }).subscribe({
+    this.apiService.get<PageResponse<Post>>(`/profile/${this.parent.userProfile!.login}/post/${page}`, { withCredentials: true }).subscribe({
       next: (response) => {
         //window.scrollTo({ top: 0 });
 

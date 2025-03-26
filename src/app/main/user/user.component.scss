@@ -57,17 +57,6 @@
                 #right-section {
                     gap: 0px;
 
-                    #follow-button {
-                        padding: 3px 30px;
-                        background-color: var(--color-theme);
-                        border-radius: 10px;
-
-                        &:hover {
-                            cursor: pointer;
-                            background-color: var(--color-theme-accent);
-                        }
-                    }
-
                     #menu-button {
                         padding: 3px 15px;
                     }

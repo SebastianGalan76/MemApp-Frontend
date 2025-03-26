@@ -4,6 +4,8 @@ export interface UserProfile {
     avatar: string;
     role: string;
 
+    following: boolean;
+
     userList: PostListDto[];
 }
 

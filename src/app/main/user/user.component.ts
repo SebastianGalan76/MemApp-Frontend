@@ -6,20 +6,28 @@ import { UserAvatarComponent } from "../../shared/user/avatar/avatar.component";
 import { UserProfile } from '../../../model/UserProfile';
 import { ObjectResponse } from '../../../model/response/ObjectResponse';
 import { NickComponent } from "../../shared/user/nick/nick.component";
+import { FollowButtonComponent } from "./follow-button/follow-button.component";
+import { User } from '../../../model/User';
+import { UserService } from '../../../service/user.service';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [UserAvatarComponent, NickComponent, RouterOutlet],
+  imports: [UserAvatarComponent, NickComponent, RouterOutlet, FollowButtonComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss'
 })
 export class UserPageComponent implements OnInit {
-  user: UserProfile | null = null;
+  userProfile: UserProfile | null = null;
+  user: User | null = null;
+
+  isOwnProfile: boolean = false;
+
   isInitialized$ = new BehaviorSubject<boolean>(false);
 
   constructor(
     private apiService: ApiService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private router: Router) {
   }
@@ -28,21 +36,32 @@ export class UserPageComponent implements OnInit {
     window.scrollTo({ top: 0 });
 
     this.route.params.pipe(
-      switchMap(params => this.apiService.get<ObjectResponse<UserProfile>>(`/profile/${params['login']}`, { withCredentials: true }))
-    ).subscribe({
-      next: (response) => {
-        this.user = response.object;
+      switchMap(params =>
+        this.apiService.get<ObjectResponse<UserProfile>>(`/profile/${params['login']}`, { withCredentials: true })
+      ),
+      switchMap(response => {
+        this.userProfile = response.object;
         this.isInitialized$.next(true);
+
+        return this.userService.getUser();
+      })
+    ).subscribe({
+      next: (user) => {
+        this.user = user
+
+        if (this.user && this.userProfile && this.user.id == this.userProfile.id) {
+          this.isOwnProfile = true;
+        }
       }
     })
   }
 
   selectSection(path: string | null) {
     if (path) {
-      this.router.navigate(['/user', this.user?.login, path]);
+      this.router.navigate(['/user', this.userProfile?.login, path]);
     }
     else {
-      this.router.navigate(['/user', this.user?.login]);
+      this.router.navigate(['/user', this.userProfile?.login]);
     }
   }
 }

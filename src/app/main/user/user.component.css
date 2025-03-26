@@ -47,15 +47,6 @@
 #container #content #hero #up-panel #right-section {
   gap: 0px;
 }
-#container #content #hero #up-panel #right-section #follow-button {
-  padding: 3px 30px;
-  background-color: var(--color-theme);
-  border-radius: 10px;
-}
-#container #content #hero #up-panel #right-section #follow-button:hover {
-  cursor: pointer;
-  background-color: var(--color-theme-accent);
-}
 #container #content #hero #up-panel #right-section #menu-button {
   padding: 3px 15px;
 }

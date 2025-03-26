@@ -4,7 +4,7 @@
     </div>
 
     <div id="collection-container" *ngIf="parent.isInitialized$ | async">
-        @for (item of parent.user?.userList; track $index) {
+        @for (item of parent.userProfile?.userList; track $index) {
         <div class="collection" (click)="selectCollection(item.uuid)">
             <div class="name">{{item.name}}</div>
             <div class="post-amount">{{getAmount(item.postAmount)}}</div>

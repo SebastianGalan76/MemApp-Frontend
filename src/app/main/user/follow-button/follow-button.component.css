@@ -1,0 +1,28 @@
+#container {
+  width: 140px;
+  height: 30px;
+  background-color: var(--color-theme);
+  border-radius: 10px;
+  line-height: 30px;
+  text-align: center;
+  overflow: hidden;
+}
+#container.following {
+  background-color: var(--color-background-80);
+}
+#container.following:hover {
+  position: relative;
+}
+#container.following:hover::before {
+  content: "Anuluj";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgb(255, 133, 133);
+  width: 100%;
+  height: 100%;
+}
+#container:hover {
+  cursor: pointer;
+  background-color: var(--color-theme-accent);
+}/*# sourceMappingURL=follow-button.component.css.map */

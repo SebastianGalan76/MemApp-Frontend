@@ -6,18 +6,19 @@
     <div id="content">
         <div class="panel" id="hero">
             <div id="up-panel">
-                @if (user) {
+                @if (userProfile) {
                 <div class="section" id="left-section">
-                    <user-avatar [user]="user" id="user-avatar" />
+                    <user-avatar [user]="userProfile" id="user-avatar" />
 
-                    <user-nick [user]="user" id="user-nick" />
+                    <user-nick [user]="userProfile" id="user-nick" />
                 </div>
                 }
 
                 <div class="section" id="right-section">
-                    <div id="follow-button">
-                        Obserwuj
-                    </div>
+                    @if (userProfile && !isOwnProfile) {
+                    <user-profile-follow-button [userId]="userProfile.id" [following]="userProfile.following" />
+                    }
+
                     <div id="menu-button">
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
@@ -25,8 +26,7 @@
             </div>
             <div id="description">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book.
+                industry's standard dummy text ever since the 1500s
             </div>
 
             <div id="social-links">
