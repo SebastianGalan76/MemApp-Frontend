@@ -89,6 +89,19 @@ export class CreatePostComponent {
         }
       }
     }
+    else if (this.isXUrl(this.fileUrl)) {
+      const xId = this.extractXId(this.fileUrl);
+
+      if (xId) {
+        this.showPreview = true;
+        this.postContent = {
+          id: 0,
+          type: ContentType.X,
+          content: xId,
+          flags: null
+        }
+      }
+    }
   }
 
   onFileChange(event: Event) {
@@ -237,9 +250,16 @@ export class CreatePostComponent {
   private isTiktokUrl(url: string): boolean {
     return url.startsWith("https://www.tiktok.com/");
   }
-
   private extractTikTokId(url: string): string | null {
     const match = url.match(/\/video\/(\d+)/);
+    return match ? match[1] : null;
+  }
+
+  private isXUrl(url: string): boolean {
+    return url.startsWith("https://x.com");
+  }
+  private extractXId(url: string): string | null {
+    const match = url.match(/\/status\/(\d+)/);
     return match ? match[1] : null;
   }
 }

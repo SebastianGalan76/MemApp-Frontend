@@ -42,6 +42,11 @@
 #wrapper #left-panel #form-section header img:hover {
   cursor: pointer;
 }
+@media (max-width: 600px) {
+  #wrapper #left-panel #form-section header img {
+    max-width: 50%;
+  }
+}
 #wrapper #left-panel #form-section #form-wrapper {
   flex-grow: 1;
   display: flex;

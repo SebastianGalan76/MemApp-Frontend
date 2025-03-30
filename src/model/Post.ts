@@ -21,7 +21,7 @@ export interface Post {
 }
 
 export enum ContentType {
-    IMAGE = "IMAGE", TIKTOK = "TIKTOK"
+    IMAGE = "IMAGE", TIKTOK = "TIKTOK", X = "X"
 }
 
 export interface LoggedUser {

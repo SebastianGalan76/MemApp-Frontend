@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ContentType, PostFlag } from '../../../../../../model/Post';
 import { NgStyle } from '@angular/common';
 import { ExpandableContent } from './ExpandableContent';
 import { PostContentWarningComponent } from "./warning/warning.component";
+import { PostContentEmbeddedXComponent } from "./embedded-x/embedded-x.component";
 
 export interface PostContent {
   id: number;
@@ -15,7 +16,7 @@ export interface PostContent {
 @Component({
   selector: 'post-content',
   standalone: true,
-  imports: [NgStyle, PostContentWarningComponent],
+  imports: [NgStyle, PostContentWarningComponent, PostContentEmbeddedXComponent],
   templateUrl: './content.component.html',
   styleUrl: './content.component.scss'
 })

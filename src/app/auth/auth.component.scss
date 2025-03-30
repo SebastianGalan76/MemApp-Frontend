@@ -48,6 +48,10 @@
                     &:hover {
                         cursor: pointer;
                     }
+
+                    @media (max-width: 600px) {
+                        max-width: 50%;
+                    }
                 }
             }
 

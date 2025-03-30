@@ -33,6 +33,15 @@
 
             opacity: 0.8;
         }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+            h3 {
+                font-size: 0.9rem;
+            }
+        }
     }
 
     #form-container {
@@ -51,6 +60,10 @@
                 font-size: 0.8rem;
                 z-index: 10;
             }
+        }
+
+        @media (max-width: 600px) {
+            gap: 8px;
         }
     }
 

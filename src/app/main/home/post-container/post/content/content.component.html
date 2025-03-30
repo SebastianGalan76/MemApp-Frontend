@@ -26,5 +26,8 @@
             title="test"></iframe>
     </div>
     }
+    @else if(content.type == PostType.X){
+    <post-content-embedded-x [content]="content" />
+    }
 </div>
 }
