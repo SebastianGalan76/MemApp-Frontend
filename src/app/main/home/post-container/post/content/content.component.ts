@@ -5,6 +5,7 @@ import { NgStyle } from '@angular/common';
 import { ExpandableContent } from './ExpandableContent';
 import { PostContentWarningComponent } from "./warning/warning.component";
 import { PostContentEmbeddedXComponent } from "./embedded-x/embedded-x.component";
+import { PostContentEmbeddedYTComponent } from "./embedded-yt/embedded-yt.component";
 
 export interface PostContent {
   id: number;
@@ -16,7 +17,7 @@ export interface PostContent {
 @Component({
   selector: 'post-content',
   standalone: true,
-  imports: [NgStyle, PostContentWarningComponent, PostContentEmbeddedXComponent],
+  imports: [NgStyle, PostContentWarningComponent, PostContentEmbeddedXComponent, PostContentEmbeddedYTComponent],
   templateUrl: './content.component.html',
   styleUrl: './content.component.scss'
 })

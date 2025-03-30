@@ -29,5 +29,8 @@
     @else if(content.type == PostType.X){
     <post-content-embedded-x [content]="content" />
     }
+    @else if(content.type == PostType.YOUTUBE){
+    <post-content-embedded-yt [content]="content" />
+    }
 </div>
 }

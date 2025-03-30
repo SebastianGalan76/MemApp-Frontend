@@ -1,0 +1,15 @@
+<div id="container">
+    <div id="loading">
+        <div class="icon"><i class="fa-brands fa-youtube"></i></div>
+        <div class="text">loading...</div>
+    </div>
+
+    @if (content.content) {
+    <div id="content">
+        <iframe width="700" height="450" [src]="getSafeUrl(content.content)" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+            style="display: block; margin: auto;"></iframe>
+    </div>
+    }
+</div>

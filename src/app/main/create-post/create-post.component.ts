@@ -102,6 +102,19 @@ export class CreatePostComponent {
         }
       }
     }
+    else if (this.isYTUrl(this.fileUrl)) {
+      const xId = this.extractYTId(this.fileUrl);
+
+      if (xId) {
+        this.showPreview = true;
+        this.postContent = {
+          id: 0,
+          type: ContentType.YOUTUBE,
+          content: xId,
+          flags: null
+        }
+      }
+    }
   }
 
   onFileChange(event: Event) {
@@ -260,6 +273,14 @@ export class CreatePostComponent {
   }
   private extractXId(url: string): string | null {
     const match = url.match(/\/status\/(\d+)/);
+    return match ? match[1] : null;
+  }
+
+  private isYTUrl(url: string): boolean {
+    return url.startsWith("https://www.youtube.com");
+  }
+  private extractYTId(url: string): string | null {
+    const match = url.match(/[?&]v=([^&]+)/);
     return match ? match[1] : null;
   }
 }

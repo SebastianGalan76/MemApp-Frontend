@@ -10,7 +10,6 @@ import { PostContent } from '../content.component';
 })
 export class PostContentEmbeddedXComponent implements AfterViewInit {
   @Input({ required: true }) content!: PostContent;
-
   isLoading: boolean = true;
 
   ngAfterViewInit(): void {
@@ -24,6 +23,6 @@ export class PostContentEmbeddedXComponent implements AfterViewInit {
   }
 
   onLoad() {
-    //this.isLoading = false;
+    this.isLoading = false;
   }
 }

@@ -58,15 +58,7 @@ export class PostComponent implements OnInit {
         flags: this.post.flags
       }
     }
-    else if (this.post.type == "TIKTOK") {
-      this.content = {
-        id: this.post.id,
-        type: this.post.type,
-        content: this.post.content,
-        flags: this.post.flags
-      }
-    }
-    else if (this.post.type == "X") {
+    else if (this.post.type == "TIKTOK" || this.post.type == "X" || this.post.type == "YOUTUBE") {
       this.content = {
         id: this.post.id,
         type: this.post.type,
