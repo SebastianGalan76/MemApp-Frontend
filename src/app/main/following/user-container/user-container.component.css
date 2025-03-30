@@ -1,0 +1,28 @@
+#user-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+#user-container .user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+#user-container .user .user-avatar {
+  width: 40px;
+  height: 40px;
+}
+#user-container .user:not(:last-child) {
+  border-bottom: 2px solid var(--color-background-60);
+}
+#user-container .user:hover {
+  cursor: pointer;
+  background-color: var(--color-background-40);
+}
+
+.panel {
+  background-color: var(--color-background-50);
+  border: 2px solid var(--color-background-60);
+  border-radius: 10px;
+}/*# sourceMappingURL=user-container.component.css.map */

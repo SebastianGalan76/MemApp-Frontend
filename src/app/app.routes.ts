@@ -15,6 +15,7 @@ import { UserCollectionComponent } from './main/collection/collection.component'
 import { UserPostCollectionComponent } from './main/user/post-collection/post-collection.component';
 import { WaitingRoomComponent } from './main/waiting-room/waiting-room.component';
 import { HashtagPageComponent } from './main/hashtag/hashtag.component';
+import { FollowingPageComponent } from './main/following/following.component';
 
 export const routes: Routes = [
     {
@@ -68,6 +69,9 @@ export const routes: Routes = [
         }, {
             path: "poczekalnia",
             component: WaitingRoomComponent
+        }, {
+            path: "obserwowani",
+            component: FollowingPageComponent
         }, {
             path: "tag",
             component: HashtagPageComponent

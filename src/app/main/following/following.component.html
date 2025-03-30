@@ -1,0 +1,32 @@
+<div id="container">
+    <div id="content">
+        <div id="header">
+            <div id="title">Obserwowani</div>
+
+            @if (userListIsActive) {
+            <div id="amount" (click)="userListIsActive = false">Posty</div>
+            }
+            @else {
+            <div id="amount" (click)="userListIsActive = true">32 Obserwowanych</div>
+            }
+        </div>
+
+        @if (userListIsActive) {
+        <following-user-container />
+        }
+        @else {
+        <app-post-container />
+        }
+    </div>
+    <div id="aside-menu">
+        <div class="panel" style="min-height: 250px;">
+
+        </div>
+        <div class="panel">
+            <app-popular-hashtag />
+        </div>
+        <div class="panel" style="min-height:  300px;">
+
+        </div>
+    </div>
+</div>

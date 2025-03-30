@@ -1,0 +1,10 @@
+<div id="user-container" class="panel">
+    @if (response) {
+    @for (item of response.content; track $index) {
+    <div class="user">
+        <user-avatar class="user-avatar" [user]="item" />
+        <user-nick [user]="item" />
+    </div>
+    }
+    }
+</div>
