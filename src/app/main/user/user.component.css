@@ -7,103 +7,74 @@
   overflow: hidden;
 }
 
-#container {
-  width: min(90%, 1100px);
-  min-height: calc(200vh - 60px);
-  display: flex;
-  gap: 10px;
+#layout-container {
   margin: -15px auto 0 auto;
 }
-#container #content {
-  flex-grow: 1;
-}
-#container #content #hero {
+
+#hero {
   min-height: 150px;
 }
-#container #content #hero #up-panel {
+#hero #up-panel {
   display: flex;
   justify-content: space-between;
   height: 40px;
   margin-top: 10px;
 }
-#container #content #hero #up-panel .section {
+#hero #up-panel .section {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-#container #content #hero #up-panel #left-section {
+#hero #up-panel #left-section {
   margin-left: 25px;
 }
-#container #content #hero #up-panel #left-section #user-avatar {
+#hero #up-panel #left-section #user-avatar {
   width: 100px;
   height: 100px;
   font-size: 3em;
   margin-top: -40px;
 }
-#container #content #hero #up-panel #left-section #user-nick {
+#hero #up-panel #left-section #user-nick {
   font-size: 1.5em;
   line-height: 40px;
 }
-#container #content #hero #up-panel #right-section {
+#hero #up-panel #right-section {
   gap: 0px;
 }
-#container #content #hero #up-panel #right-section #menu-button {
+#hero #up-panel #right-section #menu-button {
   padding: 3px 15px;
 }
-#container #content #hero #description {
+#hero #description {
   opacity: 0.8;
   padding: 10px;
   font-size: 0.9em;
 }
-#container #content #hero #social-links {
+#hero #social-links {
   display: flex;
   justify-content: end;
   gap: 10px;
   padding: 10px;
 }
-#container #content #hero #social-links .social {
+#hero #social-links .social {
   width: 30px;
   height: 30px;
   background-color: var(--color-background-80);
 }
-#container #content #hero #button-section {
+#hero #button-section {
   border-top: 2px solid var(--color-background-60);
   display: flex;
   border-radius: 0 0 10px 10px;
   overflow: hidden;
 }
-#container #content #hero #button-section .button {
+#hero #button-section .button {
   flex: 1;
   text-align: center;
   padding: 10px 0;
 }
-#container #content #hero #button-section .button:not(:last-child) {
+#hero #button-section .button:not(:last-child) {
   border-right: 2px solid var(--color-background-60);
 }
-#container #content #hero #button-section .button:hover {
+#hero #button-section .button:hover {
   cursor: pointer;
   background-color: var(--color-background-60);
-}
-#container #aside-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 300px;
-  flex-shrink: 0;
-}
-@media (max-width: 1200px) {
-  #container #aside-menu {
-    display: none;
-  }
-}
-@media (max-width: 1200px) {
-  #container {
-    width: 96%;
-  }
-}
-
-.panel {
-  background-color: var(--color-background-50);
-  border: 2px solid var(--color-background-60);
-  border-radius: 10px;
 }/*# sourceMappingURL=user.component.css.map */

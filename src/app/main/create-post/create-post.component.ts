@@ -30,7 +30,7 @@ interface NewPostDto {
   standalone: true,
   imports: [AutoTextareaResizeDirective, FormsModule, PostContentComponent, UserAvatarComponent, CommonModule, NickComponent, FlagSettingsComponent, HashtagSettingsComponent],
   templateUrl: './create-post.component.html',
-  styleUrl: './create-post.component.scss'
+  styleUrls: ['./create-post.component.scss', '../../../style/layout.scss']
 })
 export class CreatePostComponent {
   user$: Observable<User | null>;

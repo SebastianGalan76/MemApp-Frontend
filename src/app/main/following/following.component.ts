@@ -13,7 +13,7 @@ import { SortingFormComponent, SortOption } from "../../shared/sorting-form/sort
   standalone: true,
   imports: [PostContainerComponent, PopularHashtagComponent, SortingFormComponent, RouterLink],
   templateUrl: './following.component.html',
-  styleUrl: './following.component.scss'
+  styleUrls: ['./following.component.scss', '../../../style/layout.scss']
 })
 export class FollowingPageComponent implements OnInit {
   sortOptions: SortOption[] = [{

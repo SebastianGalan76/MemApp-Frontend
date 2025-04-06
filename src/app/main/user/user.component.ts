@@ -15,7 +15,7 @@ import { UserService } from '../../../service/user.service';
   standalone: true,
   imports: [UserAvatarComponent, NickComponent, RouterOutlet, FollowButtonComponent],
   templateUrl: './user.component.html',
-  styleUrl: './user.component.scss'
+  styleUrls: ['./user.component.scss', '../../../style/layout.scss']
 })
 export class UserPageComponent implements OnInit {
   userProfile: UserProfile | null = null;

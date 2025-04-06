@@ -4,7 +4,7 @@ import { ApiService } from '../../../service/api.service';
 import { PostContainerService } from '../../../service/post-container.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ObjectResponse } from '../../../model/response/ObjectResponse';
-import { Accessibility, UserCollection } from '../../../model/UserCollection';
+import { UserCollection } from '../../../model/UserCollection';
 import { UserAvatarComponent } from "../../shared/user/avatar/avatar.component";
 import { NickComponent } from "../../shared/user/nick/nick.component";
 import { PopularHashtagComponent } from "../home/popular-hashtag/popular-hashtag.component";
@@ -14,14 +14,13 @@ import { PopupService } from '../../../service/popup.service';
 import { filter, switchMap, take, tap } from 'rxjs';
 import { Response } from '../../../model/response/Response';
 import { UserService } from '../../../service/user.service';
-import { MainComponent } from '../main.component';
 
 @Component({
   selector: 'app-user-collection',
   standalone: true,
   imports: [PostContainerComponent, UserAvatarComponent, NickComponent, PopularHashtagComponent, CollectionMenuComponent],
   templateUrl: './collection.component.html',
-  styleUrl: './collection.component.scss'
+  styleUrls: ['./collection.component.scss', '../../../style/layout.scss']
 })
 export class UserCollectionComponent implements OnInit {
   uuid: string = "";

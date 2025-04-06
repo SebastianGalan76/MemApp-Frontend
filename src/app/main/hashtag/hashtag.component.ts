@@ -12,7 +12,7 @@ import { Post } from '../../../model/Post';
   standalone: true,
   imports: [PostContainerComponent, PopularHashtagComponent],
   templateUrl: './hashtag.component.html',
-  styleUrl: './hashtag.component.scss'
+  styleUrls: ['./hashtag.component.scss', '../../../style/layout.scss']
 })
 export class HashtagPageComponent implements OnInit {
   tag: string | null = null;

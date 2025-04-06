@@ -1,43 +1,28 @@
-#container {
-  width: min(90%, 1100px);
-  min-height: calc(200vh - 60px);
-  display: flex;
-  gap: 10px;
-  margin-top: 25px;
-  margin-left: auto;
-  margin-right: auto;
-}
-#container #content {
-  flex-grow: 1;
-  height: -moz-fit-content;
-  height: fit-content;
-  padding: 10px 5px;
-  overflow: hidden;
-}
-#container #content #post-type-container {
+#post-type-container {
   display: flex;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
 }
-#container #content #post-type-container .type {
+#post-type-container .type {
   flex: 1;
   padding: 10px 0;
   text-align: center;
   border: 1px solid var(--color-background-60);
   color: var(--color-background-100);
 }
-#container #content #post-type-container .type:not(:last-child) {
+#post-type-container .type:not(:last-child) {
   border-right: 1px solid var(--color-background-60);
 }
-#container #content #post-type-container .type.selected {
+#post-type-container .type.selected {
   background-color: var(--color-background-70);
 }
-#container #content #post-type-container .type:hover {
+#post-type-container .type:hover {
   cursor: pointer;
   background-color: var(--color-background-60);
 }
-#container #content #post-container {
+
+#post-container {
   margin-top: 25px;
   padding: 10px;
   border-radius: 10px;
@@ -46,7 +31,7 @@
   gap: 5px;
   border: 2px solid var(--color-background-60);
 }
-#container #content #post-container #header {
+#post-container #header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -54,24 +39,24 @@
      -moz-user-select: none;
           user-select: none;
 }
-#container #content #post-container #header #basic-information {
+#post-container #header #basic-information {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-#container #content #post-container #header #basic-information #user-avatar {
+#post-container #header #basic-information #user-avatar {
   width: 36px;
   height: 36px;
 }
-#container #content #post-container #header #basic-information #user-name {
+#post-container #header #basic-information #user-name {
   font-weight: 500;
   line-height: 16px;
 }
-#container #content #post-container #header #basic-information #publication-date {
+#post-container #header #basic-information #publication-date {
   color: var(--color-text-white-light);
   font-size: 0.76em;
 }
-#container #content #post-container #header #button {
+#post-container #header #button {
   border-radius: 100%;
   color: var(--color-text-white-light);
   font-size: 1.4rem;
@@ -80,12 +65,12 @@
   height: 36px;
   width: 36px;
 }
-#container #content #post-container #header #button:hover {
+#post-container #header #button:hover {
   color: var(--color-text-white);
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.1);
 }
-#container #content #post-container #text textarea {
+#post-container #text textarea {
   border: 2px solid var(--color-background-60);
   background-color: var(--color-background-30);
   padding: 5px;
@@ -100,23 +85,23 @@
   outline: none;
   display: block;
 }
-#container #content #post-container #text textarea:focus {
+#post-container #text textarea:focus {
   border: 2px solid var(--color-background-50);
   background-color: inherit;
 }
-#container #content #post-container #text textarea:not(:-moz-placeholder-shown) {
+#post-container #text textarea:not(:-moz-placeholder-shown) {
   border: 2px solid var(--color-background-50);
   background-color: inherit;
 }
-#container #content #post-container #text textarea:not(:placeholder-shown) {
+#post-container #text textarea:not(:placeholder-shown) {
   border: 2px solid var(--color-background-50);
   background-color: inherit;
 }
-#container #content #post-container #text textarea:hover {
+#post-container #text textarea:hover {
   border: 2px solid var(--color-background-60);
   background-color: var(--color-background-30);
 }
-#container #content #post-container #content-wrapper {
+#post-container #content-wrapper {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
@@ -124,37 +109,37 @@
      -moz-user-select: none;
           user-select: none;
 }
-#container #content #post-container #content-wrapper #picture-content-type {
+#post-container #content-wrapper #picture-content-type {
   display: flex;
   gap: 10px;
 }
-#container #content #post-container #content-wrapper #picture-content-type .section {
+#post-container #content-wrapper #picture-content-type .section {
   padding: 30px 20px;
   flex: 1;
   text-align: center;
   border-radius: 10px;
   border: 2px dashed var(--color-background-90);
 }
-#container #content #post-container #content-wrapper #picture-content-type .section .icon {
+#post-container #content-wrapper #picture-content-type .section .icon {
   font-size: 2em;
   color: var(--color-background-80);
 }
-#container #content #post-container #content-wrapper #picture-content-type .section .header {
+#post-container #content-wrapper #picture-content-type .section .header {
   margin-bottom: 20px;
   font-weight: 600;
   color: var(--color-background-110);
 }
-#container #content #post-container #content-wrapper #picture-content-type .section .info {
+#post-container #content-wrapper #picture-content-type .section .info {
   font-size: 0.8em;
   color: var(--color-background-100);
 }
-#container #content #post-container #content-wrapper #picture-content-type .section:hover {
+#post-container #content-wrapper #picture-content-type .section:hover {
   background-color: var(--color-background-60);
 }
-#container #content #post-container #content-wrapper #preview {
+#post-container #content-wrapper #preview {
   min-height: 45px;
 }
-#container #content #post-container #content-wrapper #preview #background {
+#post-container #content-wrapper #preview #background {
   position: absolute;
   top: 0;
   left: 0;
@@ -163,13 +148,13 @@
   z-index: 1;
   filter: blur(15px);
 }
-#container #content #post-container #content-wrapper #preview #background img {
+#post-container #content-wrapper #preview #background img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-#container #content #post-container #content-wrapper #preview #background::after {
+#post-container #content-wrapper #preview #background::after {
   content: "";
   position: absolute;
   top: 0;
@@ -178,11 +163,11 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
 }
-#container #content #post-container #content-wrapper #preview #content {
+#post-container #content-wrapper #preview #content {
   position: relative;
   z-index: 100;
 }
-#container #content #post-container #content-wrapper #preview #content img {
+#post-container #content-wrapper #preview #content img {
   max-width: 100%;
   max-height: 100%;
   width: auto;
@@ -191,7 +176,7 @@
   margin-right: auto;
   display: block;
 }
-#container #content #post-container #content-wrapper #close-preview-button {
+#post-container #content-wrapper #close-preview-button {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -203,61 +188,63 @@
   font-size: 1em;
   z-index: 10000;
 }
-#container #content #post-container #content-wrapper #close-preview-button:hover {
+#post-container #content-wrapper #close-preview-button:hover {
   cursor: pointer;
   background-color: white;
 }
-#container #content #post-container #footer {
+#post-container #footer {
   padding: 0 5px;
   display: flex;
   color: var(--color-text-white-light);
 }
-#container #content #post-container #footer i {
+#post-container #footer i {
   font-size: 1.4em;
 }
-#container #content #post-container #footer i:hover {
+#post-container #footer i:hover {
   cursor: pointer;
 }
-#container #content #post-container #footer .section {
+#post-container #footer .section {
   display: flex;
   align-items: center;
   gap: 6px;
 }
-#container #content #post-container #footer .section .value {
+#post-container #footer .section .value {
   min-width: 60px;
 }
-#container #content #post-container #footer .section .vote-button:hover {
+#post-container #footer .section .vote-button:hover {
   cursor: pointer;
   color: var(--color-text-white);
 }
-#container #content #post-container #footer .section.comment {
+#post-container #footer .section.comment {
   margin-left: 20%;
 }
-#container #content #post-container #footer .section.comment:hover {
+#post-container #footer .section.comment:hover {
   color: var(--color-text-white);
   cursor: pointer;
 }
-#container #content #post-container #footer #menu {
+#post-container #footer #menu {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-left: auto;
 }
-#container #content #post-container #footer #menu i:hover {
+#post-container #footer #menu i:hover {
   cursor: pointer;
   color: var(--color-text-white);
 }
-#container #content #settings {
+
+#settings {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-#container #content #settings #header {
+#settings #header {
   opacity: 0.7;
   margin-left: 20px;
 }
-#container #content #create-post-button {
+
+#create-post-button {
   background-color: var(--color-theme);
   width: -moz-fit-content;
   width: fit-content;
@@ -266,32 +253,9 @@
   margin-top: 10px;
   margin-left: auto;
 }
-#container #content #create-post-button:hover {
+#create-post-button:hover {
   background-color: var(--color-theme-accent);
   cursor: pointer;
-}
-#container #aside-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 300px;
-  flex-shrink: 0;
-}
-@media (max-width: 1200px) {
-  #container #aside-menu {
-    display: none;
-  }
-}
-@media (max-width: 1200px) {
-  #container {
-    width: 96%;
-  }
-}
-
-.panel {
-  background-color: var(--color-background-50);
-  border: 2px solid var(--color-background-60);
-  border-radius: 10px;
 }
 
 .input-area {

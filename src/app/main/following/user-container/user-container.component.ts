@@ -16,7 +16,7 @@ import { PageService } from '../../../../service/page.service';
   standalone: true,
   imports: [UserAvatarComponent, NickComponent, SortingFormComponent, PopularHashtagComponent, RouterLink, PageContainerComponent],
   templateUrl: './user-container.component.html',
-  styleUrl: './user-container.component.scss'
+  styleUrls: ['./user-container.component.scss', '../../../../style/layout.scss']
 })
 export class FollowingUserContainerComponent implements OnInit {
   response: PageResponse<User> | null = null;

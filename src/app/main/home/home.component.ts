@@ -16,7 +16,7 @@ import { CreatePostFormComponent } from "../../shared/create-post-form/create-po
   standalone: true,
   imports: [PostContainerComponent, PopularHashtagComponent, CreatePostFormComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss', '../../../style/layout.scss']
 })
 export class HomeComponent implements OnInit {
   user$: Observable<User | null>;

@@ -11,7 +11,7 @@ import { CommentContainerComponent } from "./comment-container/comment-container
   standalone: true,
   imports: [PostComponent, CommentContainerComponent],
   templateUrl: './post.component.html',
-  styleUrl: './post.component.scss'
+  styleUrls: ['./post.component.scss', '../../../style/layout.scss']
 })
 export class PostPageComponent implements OnInit {
   isInitialized = new Subject<void>();

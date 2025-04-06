@@ -12,7 +12,7 @@ import { PopularHashtagComponent } from "../home/popular-hashtag/popular-hashtag
   standalone: true,
   imports: [PostContainerComponent, PopularHashtagComponent],
   templateUrl: './waiting-room.component.html',
-  styleUrl: './waiting-room.component.scss'
+  styleUrls: ['./waiting-room.component.scss', '../../../style/layout.scss']
 })
 export class WaitingRoomComponent implements OnInit {
 
