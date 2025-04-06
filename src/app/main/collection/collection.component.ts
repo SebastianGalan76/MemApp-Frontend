@@ -11,7 +11,7 @@ import { PopularHashtagComponent } from "../home/popular-hashtag/popular-hashtag
 import { CollectionMenuComponent } from "./menu/menu.component";
 import { ToastService, ToastType } from '../../../service/toast.service';
 import { PopupService } from '../../../service/popup.service';
-import { filter, switchMap, take, tap } from 'rxjs';
+import { combineLatest, filter, switchMap, take, tap } from 'rxjs';
 import { Response } from '../../../model/response/Response';
 import { UserService } from '../../../service/user.service';
 
@@ -39,17 +39,14 @@ export class UserCollectionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.uuid = params['uuid'];
+    combineLatest([
+      this.route.params,
+      this.route.queryParams
+    ]).subscribe(([routeParams, queryParams]) => {
+      this.uuid = routeParams['uuid'];
 
-      this.route.queryParams.subscribe(params => {
-        var page = 1;
-        if ('page' in params) {
-          page = +params['page'];
-        }
-
-        this.loadPage(page - 1);
-      })
+      const page = 'page' in queryParams ? +queryParams['page'] : 1;
+      this.loadPage(page - 1);
     })
   }
 

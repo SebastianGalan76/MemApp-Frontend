@@ -12,7 +12,7 @@
             <div id="left-section">Znaleziono 3 241 posty</div>
             <div id="right-section">
                 <app-sorting-form [options]="sortOptions" [selectedOption]="sortOptions[0]"
-                    (onChange)="loadPage($event, 1)" />
+                    (onChange)="changeSortOption($event)" />
             </div>
         </div>
 

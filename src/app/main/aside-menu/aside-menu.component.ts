@@ -3,6 +3,17 @@ import { Component, ElementRef, Injectable, OnDestroy, Renderer2, ViewChild } fr
 import { RouterLink } from '@angular/router';
 import { UserCollectionsAsideMenuElementComponent } from "./element/user-collections/user-collections.component";
 
+@Injectable({
+  providedIn: "root"
+})
+export class AsideMenuService {
+  isActive: boolean = false;
+
+  toggleMenu(): void {
+    this.isActive = !this.isActive;
+  }
+}
+
 @Component({
   selector: 'app-aside-menu',
   standalone: true,
@@ -33,16 +44,5 @@ export class AsideMenuComponent implements OnDestroy {
     if (this.scrollTimeout) {
       clearTimeout(this.scrollTimeout);
     }
-  }
-}
-
-@Injectable({
-  providedIn: "root"
-})
-export class AsideMenuService {
-  isActive: boolean = false;
-
-  toggleMenu(): void {
-    this.isActive = !this.isActive;
   }
 }

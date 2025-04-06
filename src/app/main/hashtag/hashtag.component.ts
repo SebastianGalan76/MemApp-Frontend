@@ -6,6 +6,7 @@ import { PostContainerService } from '../../../service/post-container.service';
 import { ActivatedRoute } from '@angular/router';
 import { PageResponse } from '../../../model/response/PageResponse';
 import { Post } from '../../../model/Post';
+import { BasePaginatedComponent } from '../../shared/base-paginated/base-paginated.component';
 
 @Component({
   selector: 'app-hashtag-page',
@@ -14,33 +15,28 @@ import { Post } from '../../../model/Post';
   templateUrl: './hashtag.component.html',
   styleUrls: ['./hashtag.component.scss', '../../../style/layout.scss']
 })
-export class HashtagPageComponent implements OnInit {
+export class HashtagPageComponent extends BasePaginatedComponent implements OnInit {
   tag: string | null = null;
 
   constructor(
     private apiService: ApiService,
     private postContainerService: PostContainerService,
-    private route: ActivatedRoute
+    protected override route: ActivatedRoute
   ) {
-
+    super(route);
   }
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      var page = 1;
-      if ('page' in params) {
-        page = +params['page'];
-      }
-
       if ('v' in params) {
         this.tag = params['v'];
       }
 
-      this.loadPage(page - 1);
+      super.ngOnInit();
     });
   }
 
-  loadPage(page: number) {
+  override loadPage(page: number) {
     if (!this.tag) {
       return;
     }

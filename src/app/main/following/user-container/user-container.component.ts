@@ -10,6 +10,7 @@ import { PopularHashtagComponent } from "../../home/popular-hashtag/popular-hash
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PageContainerComponent } from "../../../shared/page-container/page-container.component";
 import { PageService } from '../../../../service/page.service';
+import { BasePaginatedComponent } from '../../../shared/base-paginated/base-paginated.component';
 
 @Component({
   selector: 'following-user-container',
@@ -18,8 +19,9 @@ import { PageService } from '../../../../service/page.service';
   templateUrl: './user-container.component.html',
   styleUrls: ['./user-container.component.scss', '../../../../style/layout.scss']
 })
-export class FollowingUserContainerComponent implements OnInit {
+export class FollowingUserContainerComponent extends BasePaginatedComponent implements OnInit {
   response: PageResponse<User> | null = null;
+  sortOption: SortOption | null = null;
 
   errorCode: number = -1;
 
@@ -44,28 +46,20 @@ export class FollowingUserContainerComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private pageService: PageService,
-    private route: ActivatedRoute
+    protected override route: ActivatedRoute
   ) {
-
+    super(route);
   }
 
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      var page = 1;
-      if ('page' in params) {
-        page = +params['page'];
-      }
-
-      this.loadPage(this.sortOptions[0], page);
-    });
-  }
-
-  loadPage(sortOption: SortOption, page: number) {
+  override loadPage(page: number) {
     this.errorCode = -1;
 
-    var httpParams = new HttpParams()
-      .append("sortBy", sortOption.sortBy)
-      .append("order", sortOption.order);
+    var httpParams;
+    if (this.sortOption) {
+      httpParams = new HttpParams()
+        .append("sortBy", this.sortOption.sortBy)
+        .append("order", this.sortOption.order);
+    }
 
     this.apiService.get<PageResponse<User>>(`/follow/user/${page}`, { withCredentials: true, params: httpParams }).subscribe({
       next: (response) => {
@@ -86,5 +80,10 @@ export class FollowingUserContainerComponent implements OnInit {
         }
       }
     })
+  }
+
+  changeSortOption(sortOption: SortOption) {
+    this.sortOption = sortOption;
+    this.loadPage(1);
   }
 }

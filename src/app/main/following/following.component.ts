@@ -7,6 +7,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PageResponse } from '../../../model/response/PageResponse';
 import { Post } from '../../../model/Post';
 import { SortingFormComponent, SortOption } from "../../shared/sorting-form/sorting-form.component";
+import { BasePaginatedComponent } from '../../shared/base-paginated/base-paginated.component';
 
 @Component({
   selector: 'app-following',
@@ -15,7 +16,7 @@ import { SortingFormComponent, SortOption } from "../../shared/sorting-form/sort
   templateUrl: './following.component.html',
   styleUrls: ['./following.component.scss', '../../../style/layout.scss']
 })
-export class FollowingPageComponent implements OnInit {
+export class FollowingPageComponent extends BasePaginatedComponent implements OnInit {
   sortOptions: SortOption[] = [{
     text: 'Od najnowszych',
     sortBy: 'followedAt',
@@ -37,23 +38,12 @@ export class FollowingPageComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private postContainerService: PostContainerService,
-    private route: ActivatedRoute
+    protected override route: ActivatedRoute
   ) {
-
+    super(route);
   }
 
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      var page = 1;
-      if ('page' in params) {
-        page = +params['page'];
-      }
-
-      this.loadPage(page - 1);
-    });
-  }
-
-  loadPage(page: number) {
+  override loadPage(page: number) {
     this.apiService.get<PageResponse<Post>>(`/follow/post/${page}`, { withCredentials: true }).subscribe({
       next: (response) => {
         window.scrollTo({ top: 0 });

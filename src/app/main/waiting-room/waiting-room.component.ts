@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PageResponse } from '../../../model/response/PageResponse';
 import { Post } from '../../../model/Post';
 import { PopularHashtagComponent } from "../home/popular-hashtag/popular-hashtag.component";
+import { BasePaginatedComponent } from '../../shared/base-paginated/base-paginated.component';
 
 @Component({
   selector: 'app-waiting-room',
@@ -14,25 +15,14 @@ import { PopularHashtagComponent } from "../home/popular-hashtag/popular-hashtag
   templateUrl: './waiting-room.component.html',
   styleUrls: ['./waiting-room.component.scss', '../../../style/layout.scss']
 })
-export class WaitingRoomComponent implements OnInit {
+export class WaitingRoomComponent extends BasePaginatedComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
     private postContainerService: PostContainerService,
-    private route: ActivatedRoute
+    protected override route: ActivatedRoute
   ) {
-
-  }
-
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      var page = 1;
-      if ('page' in params) {
-        page = +params['page'];
-      }
-
-      this.loadPage(page - 1);
-    });
+    super(route);
   }
 
   loadPage(page: number) {
