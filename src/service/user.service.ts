@@ -56,9 +56,22 @@ export class UserService {
     );
   }
 
-  saveUser() {
-    sessionStorage.setItem('user', JSON.stringify(this.user));
+  saveUser(user: User | null = this.user) {
+    if (!user) {
+      sessionStorage.removeItem('user');
+      this.user = null;
+      return;
+    }
+
+    try {
+      const userString = JSON.stringify(user);
+      sessionStorage.setItem('user', userString);
+      this.user = user;
+    } catch (error) {
+      console.error('Błąd podczas zapisywania użytkownika:', error);
+    }
   }
+
 
   logout() {
     sessionStorage.removeItem('user');

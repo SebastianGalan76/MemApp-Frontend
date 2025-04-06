@@ -1,0 +1,35 @@
+<div id="container" (click)="$event.stopPropagation()">
+    <i id="button" class="fa-solid fa-ellipsis" (click)="toggleMenu($event)"></i>
+
+    <div id="menu-container" [ngClass]="{'active': isActive}" [style]="{'top': yPos+'px', 'right': xPos+'px'}">
+        <div class="section">
+            <div class="button" (click)="parent.copyLink($event); toggleMenu($event)">
+                <span class="text">Kopiuj link</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </div>
+
+            @if (hasPermission('SHARE')) {
+            <div class="button">
+                <span class="text">Udostępnij</span>
+                <i class="fa-solid fa-share-nodes"></i>
+            </div>
+            }
+
+            @if (hasPermission('EDIT')) {
+            <div class="button" (click)="parent.editCollection($event); toggleMenu($event)">
+                <span class="text">Edytuj</span>
+                <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            }
+        </div>
+        @if (hasPermission('DELETE')) {
+        <div class="dividing-line"></div>
+        <div class="section red">
+            <div class="button" (click)="parent.deleteCollection($event); toggleMenu($event)">
+                <span class="text">Usuń</span>
+                <i class="fa-solid fa-trash"></i>
+            </div>
+        </div>
+        }
+    </div>
+</div>

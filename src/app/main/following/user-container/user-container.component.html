@@ -1,10 +1,44 @@
-<div id="user-container" class="panel">
-    @if (response) {
-    @for (item of response.content; track $index) {
-    <div class="user">
-        <user-avatar class="user-avatar" [user]="item" />
-        <user-nick [user]="item" />
+<div id="container">
+    <div id="content">
+        <div id="header">
+            <div class="title">Obserwowani</div>
+            <span>Miejsce, do którego trafiają nowe, niezweryfikowane posty.</span> <br>
+            <span>Oceniaj posty, aby mogły one trafić na główną stronę.</span>
+        </div>
+
+        <div id="amount" [routerLink]="'/obserwowani'">42 Posty</div>
+
+        <div id="sorting">
+            <div id="left-section">Znaleziono 3 241 posty</div>
+            <div id="right-section">
+                <app-sorting-form [options]="sortOptions" [selectedOption]="sortOptions[0]"
+                    (onChange)="loadData($event)" />
+            </div>
+        </div>
+
+        <div id="user-container" class="panel">
+            @if (response) {
+            @for (item of response.content; track $index) {
+            <div class="user">
+                <user-avatar class="user-avatar" [user]="item" />
+                <user-nick [user]="item" />
+            </div>
+            }
+            }
+        </div>
+
+        <app-page-container />
+
     </div>
-    }
-    }
+    <div id="aside-menu">
+        <div class="panel" style="min-height: 250px;">
+
+        </div>
+        <div class="panel">
+            <app-popular-hashtag />
+        </div>
+        <div class="panel" style="min-height:  300px;">
+
+        </div>
+    </div>
 </div>

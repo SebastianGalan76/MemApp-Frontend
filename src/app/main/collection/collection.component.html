@@ -2,19 +2,88 @@
     <div id="content">
         @if (collection) {
         <div id="header">
-            <div id="owner">
-                <div id="user-avatar">
-                    <user-avatar [user]="collection.author" />
-                </div>
-
-                <user-nick [user]="collection.author" />
-            </div>
-            <div id="list-name">
+            <div id="name">
                 {{collection.name}}
+            </div>
+            <div id="accessibility">
+                @if (collection.accessibility == "PRIVATE") {
+                Kolekcja prywatna
+                }
+                @else if (collection.accessibility == "PUBLIC") {
+                Kolekcja publiczna
+                }
+                @else if (collection.accessibility == "NOT_PUBLIC") {
+                Kolekcja niepubliczna
+                }
+            </div>
+            <div id="menu-button">
+                <collection-dropdown-menu />
+            </div>
+
+            <div id="owner">
+                <span>Autor:</span>
+                <div id="user">
+                    <div id="user-avatar">
+                        <user-avatar [user]="collection.author" />
+                    </div>
+
+                    <user-nick [user]="collection.author" />
+                </div>
             </div>
         </div>
         }
 
+        @if (collection && collection.content.totalElements > 0) {
+        <div id="sorting">
+            <div id="left-section">Znaleziono {{collection.content.totalElements}} posty</div>
+            <div id="right-section">
+                <span>Sortuj:</span>
+                <div id="sort-type">Od najnowszych</div>
+                <div id="icon">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+        }
+
+        <div id="error-container">
+            @if (errorCode == 0) {
+            <div class="error">
+                <div class="icon">
+                    <i class="fa-solid fa-battery-empty"></i>
+                </div>
+                <span class="info">Kolekcja jest pusta</span><br>
+                <span class="description">Dodaj najpierw posty, aby je wyświetlić</span>
+            </div>
+            }
+            @else if (errorCode == 1) {
+            <div class="error">
+                <div class="icon">
+                    <i class="fa-solid fa-skull"></i>
+                </div>
+                <span class="info">Kolekcja nie istnieje</span><br>
+                <span class="description">Czy na pewno jest to prawidłowy link?</span>
+            </div>
+            }
+            @else if (errorCode == 2) {
+            <div class="error">
+                <div class="icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <span class="info">Brak uprawnień</span><br>
+                <span class="description">Kolekcja jest prywatna, nie możesz jej wyświetlić</span>
+            </div>
+            }
+            @else if (errorCode == 300) {
+            <div class="error">
+                <div class="icon">
+                    <i class="fa-solid fa-toilet-paper-slash"></i>
+                </div>
+                <span class="info">Brak strony</span><br>
+                <span class="description">Nie ma takiej strony</span>
+            </div>
+            }
+        </div>
 
         <app-post-container />
     </div>
@@ -23,11 +92,8 @@
         <div class="panel" style="min-height: 250px;">
 
         </div>
-        <div class="panel" style="min-height: 600px;">
-
-        </div>
-        <div class="panel" style="min-height:  300px;">
-
+        <div class="panel">
+            <app-popular-hashtag />
         </div>
     </div>
 </div>

@@ -1,22 +1,21 @@
 <div id="container">
     <div id="content">
         <div id="header">
-            <div id="title">Obserwowani</div>
-
-            @if (userListIsActive) {
-            <div id="amount" (click)="userListIsActive = false">Posty</div>
-            }
-            @else {
-            <div id="amount" (click)="userListIsActive = true">32 Obserwowanych</div>
-            }
+            <div class="title">Obserwowani</div>
+            <span>Miejsce, do którego trafiają nowe, niezweryfikowane posty.</span> <br>
+            <span>Oceniaj posty, aby mogły one trafić na główną stronę.</span>
         </div>
 
-        @if (userListIsActive) {
-        <following-user-container />
-        }
-        @else {
+        <div id="amount" [routerLink]="'/obserwowani/uzytkownicy'">32 Użytkowników</div>
+
+        <div id="sorting">
+            <div id="left-section">Znaleziono 3 241 posty</div>
+            <div id="right-section">
+                <app-sorting-form [options]="sortOptions" [selectedOption]="sortOptions[0]" />
+            </div>
+        </div>
         <app-post-container />
-        }
+
     </div>
     <div id="aside-menu">
         <div class="panel" style="min-height: 250px;">

@@ -1,0 +1,52 @@
+#container {
+  position: relative;
+}
+#container #main-button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.9em;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+#container #main-button span {
+  opacity: 0.5;
+}
+#container #main-button #sort-type {
+  color: var(--color-theme);
+  font-weight: 500;
+}
+#container #main-button:hover {
+  cursor: pointer;
+  background-color: var(--color-background-50);
+}
+#container #main-button #icon {
+  opacity: 0.5;
+}
+#container #option-container {
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  background-color: var(--color-background-10);
+  border-radius: 0 0 10px 10px;
+  display: none;
+}
+#container #option-container .option {
+  padding: 3px 10px;
+  color: rgba(255, 255, 255, 0.7921568627);
+}
+#container #option-container .option:hover {
+  cursor: pointer;
+  color: white;
+}
+#container #option-container .option.selected {
+  color: var(--color-theme);
+  font-weight: 500;
+}
+#container.active #main-button {
+  border-radius: 5px 5px 0 0;
+  background-color: var(--color-background-10);
+}
+#container.active #option-container {
+  display: block;
+}/*# sourceMappingURL=sorting-form.component.css.map */

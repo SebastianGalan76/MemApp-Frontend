@@ -31,10 +31,10 @@ export class PostContainerComponent implements AfterViewInit {
 
     this.postContainerService.postContainer$.subscribe({
       next: (response) => {
-        if (response) {
-          this.postContainer.clear();
-          this.postElements.splice(0, this.postElements.length);
+        this.postContainer.clear();
+        this.postElements.splice(0, this.postElements.length);
 
+        if (response) {
           response.content.forEach(postDto => this.addPostComponent(postDto))
         }
       }

@@ -1,35 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { PostContainerComponent } from "../home/post-container/post-container.component";
 import { PopularHashtagComponent } from "../home/popular-hashtag/popular-hashtag.component";
-import { User } from '../../../model/User';
-import { UserService } from '../../../service/user.service';
 import { ApiService } from '../../../service/api.service';
-import { Observable } from 'rxjs';
 import { PostContainerService } from '../../../service/post-container.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PageResponse } from '../../../model/response/PageResponse';
 import { Post } from '../../../model/Post';
-import { FollowingUserContainerComponent } from "./user-container/user-container.component";
+import { SortingFormComponent, SortOption } from "../../shared/sorting-form/sorting-form.component";
 
 @Component({
   selector: 'app-following',
   standalone: true,
-  imports: [PostContainerComponent, PopularHashtagComponent, FollowingUserContainerComponent],
+  imports: [PostContainerComponent, PopularHashtagComponent, SortingFormComponent, RouterLink],
   templateUrl: './following.component.html',
   styleUrl: './following.component.scss'
 })
 export class FollowingPageComponent implements OnInit {
-  user$: Observable<User | null>;
-
-  userListIsActive: boolean = false;
+  sortOptions: SortOption[] = [{
+    text: 'Od najnowszych',
+    sortBy: 'followedAt',
+    order: 'desc'
+  }, {
+    text: 'Od najstarszych',
+    sortBy: 'followedAt',
+    order: 'asc'
+  }, {
+    text: 'Login A-Z',
+    sortBy: 'login',
+    order: 'asc'
+  }, {
+    text: 'Login Z-A',
+    sortBy: 'login',
+    order: 'desc'
+  }]
 
   constructor(
-    private userService: UserService,
     private apiService: ApiService,
     private postContainerService: PostContainerService,
     private route: ActivatedRoute
   ) {
-    this.user$ = userService.getUser();
+
   }
 
   ngOnInit(): void {

@@ -1,0 +1,17 @@
+<div id="container" [ngClass]="{'active': isActive}" (click)="toggleMenu()">
+    <div id="main-button">
+        <span>Sortuj:</span>
+        <div id="sort-type">{{selectedOption.text}}</div>
+        <div id="icon">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </div>
+
+    <div id="option-container">
+        @for (option of options; track $index) {
+        <div class="option" [ngClass]="{'selected': option == selectedOption}" (click)="select(option)">
+            {{option.text}}
+        </div>
+        }
+    </div>
+</div>

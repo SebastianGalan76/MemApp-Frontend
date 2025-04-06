@@ -8,5 +8,10 @@ export interface UserCollection {
 
     name: string;
     author: User;
+    accessibility: Accessibility;
     content: PageResponse<Post>;
+}
+
+export enum Accessibility {
+    PUBLIC = "PUBLIC", NOT_PUBLIC = "NOT_PUBLIC", PRIVATE = "PRIVATE"
 }

@@ -1,30 +1,102 @@
 #container {
   width: min(90%, 1100px);
-  min-height: calc(200vh - 60px);
+  height: 100%;
   display: flex;
   gap: 10px;
-  margin-top: 25px;
+  padding: 20px;
   margin-left: auto;
   margin-right: auto;
 }
 #container #content {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 #container #content #header {
-  padding: 50px 0 20px 0;
-  border-bottom: 4px solid var(--color-background-50);
+  padding: 5px 0 5px 10px;
+  position: relative;
+  border-left: 5px solid var(--color-theme);
 }
-#container #content #header #list-name {
-  font-size: 3em;
+#container #content #header #name {
+  font-size: 2em;
+  font-weight: 600;
+  margin-right: 40px;
 }
-#container #content #header #owner {
+#container #content #header #accessibility {
+  opacity: 0.7;
+  margin-top: -14px;
+}
+#container #content #header #menu-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 4px 16px;
+  border-radius: 5px;
+}
+#container #content #header #owner span {
+  opacity: 0.7;
+}
+#container #content #header #owner #user {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-#container #content #header #owner #user-avatar {
+#container #content #header #owner #user #user-avatar {
   width: 36px;
   height: 36px;
+}
+#container #content #sorting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: -8px;
+  font-weight: 300;
+}
+#container #content #sorting #left-section {
+  opacity: 0.5;
+  font-size: 0.9em;
+}
+#container #content #sorting #right-section {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.9em;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+#container #content #sorting #right-section span {
+  opacity: 0.5;
+}
+#container #content #sorting #right-section #sort-type {
+  color: var(--color-theme);
+  font-weight: 500;
+}
+#container #content #sorting #right-section:hover {
+  cursor: pointer;
+  background-color: var(--color-background-50);
+}
+#container #content #sorting #right-section #icon {
+  opacity: 0.5;
+}
+#container #content #error-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#container #content #error-container .error {
+  text-align: center;
+  padding: 0 20px;
+}
+#container #content #error-container .error .icon {
+  font-size: 3em;
+}
+#container #content #error-container .error .info {
+  font-weight: 600;
+}
+#container #content #error-container .error .description {
+  opacity: 0.7;
 }
 #container #aside-menu {
   display: flex;
@@ -41,6 +113,11 @@
 @media (max-width: 1200px) {
   #container {
     width: 96%;
+  }
+}
+@media (max-width: 800px) {
+  #container {
+    padding: 3px;
   }
 }
 

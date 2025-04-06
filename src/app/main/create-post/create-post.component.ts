@@ -124,10 +124,10 @@ export class CreatePostComponent {
 
       if (this.selectedFile) {
         switch (this.checkFile(this.selectedFile)) {
-          case 1:
+          case 2:
             this.toastService.show("Akceptujemy jedynie rozszerzenia jpeg, png, gif i webp", ToastType.ERROR);
             return;
-          case 2:
+          case 3:
             this.toastService.show("Rozmiar pliku jest za duży", ToastType.ERROR);
             return;
         }
@@ -168,7 +168,11 @@ export class CreatePostComponent {
       hashtags: this.hashtagSettings.getHashtags(),
     }
 
-    formData.append('newPostDto', JSON.stringify(newPostDto));
+    formData.append('newPostDto', new Blob(
+      [JSON.stringify(newPostDto)],
+      { type: 'application/json' }
+    ));
+
 
     this.apiService.post<Response>('/post/create', formData, { withCredentials: true }).subscribe({
       next: (response) => {
@@ -235,12 +239,13 @@ export class CreatePostComponent {
       return 1;
     }
 
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', "image/webp"];
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', "image/webp", "video/mp4"];
     if (!allowedTypes.includes(file.type)) {
       return 2;
     }
 
-    if (file.size > 4 * 1024 * 1024) {
+    if (file.size > 64 * 1024 * 1024) {
+      console.log(file.size);
       return 3;
     }
 

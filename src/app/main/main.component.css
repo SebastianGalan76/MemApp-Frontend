@@ -1,11 +1,17 @@
-#container {
+#wrapper {
   width: 100%;
   min-height: 100vh;
   display: flex;
 }
-#container app-aside-menu {
+#wrapper app-aside-menu {
   flex-shrink: 0;
 }
-#container #content {
+#wrapper #container {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+#wrapper #container #content {
+  flex-grow: 1;
+  width: 100%;
 }/*# sourceMappingURL=main.component.css.map */
