@@ -11,6 +11,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PageContainerComponent } from "../../../shared/page-container/page-container.component";
 import { PageService } from '../../../../service/page.service';
 import { BasePaginatedComponent } from '../../../shared/base-paginated/base-paginated.component';
+import { Utils } from '../../../../service/utils.service';
 
 @Component({
   selector: 'following-user-container',
@@ -84,6 +85,10 @@ export class FollowingUserContainerComponent extends BasePaginatedComponent impl
 
   changeSortOption(sortOption: SortOption) {
     this.sortOption = sortOption;
-    this.loadPage(1);
+    this.loadPage(0);
+  }
+
+  getAmount(amount: number): string {
+    return Utils.getUserAmountString(amount);
   }
 }

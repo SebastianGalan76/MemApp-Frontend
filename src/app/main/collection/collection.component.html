@@ -33,18 +33,15 @@
         </div>
         }
 
-        @if (collection && collection.content.totalElements > 0) {
         <div id="sorting">
-            <div id="left-section">Znaleziono {{collection.content.totalElements}} posty</div>
+            @if (collection) {
+            <div id="left-section">Znaleziono {{getAmount(collection.content.totalElements)}}</div>
+            }
             <div id="right-section">
-                <span>Sortuj:</span>
-                <div id="sort-type">Od najnowszych</div>
-                <div id="icon">
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
+                <app-sorting-form [options]="sortOptions" [selectedOption]="sortOptions[0]"
+                    (onChange)="changeSortOption($event)" />
             </div>
         </div>
-        }
 
         <div id="error-container">
             @if (errorCode == 0) {

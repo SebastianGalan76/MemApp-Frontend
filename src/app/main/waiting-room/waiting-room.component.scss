@@ -22,32 +22,4 @@
         opacity: 0.5;
         font-size: 0.9em;
     }
-
-    #right-section {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        font-size: 0.9em;
-
-        padding: 5px 10px;
-        border-radius: 5px;
-
-        span {
-            opacity: 0.5;
-        }
-
-        #sort-type {
-            color: var(--color-theme);
-            font-weight: 500;
-        }
-
-        &:hover {
-            cursor: pointer;
-            background-color: var(--color-background-50);
-        }
-
-        #icon {
-            opacity: 0.5;
-        }
-    }
 }

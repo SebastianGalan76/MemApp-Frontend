@@ -13,4 +13,21 @@ export class Utils {
       return false;
     }
   }
+
+  static getPostAmountString(amount: number): string {
+    if (amount == 1) {
+      return "1 Post";
+    }
+    if (amount > 1 && amount < 5) {
+      return amount + " Posty";
+    }
+    return amount + " Postów";
+  }
+
+  static getUserAmountString(amount: number): string {
+    if (amount == 1) {
+      return "1 Użytkownika";
+    }
+    return amount + "  Użytkowników";
+  }
 }

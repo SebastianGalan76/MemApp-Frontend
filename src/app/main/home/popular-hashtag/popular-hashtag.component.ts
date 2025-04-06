@@ -4,6 +4,7 @@ import { ObjectResponse } from '../../../../model/response/ObjectResponse';
 import { Hashtag } from '../../../../model/Hashtag';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { Utils } from '../../../../service/utils.service';
 
 export interface HashtagDto {
   hashtag: Hashtag;
@@ -51,12 +52,6 @@ export class PopularHashtagComponent implements OnInit {
   }
 
   getAmount(amount: number): string {
-    if (amount == 1) {
-      return "1 Post";
-    }
-    if (amount > 1 && amount < 5) {
-      return amount + " Posty";
-    }
-    return amount + " Postów";
+    return Utils.getPostAmountString(amount);
   }
 }

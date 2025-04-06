@@ -27,9 +27,9 @@ export class UserAvatarComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (this.user) {
       if (this.isHexColor(this.user.avatar)) {
+        this.hideImage();
         this.letter = this.user.login.substring(0, 1).toUpperCase();
         this.color = this.user.avatar;
-        this.hideImage();
       }
       else {
         this.setImageForUser(this.user.avatar);

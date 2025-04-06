@@ -14,19 +14,33 @@ import { PopupService } from '../../../service/popup.service';
 import { combineLatest, filter, switchMap, take, tap } from 'rxjs';
 import { Response } from '../../../model/response/Response';
 import { UserService } from '../../../service/user.service';
+import { SortingFormComponent, SortOption } from "../../shared/sorting-form/sorting-form.component";
+import { HttpParams } from '@angular/common/http';
+import { Utils } from '../../../service/utils.service';
 
 @Component({
   selector: 'app-user-collection',
   standalone: true,
-  imports: [PostContainerComponent, UserAvatarComponent, NickComponent, PopularHashtagComponent, CollectionMenuComponent],
+  imports: [PostContainerComponent, UserAvatarComponent, NickComponent, PopularHashtagComponent, CollectionMenuComponent, SortingFormComponent],
   templateUrl: './collection.component.html',
   styleUrls: ['./collection.component.scss', '../../../style/layout.scss']
 })
 export class UserCollectionComponent implements OnInit {
   uuid: string = "";
-
   collection: UserCollection | null = null;
+
   errorCode: number = -1;
+
+  selectedSortOption: SortOption | null = null;
+  sortOptions: SortOption[] = [{
+    text: 'Od najnowszych',
+    sortBy: 'addedAt',
+    order: 'desc'
+  }, {
+    text: 'Od najstarszych',
+    sortBy: 'addedAt',
+    order: 'asc'
+  }]
 
   constructor(
     private userService: UserService,
@@ -107,7 +121,14 @@ export class UserCollectionComponent implements OnInit {
     this.collection = null;
     this.postContainerService.load(null);
 
-    this.apiService.get<ObjectResponse<UserCollection>>(`/collection/${this.uuid}/${page}`, { withCredentials: true }).subscribe({
+    var httpParams;
+    if (this.selectedSortOption) {
+      httpParams = new HttpParams()
+        .append("sortBy", this.selectedSortOption.sortBy)
+        .append("order", this.selectedSortOption.order);
+    }
+
+    this.apiService.get<ObjectResponse<UserCollection>>(`/collection/${this.uuid}/${page}`, { withCredentials: true, params: httpParams }).subscribe({
       next: (response) => {
         window.scrollTo({ top: 0 });
         this.collection = response.object;
@@ -128,5 +149,14 @@ export class UserCollectionComponent implements OnInit {
         this.errorCode = response.error.errorCode;
       }
     })
+  }
+
+  changeSortOption(sortOption: SortOption) {
+    this.selectedSortOption = sortOption;
+    this.loadPage(0);
+  }
+
+  getAmount(amount: number): string {
+    return Utils.getPostAmountString(amount);
   }
 }

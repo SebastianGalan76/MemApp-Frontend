@@ -8,6 +8,7 @@ import { PageResponse } from '../../../model/response/PageResponse';
 import { Post } from '../../../model/Post';
 import { SortingFormComponent, SortOption } from "../../shared/sorting-form/sorting-form.component";
 import { BasePaginatedComponent } from '../../shared/base-paginated/base-paginated.component';
+import { Utils } from '../../../service/utils.service';
 
 @Component({
   selector: 'app-following',
@@ -35,6 +36,8 @@ export class FollowingPageComponent extends BasePaginatedComponent implements On
     order: 'desc'
   }]
 
+  response: PageResponse<Post> | null = null;
+
   constructor(
     private apiService: ApiService,
     private postContainerService: PostContainerService,
@@ -48,8 +51,13 @@ export class FollowingPageComponent extends BasePaginatedComponent implements On
       next: (response) => {
         window.scrollTo({ top: 0 });
 
+        this.response = response;
         this.postContainerService.load(response);
       },
     })
+  }
+
+  getAmount(amount: number): string {
+    return Utils.getPostAmountString(amount);
   }
 }

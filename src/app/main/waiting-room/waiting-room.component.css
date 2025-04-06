@@ -18,26 +18,4 @@
 #sorting #left-section {
   opacity: 0.5;
   font-size: 0.9em;
-}
-#sorting #right-section {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font-size: 0.9em;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-#sorting #right-section span {
-  opacity: 0.5;
-}
-#sorting #right-section #sort-type {
-  color: var(--color-theme);
-  font-weight: 500;
-}
-#sorting #right-section:hover {
-  cursor: pointer;
-  background-color: var(--color-background-50);
-}
-#sorting #right-section #icon {
-  opacity: 0.5;
 }/*# sourceMappingURL=waiting-room.component.css.map */

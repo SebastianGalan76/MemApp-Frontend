@@ -9,7 +9,11 @@
         <div id="amount" [routerLink]="'/obserwowani/uzytkownicy'">32 Użytkowników</div>
 
         <div id="sorting">
-            <div id="left-section">Znaleziono 3 241 posty</div>
+            <div id="left-section">
+                @if (response) {
+                Znaleziono {{getAmount(response.totalElements)}}
+                }
+            </div>
             <div id="right-section">
                 <app-sorting-form [options]="sortOptions" [selectedOption]="sortOptions[0]" />
             </div>
