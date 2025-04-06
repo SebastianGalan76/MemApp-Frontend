@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { NgClass } from '@angular/common';
 import { PostContainerService } from '../../../service/post-container.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PageService } from '../../../service/page.service';
 
 @Component({
   selector: 'app-page-container',
@@ -19,53 +20,24 @@ export class PageContainerComponent implements OnDestroy {
   @ViewChild('pageTemplate', { read: TemplateRef }) pageTemplate!: TemplateRef<any>;
   @ViewChild('dividerTemplate', { read: TemplateRef }) dividerTemplate!: TemplateRef<any>;
 
-  @Output() onChangePage = new EventEmitter<number>();
-
   pageResponse: PageResponse<any> | null = null;
   currentPage: number = 1;
 
   subscription: Subscription | null = null;
-
   length: number = 10;
 
   constructor(
-    postContainerService: PostContainerService,
+    pageService: PageService,
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.subscription = postContainerService.postContainer$.subscribe({
+    this.subscription = pageService.postContainer$.subscribe({
       next: (response) => {
         if (response) {
           this.initialize(response);
         }
       }
     })
-  }
-
-  initialize(pageResponse: PageResponse<any> | null) {
-    this.pageResponse = pageResponse;
-    this.currentPage = pageResponse!.number + 1;
-
-    if (this.pageContainerRef?.nativeElement) {
-      const containerWidth = this.pageContainerRef.nativeElement.parentElement.clientWidth - 50;
-      this.length = Math.floor(containerWidth / 46);
-    }
-
-    this.generatePages();
-  }
-
-  changePage(pageNumber: number): void {
-    if (this.currentPage != pageNumber) {
-      this.currentPage = pageNumber;
-
-      this.router.navigate([], {
-        relativeTo: this.route,
-        queryParams: { page: pageNumber },
-        queryParamsHandling: 'merge'
-      })
-
-      this.onChangePage.emit(this.currentPage);
-    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -79,8 +51,28 @@ export class PageContainerComponent implements OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+  changePage(pageNumber: number): void {
+    if (this.currentPage != pageNumber) {
+      this.currentPage = pageNumber;
+
+      this.router.navigate([], {
+        relativeTo: this.route,
+        queryParams: { page: pageNumber },
+        queryParamsHandling: 'merge'
+      })
+    }
+  }
+
+  private initialize(pageResponse: PageResponse<any> | null) {
+    this.pageResponse = pageResponse;
+    this.currentPage = pageResponse!.number + 1;
+
+    if (this.pageContainerRef?.nativeElement) {
+      const containerWidth = this.pageContainerRef.nativeElement.parentElement.clientWidth - 50;
+      this.length = Math.floor(containerWidth / 46);
+    }
+
+    this.generatePages();
   }
 
   private generatePages(): void {
@@ -166,5 +158,9 @@ export class PageContainerComponent implements OnDestroy {
 
   private createDividerElement(): void {
     this.pageContainer.createEmbeddedView(this.dividerTemplate);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }

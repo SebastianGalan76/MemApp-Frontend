@@ -12,10 +12,11 @@
             <div id="left-section">Znaleziono 3 241 posty</div>
             <div id="right-section">
                 <app-sorting-form [options]="sortOptions" [selectedOption]="sortOptions[0]"
-                    (onChange)="loadData($event)" />
+                    (onChange)="loadPage($event, 1)" />
             </div>
         </div>
 
+        @if (errorCode == -1) {
         <div id="user-container" class="panel">
             @if (response) {
             @for (item of response.content; track $index) {
@@ -24,6 +25,46 @@
                 <user-nick [user]="item" />
             </div>
             }
+            }
+        </div>
+        }
+
+        <div id="error-container">
+            @if (errorCode == 0) {
+            <div class="error">
+                <div class="icon">
+                    <i class="fa-solid fa-battery-empty"></i>
+                </div>
+                <span class="info">Kolekcja jest pusta</span><br>
+                <span class="description">Dodaj najpierw posty, aby je wyświetlić</span>
+            </div>
+            }
+            @else if (errorCode == 1) {
+            <div class="error">
+                <div class="icon">
+                    <i class="fa-solid fa-skull"></i>
+                </div>
+                <span class="info">Kolekcja nie istnieje</span><br>
+                <span class="description">Czy na pewno jest to prawidłowy link?</span>
+            </div>
+            }
+            @else if (errorCode == 2) {
+            <div class="error">
+                <div class="icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <span class="info">Brak uprawnień</span><br>
+                <span class="description">Kolekcja jest prywatna, nie możesz jej wyświetlić</span>
+            </div>
+            }
+            @else if (errorCode == 300) {
+            <div class="error">
+                <div class="icon">
+                    <i class="fa-solid fa-toilet-paper-slash"></i>
+                </div>
+                <span class="info">Brak strony</span><br>
+                <span class="description">Nie ma takiej strony</span>
+            </div>
             }
         </div>
 

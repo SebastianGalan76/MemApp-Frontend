@@ -1,5 +1,8 @@
 #container {
   position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 #container #main-button {
   display: flex;

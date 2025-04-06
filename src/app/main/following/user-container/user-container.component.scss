@@ -96,6 +96,31 @@
     }
 }
 
+#error-container {
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .error {
+        text-align: center;
+        padding: 0 20px;
+
+        .icon {
+            font-size: 3em;
+        }
+
+        .info {
+            font-weight: 600;
+        }
+
+        .description {
+            opacity: 0.7;
+        }
+    }
+}
+
 .panel {
     background-color: var(--color-background-50);
     border: 2px solid var(--color-background-60);
